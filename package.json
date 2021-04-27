@@ -1,0 +1,52 @@
+{
+  "name": "A^O_EasyDB",
+  "description": "A^O_EasyDB as CLI solution for easy data save, so database solution that utilizes your filesystem to create database",
+  "version": "0.0.1",
+  "author": "MyUserNameIsMyUserName @MyUserNameIsMyUserName",
+  "bin": {
+    "aoeDB": "./bin/run"
+  },
+  "bugs": "https://github.com/MyUserNameIsMyUserName/A-O_EasyDB/issues",
+  "dependencies": {
+    "@oclif/command": "^1.8.0",
+    "@oclif/config": "^1.17.0",
+    "@oclif/plugin-help": "^3.2.2"
+  },
+  "devDependencies": {
+    "@oclif/dev-cli": "^1.26.0",
+    "eslint": "^5.16.0",
+    "eslint-config-oclif": "^3.1.0",
+    "globby": "^10.0.2",
+    "rimraf": "^3.0.2"
+  },
+  "engines": {
+    "node": ">=8.0.0"
+  },
+  "files": [
+    "/bin",
+    "/npm-shrinkwrap.json",
+    "/oclif.manifest.json",
+    "/src"
+  ],
+  "homepage": "https://github.com/MyUserNameIsMyUserName/A-O_EasyDB",
+  "keywords": [
+    "oclif"
+  ],
+  "license": "MIT",
+  "main": "src/index.js",
+  "oclif": {
+    "commands": "./src/commands",
+    "bin": "aoeDB",
+    "plugins": [
+      "@oclif/plugin-help"
+    ]
+  },
+  "repository": "MyUserNameIsMyUserName/A-O_EasyDB",
+  "scripts": {
+    "postpack": "rimraf oclif.manifest.json",
+    "posttest": "eslint .",
+    "prepack": "oclif-dev manifest && oclif-dev readme",
+    "test": "echo NO TESTS",
+    "version": "oclif-dev readme && git add README.md"
+  }
+}

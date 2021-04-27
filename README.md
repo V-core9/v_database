@@ -1,7 +1,22 @@
 # A-O_EasyDB
-DB solution using node.js and oclif
+==========
+A^O_EasyDB as CLI solution for easy data save, so database solution that utilizes your filesystem to create database
 
-Custom CLI solution using node js and oclif. Generate table, save data, get, update and delete data....Usual stuff you can do with every other DB software. 
+[![oclif](https://img.shields.io/badge/cli-oclif-brightgreen.svg)](https://oclif.io)
+[![Version](https://img.shields.io/npm/v/A^O_EasyDB.svg)](https://npmjs.org/package/A^O_EasyDB)
+[![Downloads/week](https://img.shields.io/npm/dw/A^O_EasyDB.svg)](https://npmjs.org/package/A^O_EasyDB)
+[![License](https://img.shields.io/npm/l/A^O_EasyDB.svg)](https://github.com/MyUserNameIsMyUserName/A-O_EasyDB/blob/master/package.json)
+
+<!-- toc -->
+# Usage
+<!-- usage -->
+# Commands
+<!-- commands -->
+  
+  
+## Description:   
+DB solution using node.js and oclif   
+Custom CLI solution using node js and oclif. Generate table, save data, get, update and delete data....Usual stuff you can do with every other DB software.   
 
 
 ## References: 
