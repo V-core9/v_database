@@ -1,5 +1,5 @@
-# A-O_EasyDB
-==========
+# A-O_EasyDB  
+==========  
 A^O_EasyDB as CLI solution for easy data save, so database solution that utilizes your filesystem to create database
 
 [![oclif](https://img.shields.io/badge/cli-oclif-brightgreen.svg)](https://oclif.io)
