@@ -10,8 +10,17 @@ A^O_EasyDB as CLI solution for easy data save, so database solution that utilize
 <!-- toc -->
 # Usage
 <!-- usage -->
+  $ aoeDB [COMMAND]
+
 # Commands
-<!-- commands -->
+<!-- commands -->  
+> - __hello__  
+> Describe the command here   
+> - __help__  
+> display help for aoeDB  
+> - __table__    
+> Basically copy of the hello, need to actually build it yet  
+>   - Flags: -c [command] - better say subcommand
   
   
 ## Description:   
