@@ -2,3 +2,8 @@
 DB solution using node.js and oclif
 
 Custom CLI solution using node js and oclif. Generate table, save data, get, update and delete data....Usual stuff you can do with every other DB software. 
+
+
+References: 
+1. [node.js](https://nodejs.org/)
+2. [oclif.io](https://oclif.io/)
