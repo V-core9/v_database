@@ -27,6 +27,15 @@ A^O_EasyDB as CLI solution for easy data save, so database solution that utilize
 DB solution using node.js and oclif   
 Custom CLI solution using node js and oclif. Generate table, save data, get, update and delete data....Usual stuff you can do with every other DB software.   
 
+  
+  
+## Idea behind it:   
+Well the idea is to have some custom solution to use as local database.   
+Basically wanna be able to run something from terminal...like....
+
+       aoeDB insert -d [db_name] -t [db_table] -c .....and here I am still thinking what to do.......[like a content then parse....or prompt for input so I can echo into it and skip that way...not-sure]
+
+
 
 ## References: 
 
