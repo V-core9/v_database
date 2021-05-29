@@ -49,10 +49,10 @@ TableCommand.description = `Basically copy of the hello, need to actually build 
 ...
 Extra documentation goes here
 
-aoeDB table   
-aoeDB table -c [command] - available commands: new, list, remove, update
+ao_qb table   
+ao_qb table -c [command] - available commands: new, list, remove, update
 
-Example: aoeDB table -c list 
+Example: ao_qb table -c list 
 `
 
 TableCommand.flags = {

@@ -10,14 +10,14 @@ A^O_EasyDB as CLI solution for easy data save, so database solution that utilize
 <!-- toc -->
 # Usage
 <!-- usage -->
-  $ aoeDB [COMMAND]
+  $ ao_qb [COMMAND]
 
 # Commands
 <!-- commands -->  
 > - __hello__  
 > Describe the command here   
 > - __help__  
-> display help for aoeDB  
+> display help for ao_qb  
 > - __table__    
 > Basically copy of the hello, need to actually build it yet  
 >   - Flags: -c [command] - better say subcommand
@@ -33,7 +33,7 @@ Custom CLI solution using node js and oclif. Generate table, save data, get, upd
 Well the idea is to have some custom solution to use as local database.   
 Basically wanna be able to run something from terminal...like....
 
-       aoeDB insert -d [db_name] -t [db_table] -c .....and here I am still thinking what to do.......[like a content then parse....or prompt for input so I can echo into it and skip that way...not-sure]
+       ao_qb insert -d [db_name] -t [db_table] -c .....and here I am still thinking what to do.......[like a content then parse....or prompt for input so I can echo into it and skip that way...not-sure]
 
 
 
