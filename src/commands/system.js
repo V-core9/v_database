@@ -1,5 +1,5 @@
 const {Command, flags} = require('@oclif/command')
-const cmdResConsLOG = require("../js_helpers/commandNotifier");
+const LogItem = require("../module/log/log_item");
 
 class SystemCommand extends Command {
   async run() {
@@ -13,12 +13,12 @@ class SystemCommand extends Command {
     console.log(jim.getUserStats());
     //------------//
     if (accepSystemCommand.includes(command)) {
-      cmdResConsLOG(true, command);
+      LogItem(command);
     } else {
       if (command == "null") {
-        cmdResConsLOG();
+        LogItem();
       } else {
-        cmdResConsLOG(false, command, accepSystemCommand);
+        LogItem(command +"  "+ accepSystemCommand);
       }
     }
   }
