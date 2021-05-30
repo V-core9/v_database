@@ -1,5 +1,5 @@
 {
-  "name": "ao_cliqldb",
+  "name": "ao_qb",
   "description": "A^O_CommandLineInterfaceQueryLanguageDatabase.....fuuuk me wtf is this thing.... - OLD DESCR. >> as CLI solution for easy data save, so database solution that utilizes your filesystem to create database",
   "version": "0.1.2",
   "author": "MyUserNameIsMyUserName @MyUserNameIsMyUserName",
