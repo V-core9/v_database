@@ -8,19 +8,19 @@ const testData = {
   dbTestCount: 5,
 };
 
-v_db.mk(testData.db.name);
-
-for (let i = 1; i <= testData.dbTestCount; i++) {
-  v_db.mk(testData.db.name + "__" + i);
-}
-
-
-setTimeout(() => {
-  v_db.rm(testData.db.name);
+  v_db.mk(testData.db.name , testData.db.pass);
 
   for (let i = 1; i <= testData.dbTestCount; i++) {
-    setTimeout(() => {
-      v_db.rm(testData.db.name + "__" + i);
-    }, 250*i);
+    v_db.mk(testData.db.name + "__" + i , testData.db.pass );
   }
-}, 1000);
+
+
+  setTimeout(() => {
+    v_db.rm(testData.db.name);
+
+    for (let i = 1; i <= testData.dbTestCount; i++) {
+      setTimeout(() => {
+        v_db.rm(testData.db.name + "__" + i);
+      }, 500 * i);
+    }
+  }, 2000);

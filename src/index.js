@@ -1,4 +1,4 @@
-
+const path = require('path');
 
 const v_db = {
   config: null,
@@ -18,9 +18,11 @@ const v_db = {
     }
   },
   init() {
-    if (this.loadConfig() !== false) {
-      this.mk = require('./_mk');
-      this.rm = require('./_rm');
+    if (this.loadConfig()) {
+      this.mk = require(path.join(__dirname,'./_mk'));
+      console.log(this.mk);
+      this.rm = require(path.join(__dirname,'./_rm'));
+      console.log(this.rm);
     }
   }
 };

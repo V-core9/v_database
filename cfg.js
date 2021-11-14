@@ -1,4 +1,4 @@
 module.exports = {
   mode: "dev",
-  dataLocation: "$_data",
+  dataDir: "$_data",
 };

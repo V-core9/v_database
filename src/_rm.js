@@ -3,13 +3,14 @@ const path = require('path');
 const config = require('../v_config');
 
 
-rm = async (dbName) => {
+const rm = async (dbName) => {
   try {
-    const rmDbRes = await v_fs.promise.removeDir(path.join(__dirname, `../${config.dataLocation}/${dbName}`));
+    const rmDbRes =  v_fs.promise.removeDir(path.join(__dirname, `../${config.dataDir}/${dbName}`));
     return true;
   } catch (error) {
     return false;
   }
 };
+
 
 module.exports = rm;
