@@ -1,4 +1,1 @@
-module.exports = {
-  mode: "dev", // dev || live
-  dataLocation: "$_data",
-};
+{"mode":"dev","dataLocation":"$_data"}

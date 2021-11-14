@@ -1,30 +1,31 @@
 
 
 const v_db = {
-  config: {},
-  options: {},
-  mk: require('./_mk'),
-  rm: require('./_rm'),
+  config: null,
+  options: null,
+  mk: null,
+  rm: null,
   listDatabases() {
     console.log('List of all available databases.');
   },
-  install: {
-    createConfiguration() {
-      console.log('Creating configuration when installing/setting up first time.');
+  install: require('./install'),
+  loadConfig() {
+    try {
+      this.config = require('../v_config');
+      return this.config;
+    } catch (error) {
+      return this.install.createConfig();
     }
   },
-  loadConfig () {
-    this.config = require('../v_config');
-    if (this.config === {} ) {
-      this.install.createConfiguration();
+  init() {
+    if (this.loadConfig()) {
+      this.mk = require('./_mk');
+      this.rm = require('./_rm');
     }
-    return this.config;
-  },
-  init () {
-    this.loadConfig();
   }
 };
 
+v_db.init();
 
 
 module.exports = v_db;
