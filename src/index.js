@@ -1,11 +1,10 @@
 
+
 const v_db = {
-  config: require('./defaults.config'),
+  config: {},
   options: {},
-  newDB: require('./_new_db'),
-  removeDatabase() {
-    console.log('Remove a database from the pile.');
-  },
+  mk: require('./_mk'),
+  rm: require('./_rm'),
   listDatabases() {
     console.log('List of all available databases.');
   },
@@ -13,7 +12,19 @@ const v_db = {
     createConfiguration() {
       console.log('Creating configuration when installing/setting up first time.');
     }
+  },
+  loadConfig () {
+    this.config = require('../v_config');
+    if (this.config === {} ) {
+      this.install.createConfiguration();
+    }
+    return this.config;
+  },
+  init () {
+    this.loadConfig();
   }
 };
+
+
 
 module.exports = v_db;
