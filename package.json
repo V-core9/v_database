@@ -4,17 +4,17 @@
   "version": "0.0.1",
   "author": "V-core9",
   "bugs": "https://github.com/V-core9/v_db/issues",
-  "dependencies": {},
-  "devDependencies": {},
+  "dependencies": {
+    "v_file_system": "^1.0.1"
+  },
   "homepage": "https://github.com/V-core9/v_db",
   "keywords": [
-    "oclif"
+    "database"
   ],
   "license": "MIT",
-  "main": "v_db.js",
+  "main": "index.js",
   "repository": "V-core9/v_db",
   "scripts": {
-    "posttest": "eslint .",
     "test": "echo NO TESTS"
   }
 }
