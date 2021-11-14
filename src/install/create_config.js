@@ -18,10 +18,13 @@ template_config = (data) => {
   `;
 };
 
-createConfig = () => {
-  v_fs.promise.write(path.join(__dirname, `../../v_config.js`), template_config());
+createConfig = async () => {
+  try {
+    const res = await v_fs.promise.write(path.join(__dirname, `../../v_config.js`), template_config());
+    return true;
+  } catch (error) {
+    return false;
+  }
 };
-
-createConfig();
 
 module.exports = createConfig;

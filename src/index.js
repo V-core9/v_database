@@ -18,11 +18,11 @@ const v_db = {
     }
   },
   init() {
-    if (this.loadConfig()) {
+    if (this.loadConfig() !== false) {
       this.mk = require(path.join(__dirname,'./_mk'));
-      console.log(this.mk);
+      //console.log(this.mk);
       this.rm = require(path.join(__dirname,'./_rm'));
-      console.log(this.rm);
+      //console.log(this.rm);
     }
   }
 };
