@@ -1,52 +1,20 @@
 {
-  "name": "ao_qb",
-  "description": "A^O_CommandLineInterfaceQueryLanguageDatabase.....fuuuk me wtf is this thing.... - OLD DESCR. >> as CLI solution for easy data save, so database solution that utilizes your filesystem to create database",
-  "version": "0.1.2",
-  "author": "MyUserNameIsMyUserName @MyUserNameIsMyUserName",
-  "bin": {
-    "ao_qb": "./bin/run"
-  },
-  "bugs": "https://github.com/MyUserNameIsMyUserName/A-O_EasyDB/issues",
-  "dependencies": {
-    "@oclif/command": "^1.8.0",
-    "@oclif/config": "^1.17.0",
-    "@oclif/plugin-help": "^3.2.2"
-  },
-  "devDependencies": {
-    "@oclif/dev-cli": "^1.26.0",
-    "eslint": "^5.16.0",
-    "eslint-config-oclif": "^3.1.0",
-    "globby": "^10.0.2",
-    "rimraf": "^3.0.2"
-  },
-  "engines": {
-    "node": ">=8.0.0"
-  },
-  "files": [
-    "/bin",
-    "/npm-shrinkwrap.json",
-    "/oclif.manifest.json",
-    "/src"
-  ],
-  "homepage": "https://github.com/MyUserNameIsMyUserName/A-O_EasyDB",
+  "name": "v_db",
+  "description": "v_db is a small/basic database solution that utilizes filesystem to manipulate database",
+  "version": "0.0.1",
+  "author": "V-core9",
+  "bugs": "https://github.com/V-core9/v_db/issues",
+  "dependencies": {},
+  "devDependencies": {},
+  "homepage": "https://github.com/V-core9/v_db",
   "keywords": [
     "oclif"
   ],
   "license": "MIT",
-  "main": "src/index.js",
-  "oclif": {
-    "commands": "./src/commands",
-    "bin": "ao_qb",
-    "plugins": [
-      "@oclif/plugin-help"
-    ]
-  },
-  "repository": "MyUserNameIsMyUserName/A-O_EasyDB",
+  "main": "v_db.js",
+  "repository": "V-core9/v_db",
   "scripts": {
-    "postpack": "rimraf oclif.manifest.json",
     "posttest": "eslint .",
-    "prepack": "oclif-dev manifest && oclif-dev readme",
-    "test": "echo NO TESTS",
-    "version": "oclif-dev readme && git add README.md"
+    "test": "echo NO TESTS"
   }
 }
