@@ -10,7 +10,8 @@
     "package-lock.json": true,
     ".vscode": true,
     ".gitignore": true,
-    ".editorconfig": true
+    ".editorconfig": true,
+    "node_modules": true
   },
   "explorerExclude.backup": null
 }

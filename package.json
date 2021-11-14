@@ -16,5 +16,8 @@
   "repository": "V-core9/v_db",
   "scripts": {
     "test": "echo NO TESTS"
+  },
+  "devDependencies": {
+    "jest": "^27.3.1"
   }
 }
