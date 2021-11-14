@@ -1,4 +1,4 @@
 module.exports = {
-  mode: "dev", // dev || live
+  mode: "dev",
   dataLocation: "$_data",
 };

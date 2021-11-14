@@ -18,7 +18,7 @@ const v_db = {
     }
   },
   init() {
-    if (this.loadConfig()) {
+    if (this.loadConfig() !== false) {
       this.mk = require('./_mk');
       this.rm = require('./_rm');
     }
