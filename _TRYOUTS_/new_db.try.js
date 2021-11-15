@@ -15,10 +15,10 @@ const testData = {
 
 mkTestBases = async () => {
   try {
-    const res = [ v_db.newDB(testData.db.name, testData.db.pass) ];
+    const res = [ v_db.newType(testData.db.name, testData.db.pass) ];
 
     for (let i = 1; i <= testData.dbTestCount; i++) {
-      res.push(await v_db.newDB( testData.db.name + "__" + i, testData.db.pass));
+      res.push(await v_db.newType( testData.db.name + "__" + i, testData.db.pass));
     }
     return true;
   } catch (error) {
@@ -28,10 +28,10 @@ mkTestBases = async () => {
 
 rmTestBases = async () => {
   try {
-    const res = [ await v_db.delDB(testData.db.name)];
+    const res = [ await v_db.delType(testData.db.name)];
 
     for (let i = 1; i <= testData.dbTestCount; i++) {
-      res.push( await v_db.delDB(testData.db.name + "__" + i));
+      res.push( await v_db.delType(testData.db.name + "__" + i));
     }
     return true;
   } catch (error) {
