@@ -1,6 +1,3 @@
-process.on('exit', () => {
-  console.log("EXITING >>>");
-});
 
 process.title = "v_db - V-core9_DataBase";
 console.log(`Process Title : ${process.title}`);
