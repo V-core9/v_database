@@ -5,7 +5,11 @@ const testData = {
     name: "wee_db_11",
     pass: "123456789_V-core9"
   },
-  dbTestCount: 2500,
+  db2: {
+    name: "wee_db_112",
+    pass: "123456789_V-core92"
+  },
+  dbTestCount: 50,
 };
 
 
