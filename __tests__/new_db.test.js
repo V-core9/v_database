@@ -13,32 +13,33 @@ const testData = {
 };
 
 
-console.log(`DB TEST COUNT : ${testData.dbTestCount}`);
 
+test('Make Test Database BAD', async () => {
+  expect(await v_db.newDB(testData.db.name)).toEqual(false);
+});
 
-makeTestDatabases = async () => {
-  expect(await v_db.mk(testData.db.name)).toEqual(true);
-  expect(await v_db.mk()).toEqual(false);
-};
+test('Make Test Database ERROR', async () => {
+  expect(await v_db.newDB()).toEqual(false);
+});
 
-
-removeTestDatabases = async () => {
-  expect(await v_db.rm(testData.db.name)).toEqual(true);
-  expect(await v_db.rm()).toEqual(false);
-};
-
-
-test('Make Test Database', async () => {
-  console.time('GENERATE');
-  const res = await makeTestDatabases();
-  console.log(res1);
-  console.timeEnd('GENERATE');
+test('Make Test Database GOOD', async () => {
+  expect(await v_db.newDB(testData.db.name, testData.db.pass)).toEqual(true);
 });
 
 
-test('Remove Test Databases', async () => {
-  console.time('REMOVE');
-  const res = await removeTestDatabases();
-  console.log(res);
-  console.timeEnd('REMOVE');
+
+test('Remove Test Databases BAD', async () => {
+  expect(await v_db.delDB(testData.db.name)).toEqual(false);
+});
+
+test('Remove Test Databases ERROR', async () => {
+  expect(await v_db.delDB()).toEqual(false);
+});
+
+test('Remove Test Databases GOOD', async () => {
+  expect(await v_db.delDB(testData.db.name, testData.db.pass)).toEqual(true);
+});
+
+test('UNFINISHED LIST DB', async () => {
+  expect( v_db.listDatabases()).toEqual(true);
 });

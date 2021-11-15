@@ -15,10 +15,10 @@ const testData = {
 
 mkTestBases = async () => {
   try {
-    const res = [ v_db.mk(testData.db.name, testData.db.pass) ];
+    const res = [ v_db.newDB(testData.db.name, testData.db.pass) ];
 
     for (let i = 1; i <= testData.dbTestCount; i++) {
-      res.push(await v_db.mk( testData.db.name + "__" + i, testData.db.pass));
+      res.push(await v_db.newDB( testData.db.name + "__" + i, testData.db.pass));
     }
     return true;
   } catch (error) {
@@ -28,10 +28,10 @@ mkTestBases = async () => {
 
 rmTestBases = async () => {
   try {
-    const res = [ await v_db.rm(testData.db.name)];
+    const res = [ await v_db.delDB(testData.db.name)];
 
     for (let i = 1; i <= testData.dbTestCount; i++) {
-      res.push( await v_db.rm(testData.db.name + "__" + i));
+      res.push( await v_db.delDB(testData.db.name + "__" + i));
     }
     return true;
   } catch (error) {
@@ -44,13 +44,11 @@ testIt = async () => {
   console.log(`DB TEST COUNT : ${testData.dbTestCount}`);
 
   console.time('GENERATE');
-  const res1 = await mkTestBases();
-  console.log(res1);
+  await mkTestBases();
   console.timeEnd('GENERATE');
 
   console.time('REMOVE');
-  const res2 = await rmTestBases();
-  console.log(res2);
+  await rmTestBases();
   console.timeEnd('REMOVE');
 
 };

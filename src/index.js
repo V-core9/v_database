@@ -1,29 +1,16 @@
 const path = require('path');
 
 const v_db = {
-  config: null,
+  config: require('../v_config'),
   options: null,
-  mk: null,
-  rm: null,
+  newDB: require(path.join(__dirname,'./_new_db')),
+  delDB: require(path.join(__dirname,'./_del_db')),
   listDatabases() {
     console.log('List of all available databases.');
-  },
-  install: require('./install'),
-  loadConfig() {
-    try {
-      this.config = require('../v_config');
-      return this.config;
-    } catch (error) {
-      return this.install.createConfig();
-    }
+    return true;
   },
   init() {
-    if (this.loadConfig() !== false) {
-      this.mk = require(path.join(__dirname,'./_mk'));
-      //console.log(this.mk);
-      this.rm = require(path.join(__dirname,'./_rm'));
-      //console.log(this.rm);
-    }
+    console.log("V_DB->INIT()");
   }
 };
 
