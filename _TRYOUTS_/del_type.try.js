@@ -13,18 +13,6 @@ const testData = {
 };
 
 
-mkTestBases = async () => {
-  try {
-    const res = [ v_db.newType(testData.db.name, testData.db.pass) ];
-
-    for (let i = 1; i <= testData.dbTestCount; i++) {
-      res.push(await v_db.newType( testData.db.name + "__" + i, testData.db.pass));
-    }
-    return true;
-  } catch (error) {
-    return false;
-  }
-};
 
 rmTestBases = async () => {
   try {
@@ -43,9 +31,6 @@ testIt = async () => {
 
   console.log(`DB TEST COUNT : ${testData.dbTestCount}`);
 
-  console.time('GENERATE');
-  await mkTestBases();
-  console.timeEnd('GENERATE');
 
   console.time('REMOVE');
   await rmTestBases();

@@ -3,6 +3,7 @@ const path = require('path');
 const {dataDir} = require('../v_config');
 
 const delType = async (dataType) => {
+    if(typeof dataType === 'undefined') return false;
     return await v_fs.promise.removeDir(path.join(dataDir, dataType));
 };
 
