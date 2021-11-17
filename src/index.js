@@ -2,9 +2,16 @@ const path = require('path');
 
 const v_db = {
   config: require('../v_config'),
-  newType: require(path.join(__dirname,'./_new_type')),
-  delType: require(path.join(__dirname,'./_del_type')),
-  listTypes: require(path.join(__dirname,'./_list_types')),
+  type: {
+    new: require(path.join(__dirname,'./_type_new')),
+    del: require(path.join(__dirname,'./_type_del')),
+    list: require(path.join(__dirname,'./_type_list')),
+  },
+  item : {
+    new: require(path.join(__dirname,'./_item_new')),
+    del: require(path.join(__dirname,'./_item_del')),
+    list: require(path.join(__dirname,'./_item_list')),
+  }
 };
 
 
