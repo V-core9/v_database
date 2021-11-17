@@ -1,8 +1,3 @@
-const v_db = require('../index');
-
-
-module.exports = (username)=>{
-
+module.exports = async (username)=>{
   return /^[A-Za-z][A-Za-z0-9_.]{5,31}$/.test(username);
-
 };

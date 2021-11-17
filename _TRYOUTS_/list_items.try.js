@@ -1,17 +1,19 @@
 const v_db = require("../index");
 
 listItemsTest = async (type) => {
-  try {
-    console.log(await v_db.item.list(type));
-    return true;
-  } catch (error) {
-    return false;
-  }
+  const items = await v_db.item.list(type);
+  console.log(items);
+  var resp = [];
+  items.forEach(async (item) => {
+    var helper = item.split(".");
+    console.log(await v_db.item.view(type, { id: helper[0] }));
+  });
+  console.log(resp);
 };
 
 testIt = async () => {
   console.time('LIST_TYPES');
-  await listItemsTest("api_keys");
+  await listItemsTest("users");
   console.timeEnd('LIST_TYPES');
 };
 

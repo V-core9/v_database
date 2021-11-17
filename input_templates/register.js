@@ -40,10 +40,10 @@ register = async (data) => {
   if ((data.password !== data.password_confirm)) err.push({type: "ERROR", message: "🚨 Password Confirmation Entry Does Not Match Password Value."});
 
   if (err.length === 0) {
-    console.log('\n💚 Validations Successful : Saving data.');
+    //console.log('\n💚 Validations Successful : Saving data.');
     data.password = v_to_sha256(data.password);
-    console.log((await v_db.item.new('users', user_input_template(data)))? '\n🤹‍♂️ New User Created Successfully' : '\n 😱 New User Creation Failed' );
-    return true;
+    //console.log((await v_db.item.new('users', user_input_template(data)))? '\n🤹‍♂️ New User Created Successfully' : '\n 😱 New User Creation Failed' );
+    return await v_db.item.new('users', user_input_template(data));
   }
 
   console.log('\n🔻Validations Failed : Looks like there were some errors.\n'+JSON.stringify(err, true, 2));
