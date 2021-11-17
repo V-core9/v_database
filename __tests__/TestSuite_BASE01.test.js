@@ -19,32 +19,32 @@ const testData = {
 
 
 test('Make Test Database 1 BAD', async () => {
-  expect(await v_db.newType(testData.type.name)).toEqual(true);
+  expect(await v_db.type.new(testData.type.name)).toEqual(true);
 });
 
 test('Make Test Database 2 ERROR', async () => {
-  expect(await v_db.newType()).toEqual(false);
+  expect(await v_db.type.new()).toEqual(false);
 });
 
 
 test('LIST DB 1', async () => {
-  expect(await v_db.listTypes()).toEqual([testData.type.name]);
+  expect(await v_db.type.list()).toEqual([testData.type.name]);
 });
 
 
 
 test('Make Test Database 2 GOOD', async () => {
-  expect(await v_db.newType(testData.type2.name)).toEqual(true);
+  expect(await v_db.type.new(testData.type2.name)).toEqual(true);
 });
 
 
 
 test('LIST DB 2', async () => {
-  expect(await v_db.listTypes()).toEqual([testData.type2.name, testData.type.name ]);
+  expect(await v_db.type.list()).toEqual([testData.type2.name, testData.type.name ]);
 });
 
 test('Make Test Database 3 GOOD', async () => {
-  expect(await v_db.newType(testData.type3.name)).toEqual(true);
+  expect(await v_db.type.new(testData.type3.name)).toEqual(true);
 });
 
 
@@ -55,17 +55,17 @@ test('Make Test Database 3 GOOD', async () => {
 
 
 test('Remove Test Databases 1 BAD', async () => {
-  expect(await v_db.delType(testData.type.name)).toEqual(true);
+  expect(await v_db.type.del(testData.type.name)).toEqual(true);
 });
 
 test('Remove Test Databases 2 ERROR', async () => {
-  expect(await v_db.delType()).toEqual(false);
+  expect(await v_db.type.del()).toEqual(false);
 });
 
 test('Remove Test Databases 3 GOOD', async () => {
-  expect(await v_db.delType(testData.type2.name)).toEqual(true);
+  expect(await v_db.type.del(testData.type2.name)).toEqual(true);
 });
 
 test('Remove Test Databases 4 GOOD', async () => {
-  expect(await v_db.delType(testData.type3.name)).toEqual(true);
+  expect(await v_db.type.del(testData.type3.name)).toEqual(true);
 });
