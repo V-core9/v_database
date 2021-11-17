@@ -4,10 +4,10 @@ const testData = require('./test_data');
 
 mkTestBases = async () => {
   try {
-    const res = [ v_db.type.new(testData.db.name, testData.db.pass) ];
+    const res = [ v_db.type.new(testData.db.name) ];
 
     for (let i = 1; i <= testData.typeCount; i++) {
-      res.push(await v_db.type.new( testData.db.name + "__" + i, testData.db.pass));
+      res.push(await v_db.type.new( testData.db.name + "__" + i));
     }
     return true;
   } catch (error) {
