@@ -7,5 +7,5 @@ module.exports = {
     name: "wee_db_112",
     pass: "123456789_V-core92"
   },
-  typeCount: 2500,
+  typeCount: 100,
 };

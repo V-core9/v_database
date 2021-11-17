@@ -1,8 +1,8 @@
 const v_db = require("../index");
 
-listTypesTest = async () => {
+listItemsTest = async (type) => {
   try {
-    console.log(await v_db.type.list());
+    console.log(await v_db.item.list(type));
     return true;
   } catch (error) {
     return false;
@@ -11,7 +11,7 @@ listTypesTest = async () => {
 
 testIt = async () => {
   console.time('LIST_TYPES');
-  await listTypesTest();
+  await listItemsTest("api_keys");
   console.timeEnd('LIST_TYPES');
 };
 
