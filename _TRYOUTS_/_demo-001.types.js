@@ -32,5 +32,5 @@ module.exports = _types = [
   "ip_blacklist",
   "ip_whitelist",
   "reserved_words",
-  ""
+  "aes_keys"
 ];
