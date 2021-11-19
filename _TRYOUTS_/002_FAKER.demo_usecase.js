@@ -1,24 +1,25 @@
 
 const user = require("../input_templates/user");
-
 var faker = require('faker');
 
-randomUser =  () => {
-  var emailH = faker.internet.email();
-  var userNameH =  faker.internet.userName();
-
-  return {
-    username: userNameH,
-    email: emailH,
-    password: "123546789876543",
-    password_confirm: "123546789876543",
-  };
-};
 
 registerRandomUserFaker = async () => {
-  user.register(randomUser());
+  var emailH = faker.internet.email();
+  var userNameH = faker.internet.userName();
+  var passwordH = faker.internet.password();
+
+  user.register({
+    username: userNameH,
+    email: emailH,
+    password: passwordH,
+    password_confirm: passwordH
+  });
 };
 
-for (let i = 0; i < 2000; i++) {
-  registerRandomUserFaker();
-}
+registerUsers = async () => {
+  for (let i = 0; i < 50; i++) {
+    registerRandomUserFaker();
+  }
+};
+
+registerUsers();

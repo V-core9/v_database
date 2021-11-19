@@ -7,14 +7,13 @@ const v_lidator = {
   email: require('./_email'),
   username: require('./_username'),
   name: require('./_name'),
-  password: require('./_password'),
-  password_match: require('./_password_match'),
+  password: require('./_password')
 };
 
 user_input_template = (data) => {
   return {
     username: data.username,
-    password: data.password,
+    password: v_to_sha256(data.password),
     email: data.email,
     first_name: data.first_name,
     last_name: data.last_name,
@@ -27,23 +26,28 @@ user_input_template = (data) => {
   };
 };
 
+create_password_hash = async (password) => {
+  return await v_to_sha256("12346789");
+};
+
 register = async (data) => {
   const err = [];
 
-  if (await v_db.item.view('users',{username: data.username})) err.push({type: "ERROR", message: "💎 Username is not unique. [ " + data.username + " ]"});
+  const uniqueStatus = await v_db.item.view('users',{username: data.username});
+  if (uniqueStatus) err.push({type: "ERROR", message: "💎 Username is not unique. [ " + data.username + " ]"});
 
-  var resp = await v_lidator.username(data.username);
+  var resp =  v_lidator.username(data.username);
   if (resp !== true) err.push( resp );
-  resp = await v_lidator.email(data.email);
+
+  resp =  v_lidator.email(data.email);
   if (resp !== true) err.push( resp );
-  resp = await v_lidator.password(data.password);
+
+  resp =  v_lidator.password(data.password, data.password_confirm);
   if (resp !== true) err.push( resp );
-  resp = await v_lidator.password_match(data.password, data.password_confirm);
-  if (resp !== true) err.push( resp );
+
 
   if (err.length === 0) {
     //console.log('\n💚 Validations Successful : Saving data.');
-    data.password = v_to_sha256(data.password);
     //console.log((await v_db.item.new('users', user_input_template(data)))? '\n🤹‍♂️ New User Created Successfully' : '\n 😱 New User Creation Failed' );
     return await v_db.item.new('users', user_input_template(data));
   }

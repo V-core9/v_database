@@ -2,11 +2,11 @@ const v_fs = require('v_file_system');
 const path = require('path');
 
 const read = {
-  list: async (type) => {
-    return await v_fs.promise.listDir(type);
+  list: async (typePath) => {
+    return await v_fs.promise.listDir(typePath);
   },
-  byId : async (type, id)=>{
-    return await v_fs.promise.read(type+'/'+id+".json");
+  byId : async (typePath, id)=>{
+    return await v_fs.promise.read(typePath+'/'+id+".json");
   }
 };
 
@@ -15,20 +15,28 @@ module.exports = async (type, filter=undefined ) => {
 
   if (filter === undefined) return await read.list(typePath);
 
-  if (typeof filter === 'string')  return await read.byId(typePath, filter);
+  if (typeof filter === 'string')  {
+    //console.log("Filtering by ID");
+    return await read.byId(typePath, filter);
+  }
 
   if (filter.id !== undefined) {
+    //console.log("Filtering by ID");
     return await read.byId(typePath, filter.id);
   }
 
   if (filter.username !== undefined) {
+    //console.log("Filtering by USERNAME");
     const items  = await read.list(typePath);
-
+    //console.log(items);
     var found = false;
     var  i  = 0;
-    while (i < items.length) {
+    var count = items.length - 1;
+    while (found === false && i < count) {
       i++;
-      const resp = JSON.parse(await read.byId(typePath+'/'+items[i]));
+      const itemId = items[i].split('.');
+      const resp = JSON.parse(await read.byId(typePath, itemId[0]));
+      //console.log(`RESP: ${resp}`);
       if (resp.username === filter.username) found = resp;
     }
 

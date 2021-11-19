@@ -13,7 +13,7 @@ module.exports = {
   typeCount: 1250,
 
   demoUser: {
-    username: "YeaDude_220981",
+    username: "YeaDude_22081",
     email: "slavko@gmail.com",
     password: "123456789",
     password_confirm: "123456789"
@@ -21,6 +21,20 @@ module.exports = {
 
   demoUserBAD: {
     username: "YeaDude _0981",
+    email: "slavko!gmail.com",
+    password: "19",
+    password_confirm: "123456789"
+  },
+
+  demoUserBAD2: {
+    username: "Ye2",
+    email: "slavko!gmail.com",
+    password: "19",
+    password_confirm: "123456789"
+  },
+
+  demoUserBAD3: {
+    username: "Ye2wwwwwwwwwwwwwwwwwwwwwwwwwasdasdasdasdas",
     email: "slavko!gmail.com",
     password: "19",
     password_confirm: "123456789"

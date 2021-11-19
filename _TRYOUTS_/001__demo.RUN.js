@@ -1,6 +1,6 @@
 const v_db = require("../index");
 
-const demoData = require('./data.001__demo');
+const demoData = require('./001.data.__demo');
 
 create_tables = async () => {
   demoData._types.forEach(async (type) => {
