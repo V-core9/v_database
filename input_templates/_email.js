@@ -1,3 +1,4 @@
 module.exports = (email)=>{
-  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  var errorMessage = {type: "ERROR", message: "📫 Email is not valid entry."} ;
+  return ( /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) ? undefined : errorMessage);
 };
