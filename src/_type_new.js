@@ -26,27 +26,24 @@ const newType = {
 module.exports = async (type) => {
   if (typeof type === 'undefined') return false;
 
-  var res = null;
-
+  var resp = null;
   switch (process.dbMode) {
     case "perPost":
-      res = await newType.perPost(type);
-      break;
+      resp = await newType.perPost(type);
+      return resp;
 
     case "perType":
-      res = await newType.perType(type);
-      break;
+      resp = await newType.perType(type);
+      return resp;
 
     case "oneForAll":
-      res = await newType.oneForAll(type);
-      break;
+      resp = await newType.oneForAll(type);
+      return resp;
 
     default:
       msgLog('[default] mode >> oneForAll :: save to single JSON file.');
-      res = await newType.oneForAll(type);
-      break;
+      resp = await newType.oneForAll(type);
+      return resp;
   }
-  msgLog(res);
-  return res;
 };
 

@@ -3,11 +3,9 @@ const v_db = require("../index");
 const demoData = require('./data.001__demo');
 
 create_tables = async () => {
-  const resp = [];
   demoData._types.forEach(async (type) => {
-    resp.push(await v_db.type.new(type));
+    await v_db.type.new(type);
   });
-  return resp;
 };
 
 create_entries = async () => {
