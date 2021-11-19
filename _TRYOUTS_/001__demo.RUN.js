@@ -1,6 +1,6 @@
 const v_db = require("../index");
 
-const demoData = require('./001__demo.data');
+const demoData = require('./data.001__demo');
 
 create_tables = async () => {
   const resp = [];
@@ -10,28 +10,21 @@ create_tables = async () => {
   return resp;
 };
 
-generate_type_entries = async (type) => {
-  for (let i = 0; i < demoData._content.numberToGenerate; i++) {
-    return (await v_db.item.new(type, demoData._content));
-  }
-};
-
-
 create_entries = async () => {
   const resp = [];
   demoData._types.forEach(async (type) => {
-    resp.push( await generate_type_entries(type));
+    for (let i = 0; i < demoData._content.numberToGenerate; i++) {
+      resp.push(await v_db.item.new(type, demoData._content));
+    }
   });
   return resp;
 };
 
 
 list_entries = () => {
-  const resp = [];
   demoData._types.forEach(async (type) => {
-    resp.push(await v_db.item.list(type));
+    await v_db.item.list(type);
   });
-  console.log(resp);
 };
 
 run_it = async () => {
@@ -55,7 +48,10 @@ run_it = async () => {
 
   //var findUser04 = await v_db.item.view('users','000c6191-418f-4501-90a2-7d855f53833a');
   //console.log(findUser04);
-  console.log( JSON.stringify(await create_tables()) +"/"+ JSON.stringify(await create_entries()) + "++>> "+ (Date.now() - xTime1 ));
+
+  const tbl =  await create_tables();
+  const ent =  await create_entries();
+  console.log( tbl +"/"+ent + "++>> "+ (Date.now() - xTime1 ));
 };
 
 run_it();

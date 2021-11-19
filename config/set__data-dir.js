@@ -2,7 +2,7 @@ const path = require('path');
 
 const userChoiceDir = `$_data`;
 
-const dataDir = path.join(__dirname, userChoiceDir);
+dataDir = path.join(__dirname, userChoiceDir);
 const runMode = require('./get__run-mode');
 
 setDataDir = () => {
@@ -19,4 +19,4 @@ setDataDir = () => {
   }
 };
 
-module.exports = setDataDir();
+modulemodule.exports = setDataDir();
