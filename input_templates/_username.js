@@ -4,7 +4,7 @@ const _config = {
   format: /^[A-Za-z][A-Za-z0-9_.]{(min-1),(max-1)}$/
 };
 
-var errorMsg = {
+const errorMsg = {
   chars: { type: "ERROR", message: "🙋‍♂️ Username can only have letters, numbers, underscore and dot." },
   min: { type: "ERROR", message: "🤯 Username minimum length is [ " + _config.min + " ]" },
   max: { type: "ERROR", message: "💥 Username maximum length is [ " + _config.max + " ]" },
