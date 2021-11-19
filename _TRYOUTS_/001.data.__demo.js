@@ -47,7 +47,7 @@ const expected_types = [
 module.exports = {
   _types: expected_types,
   _content: {
-    numberToGenerate: 10,
+    numberToGenerate: 1000,
     expected_types,
     testData,
     inner: {
