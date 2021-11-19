@@ -21,7 +21,7 @@ create_entries = async () => {
 
 list_entries = () => {
   demoData._types.forEach(async (type) => {
-    await v_db.item.list(type);
+    await v_db.item.view(type);
   });
 };
 
