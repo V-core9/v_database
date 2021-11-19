@@ -8,8 +8,12 @@ const v_db = {
   item: require(path.join(__dirname, './item'))
 };
 
-console.log(`Process Title : ${process.title}`);
-console.log(`Process author : ${process.author}`);
+console.log(`\n.=================================================.`);
+console.log(`| 🚀 - ${process.title}                          |`);
+console.log(`+ - - - - - - - - - - - - - - - - - - - - - - - - +`);
+console.log(`| 📡 App Info :                                   |`);
+console.log(process.npmInfo._v_);
+console.log(`'================================================='`);
 
 module.exports = v_db;
 
