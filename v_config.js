@@ -1,6 +1,6 @@
 module.exports = {
   title: "V_Database",
-  consoleOutput: true,
+  consoleOutput: false,
   dbName: `$_data`,
   dbMode: "perPost"
 };
