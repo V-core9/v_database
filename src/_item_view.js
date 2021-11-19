@@ -7,6 +7,8 @@ module.exports = async (type, filter=undefined ) => {
 
   if (filter === undefined) return await v_fs.promise.listDir(typeDir);
 
+  if (typeof filter === 'string')  return await v_fs.promise.read(typeDir+'/'+filter+".json");
+
   if (filter.id !== undefined) {
     return await v_fs.promise.read(typeDir+'/'+filter.id+".json");
   }

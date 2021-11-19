@@ -1,576 +1,62 @@
 const v_db = require("../index");
-const testData = require('./test_data');
 
-
-const expected_types = [
-  "encryption_keys",
-  "api_keys",
-  "system_log",
-  "system_options",
-  "users",
-  "devices",
-  "pages",
-  "posts",
-  "links",
-  "images",
-  "tasks",
-  "notes",
-  "snippets",
-  "categories",
-  "tags",
-  "chat_groups",
-  "chat_messages"
-];
-
-
-const demoContent_01  = {
-  key: 1234567890987654321,
-  cts: Date.now(),
-  origin: "www.google.com",
-  calls_made: 0 ,
-  owner_id: 12345678909876543,
-  data : {
-    expected_types,
-    testData,
-    inner : {
-      data : {
-        expected_types,
-        testData,
-        inner : {
-          data : {
-            expected_types,
-            testData
-          },
-          data2 : {
-            expected_types,
-            testData
-          },
-          data3 : {
-            expected_types,
-            testData
-          },
-          data4 : {
-            expected_types,
-            testData
-          }
-        }
-      },
-      data2 : {
-        expected_types,
-        testData,
-        inner : {
-          data : {
-            expected_types,
-            testData
-          },
-          data2 : {
-            expected_types,
-            testData
-          },
-          data3 : {
-            expected_types,
-            testData
-          },
-          data4 : {
-            expected_types,
-            testData
-          }
-        }
-      },
-      data3 : {
-        expected_types,
-        testData,
-        inner : {
-          data : {
-            expected_types,
-            testData
-          },
-          data2 : {
-            expected_types,
-            testData
-          },
-          data3 : {
-            expected_types,
-            testData
-          },
-          data4 : {
-            expected_types,
-            testData
-          }
-        }
-      },
-      data4 : {
-        expected_types,
-        testData,
-        inner : {
-          data : {
-            expected_types,
-            testData
-          },
-          data2 : {
-            expected_types,
-            testData
-          },
-          data3 : {
-            expected_types,
-            testData
-          },
-          data4 : {
-            expected_types,
-            testData
-          }
-        }
-      }
-    }
-  },
-  data2 : {
-    expected_types,
-    testData,
-    inner : {
-      data : {
-        expected_types,
-        testData
-      },
-      data2 : {
-        expected_types,
-        testData
-      },
-      data3 : {
-        expected_types,
-        testData
-      },
-      data4 : {
-        expected_types,
-        testData
-      }
-    }
-  },
-  data3 : {
-    expected_types,
-    testData,
-    inner : {
-      data : {
-        expected_types,
-        testData
-      },
-      data2 : {
-        expected_types,
-        testData
-      },
-      data3 : {
-        expected_types,
-        testData
-      },
-      data4 : {
-        expected_types,
-        testData
-      }
-    }
-  },
-  data4 : {
-    expected_types,
-    testData,
-    inner : {
-      data : {
-        expected_types,
-        testData
-      },
-      data2 : {
-        expected_types,
-        testData
-      },
-      data3 : {
-        expected_types,
-        testData
-      },
-      data4 : {
-        expected_types,
-        testData
-      }
-    }
-  },
-  yea: {
-    key: 1234567890987654321,
-    cts: Date.now(),
-    origin: "www.google.com",
-    calls_made: 0 ,
-    owner_id: 12345678909876543,
-    data : {
-      expected_types,
-      testData,
-      inner : {
-        data : {
-          expected_types,
-          testData,
-          inner : {
-            data : {
-              expected_types,
-              testData
-            },
-            data2 : {
-              expected_types,
-              testData
-            },
-            data3 : {
-              expected_types,
-              testData
-            },
-            data4 : {
-              expected_types,
-              testData
-            }
-          }
-        },
-        data2 : {
-          expected_types,
-          testData,
-          inner : {
-            data : {
-              expected_types,
-              testData
-            },
-            data2 : {
-              expected_types,
-              testData
-            },
-            data3 : {
-              expected_types,
-              testData
-            },
-            data4 : {
-              expected_types,
-              testData
-            }
-          }
-        },
-        data3 : {
-          expected_types,
-          testData,
-          inner : {
-            data : {
-              expected_types,
-              testData
-            },
-            data2 : {
-              expected_types,
-              testData
-            },
-            data3 : {
-              expected_types,
-              testData
-            },
-            data4 : {
-              expected_types,
-              testData
-            }
-          }
-        },
-        data4 : {
-          expected_types,
-          testData,
-          inner : {
-            data : {
-              expected_types,
-              testData
-            },
-            data2 : {
-              expected_types,
-              testData
-            },
-            data3 : {
-              expected_types,
-              testData
-            },
-            data4 : {
-              expected_types,
-              testData
-            }
-          }
-        }
-      }
-    },
-    data2 : {
-      expected_types,
-      testData,
-      inner : {
-        data : {
-          expected_types,
-          testData
-        },
-        data2 : {
-          expected_types,
-          testData
-        },
-        data3 : {
-          expected_types,
-          testData
-        },
-        data4 : {
-          expected_types,
-          testData
-        }
-      }
-    },
-    data3 : {
-      expected_types,
-      testData,
-      inner : {
-        data : {
-          expected_types,
-          testData
-        },
-        data2 : {
-          expected_types,
-          testData
-        },
-        data3 : {
-          expected_types,
-          testData
-        },
-        data4 : {
-          expected_types,
-          testData
-        }
-      }
-    },
-    data4 : {
-      expected_types,
-      testData,
-      inner : {
-        data : {
-          expected_types,
-          testData
-        },
-        data2 : {
-          expected_types,
-          testData
-        },
-        data3 : {
-          expected_types,
-          testData
-        },
-        data4 : {
-          expected_types,
-          testData
-        }
-      }
-    }
-  },
-  yea2 : {
-    key: 1234567890987654321,
-    cts: Date.now(),
-    origin: "www.google.com",
-    calls_made: 0 ,
-    owner_id: 12345678909876543,
-    data : {
-      expected_types,
-      testData,
-      inner : {
-        data : {
-          expected_types,
-          testData,
-          inner : {
-            data : {
-              expected_types,
-              testData
-            },
-            data2 : {
-              expected_types,
-              testData
-            },
-            data3 : {
-              expected_types,
-              testData
-            },
-            data4 : {
-              expected_types,
-              testData
-            }
-          }
-        },
-        data2 : {
-          expected_types,
-          testData,
-          inner : {
-            data : {
-              expected_types,
-              testData
-            },
-            data2 : {
-              expected_types,
-              testData
-            },
-            data3 : {
-              expected_types,
-              testData
-            },
-            data4 : {
-              expected_types,
-              testData
-            }
-          }
-        },
-        data3 : {
-          expected_types,
-          testData,
-          inner : {
-            data : {
-              expected_types,
-              testData
-            },
-            data2 : {
-              expected_types,
-              testData
-            },
-            data3 : {
-              expected_types,
-              testData
-            },
-            data4 : {
-              expected_types,
-              testData
-            }
-          }
-        },
-        data4 : {
-          expected_types,
-          testData,
-          inner : {
-            data : {
-              expected_types,
-              testData
-            },
-            data2 : {
-              expected_types,
-              testData
-            },
-            data3 : {
-              expected_types,
-              testData
-            },
-            data4 : {
-              expected_types,
-              testData
-            }
-          }
-        }
-      }
-    },
-    data2 : {
-      expected_types,
-      testData,
-      inner : {
-        data : {
-          expected_types,
-          testData
-        },
-        data2 : {
-          expected_types,
-          testData
-        },
-        data3 : {
-          expected_types,
-          testData
-        },
-        data4 : {
-          expected_types,
-          testData
-        }
-      }
-    },
-    data3 : {
-      expected_types,
-      testData,
-      inner : {
-        data : {
-          expected_types,
-          testData
-        },
-        data2 : {
-          expected_types,
-          testData
-        },
-        data3 : {
-          expected_types,
-          testData
-        },
-        data4 : {
-          expected_types,
-          testData
-        }
-      }
-    },
-    data4 : {
-      expected_types,
-      testData,
-      inner : {
-        data : {
-          expected_types,
-          testData
-        },
-        data2 : {
-          expected_types,
-          testData
-        },
-        data3 : {
-          expected_types,
-          testData
-        },
-        data4 : {
-          expected_types,
-          testData
-        }
-      }
-    }
-  }
-};
+const demoTypes = require('./_demo-001.types');
+const demoContent = require('./_demo-001.content');
 
 create_tables = async () => {
-  expected_types.forEach(async (type) => {
-    await v_db.type.new(type);
+  const resp = [];
+  demoTypes.forEach(async (type) => {
+    resp.push(await v_db.type.new(type)); 
   });
-  return true;
+  return resp;
 };
 
 generate_type_entries = async (type) => {
-  var resp = null;
-  for (let i = 0; i < testData.typeCount; i++) {
-    resp = await v_db.item.new(type, demoContent_01) ;
+  for (let i = 0; i < demoContent.typeCount; i++) {
+    return (await v_db.item.new(type, demoContent));
   }
-  return resp;
 };
 
 
 create_entries = async () => {
-  var resp = null;
-  expected_types.forEach(async (type) => {
-    resp = await generate_type_entries(type);
+  const resp = [];
+  demoTypes.forEach(async (type) => {
+    resp.push( await generate_type_entries(type));
   });
   return resp;
 };
 
 
-list_entries = async () => {
-  expected_types.forEach(async (type) => {
-    const val = await v_db.item.list(type);
-    console.log(val.length);
+list_entries = () => {
+  const resp = [];
+  demoTypes.forEach(async (type) => {
+    resp.push(await v_db.item.list(type));
   });
+  console.log(resp);
 };
 
 run_it = async () => {
+  const xTime1 = Date.now();
+  //await list_entries();
+  //await v_db.item.view('users');
 
-  console.time('create_tables');
-  var resp1 =await create_tables();
-  console.timeEnd('create_tables');
 
-  console.time('create_entries');
-  var resp2 =await create_entries();
-  console.timeEnd('create_entries');
+  //const mojFilter = { id: '000c6191-418f-4501-90a2-7d855f53833a' };
+  //var findUser01 = await v_db.item.view('users',mojFilter);
+  //console.log(findUser01);
 
-  console.time('list_entries');
-  var resp3 = await list_entries();
-  console.timeEnd('list_entries');
+  //const mojFilter2 = { username: '000c6191-418f-4501-90a2-7d855f53833a' };
+  //var findUser02 = await v_db.item.view('users',mojFilter2);
+  //console.log(findUser01);
 
+  //const mojFilter3 = { username: 'Ella_Balistreri' };
+  //var findUser03 = await v_db.item.view('users',mojFilter3);
+  //console.log(findUser03);
+
+
+  //var findUser04 = await v_db.item.view('users','000c6191-418f-4501-90a2-7d855f53833a');
+  //console.log(findUser04);
+  console.log( JSON.stringify(await create_tables()) +"/"+ JSON.stringify(await create_entries()) + "++>> "+ (Date.now() - xTime1 ));
 };
 
 run_it();

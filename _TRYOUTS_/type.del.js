@@ -6,10 +6,10 @@ const testData = require('./test_data');
 
 rmTestBases = async () => {
   try {
-    const res = [ await v_db.delType(testData.db.name)];
+    const res = [ await v_db.type.del(testData.db.name)];
 
     for (let i = 1; i <= testData.typeCount; i++) {
-      res.push( await v_db.delType(testData.db.name + "__" + i));
+      res.push( await v_db.type.del(testData.db.name + "__" + i));
     }
     return true;
   } catch (error) {
