@@ -8,9 +8,9 @@ console.log(npmInfo._v_);
 
 module.exports = {
   title: npmInfo._v_.name,
-  mode: "dev",
+  mode: `dev`,
   consoleOutput: false,
   dbName: `$_data`,
-  dbMode: "perPost",
+  dbMode: `perPost`,
   npmInfo: npmInfo
 };
