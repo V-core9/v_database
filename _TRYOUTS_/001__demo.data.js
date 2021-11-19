@@ -46,7 +46,7 @@ module.exports =  {
     "aes_keys"
   ],
   _content:  {
-    typeCount: 10,
+    numberToGenerate: 10,
     expected_types,
     testData,
     inner : {

@@ -11,7 +11,7 @@ create_tables = async () => {
 };
 
 generate_type_entries = async (type) => {
-  for (let i = 0; i < demoData._content.typeCount; i++) {
+  for (let i = 0; i < demoData._content.numberToGenerate; i++) {
     return (await v_db.item.new(type, demoData._content));
   }
 };
