@@ -1,3 +1,5 @@
+const path = require('path');
+
 module.exports = {
   new: require(path.join(__dirname, './_new')),
   del: require(path.join(__dirname, './_del')),
