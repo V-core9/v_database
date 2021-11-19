@@ -10,6 +10,5 @@ module.exports = {
   consoleOutput: false,
   dbName: `$_data`,
   dbMode: "perPost",
-  author: npmInfo.author,
-  dependencies: npmInfo.dependencies
+  npmInfo: npmInfo
 };
