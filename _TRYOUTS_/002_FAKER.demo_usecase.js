@@ -1,7 +1,7 @@
 
 const user = require("../input_templates/user");
-var faker = require('faker');
 
+var faker = require('faker');
 
 randomUser =  () => {
   var emailH = faker.internet.email();

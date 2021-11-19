@@ -5,6 +5,8 @@
   "author": "V-core9",
   "bugs": "https://github.com/V-core9/v_db/issues",
   "dependencies": {
+    "faker": "^5.5.3",
+    "jest": "^27.3.1",
     "uuid": "^8.3.2",
     "v_file_system": "^1.0.1",
     "v_to_sha256": "^1.0.6"
@@ -18,11 +20,6 @@
   "repository": "V-core9/v_db",
   "scripts": {
     "test": "jest",
-    "test_cleanup": "bash -c \" PWD \" && echo \"🎉 Done Test Data Cleaning\" && exit ",
-    "$_install": " npm install --also=dev"
-  },
-  "devDependencies": {
-    "faker": "^5.5.3",
-    "jest": "^27.3.1"
+    "test_cleanup": "bash -c \" PWD \" && echo \"🎉 Done Test Data Cleaning\" && exit "
   }
 }

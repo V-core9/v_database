@@ -28,7 +28,7 @@ module.exports = async (type, filter=undefined ) => {
     var  i  = 0;
     while (i < items.length) {
       i++;
-      const resp = JSON.parse(await read.byId(typeDir+'/'+items[i]));
+      const resp = JSON.parse(await read.byId(typePath+'/'+items[i]));
       if (resp.username === filter.username) found = resp;
     }
 

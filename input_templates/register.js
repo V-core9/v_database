@@ -8,6 +8,7 @@ const v_lidator = {
   username: require('./_username'),
   name: require('./_name'),
   password: require('./_password'),
+  password_match: require('./_password_match'),
 };
 
 user_input_template = (data) => {
@@ -31,12 +32,14 @@ register = async (data) => {
 
   if (await v_db.item.view('users',{username: data.username})) err.push({type: "ERROR", message: "💎 Username is not unique. [ " + data.username + " ]"});
 
-  err.push( await v_lidator.username(data.username) );
-  err.push( await v_lidator.email(data.email) );
-
-  if (!v_lidator.password(data.password) ) err.push({type: "ERROR", message: "🔓 Password does not meet the requirements."});
-
-  if ((data.password !== data.password_confirm)) err.push({type: "ERROR", message: "🚨 Password Confirmation Entry Does Not Match Password Value."});
+  var resp = await v_lidator.username(data.username);
+  if (resp !== true) err.push( resp );
+  resp = await v_lidator.email(data.email);
+  if (resp !== true) err.push( resp );
+  resp = await v_lidator.password(data.password);
+  if (resp !== true) err.push( resp );
+  resp = await v_lidator.password_match(data.password, data.password_confirm);
+  if (resp !== true) err.push( resp );
 
   if (err.length === 0) {
     //console.log('\n💚 Validations Successful : Saving data.');
