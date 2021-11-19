@@ -12,11 +12,13 @@ const errorMsg = {
 };
 
 module.exports = (username) => {
+
   var errorList = [];
+
   if (username.length < _cfg.min) errorList.push(errorMsg.min);
   if (username.length > _cfg.max) errorList.push(errorMsg.max);
   if (!_cfg.format.test(username)) errorList.push(errorMsg.chars);
 
-  if (errorList.length === 0) return true;
-  return { type: "ERROR", items: errorList };
+  return (errorList.length === 0)? true :  { type: "ERROR", items: errorList };
+
 };
