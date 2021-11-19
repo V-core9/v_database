@@ -31,7 +31,7 @@ register = async (data) => {
 
   if (await v_db.item.view('users',{username: data.username})) err.push({type: "ERROR", message: "💎 Username is not unique. [ " + data.username + " ]"});
 
-  if (!v_lidator.username(data.username)) err.push({type: "ERROR", message: "🙋‍♂️ Username can only have letters, numbers, underscore and dot. [ " + data.username + " ]"});
+  err.push( await v_lidator.username(data.username) );
 
   if (!v_lidator.email(data.email)) err.push({type: "ERROR", message: "📫 Email is not valid entry."});
 
