@@ -1,8 +1,8 @@
-const config = require('../config');
+
 const path = require('path');
 
 const v_db = {
-  config: require('../config/index.-old-.js'),
+  config: require('../config'),
   type: {
     new: require(path.join(__dirname, './_type_new')),
     del: require(path.join(__dirname, './_type_del')),

@@ -1,4 +1,5 @@
-const dbMode = "perPost";
+
+const {dbMode} = require('../v_config');
 const runMode = require('./get__run-mode');
 
 setDbMode = () => {

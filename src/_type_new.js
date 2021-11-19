@@ -5,7 +5,7 @@ const msgLog = (msg) => {
   if (process.consoleOutput === true) console.log(msg);
 };
 
-const newType = {
+const save = {
   oneForAll: async (type) => {
     msgLog('[oneForAll] mode >> save to single JSON file.');
     return await v_fs.promise.write(path.join(process.dataDir, `${process.dataDir}.json`), JSON.stringify({ name: "yea", timestamp: Date.now() }));
@@ -29,20 +29,20 @@ module.exports = async (type) => {
   var resp = null;
   switch (process.dbMode) {
     case "perPost":
-      resp = await newType.perPost(type);
+      resp = await save.perPost(type);
       return resp;
 
     case "perType":
-      resp = await newType.perType(type);
+      resp = await save.perType(type);
       return resp;
 
     case "oneForAll":
-      resp = await newType.oneForAll(type);
+      resp = await save.oneForAll(type);
       return resp;
 
     default:
       msgLog('[default] mode >> oneForAll :: save to single JSON file.');
-      resp = await newType.oneForAll(type);
+      resp = await save.oneForAll(type);
       return resp;
   }
 };

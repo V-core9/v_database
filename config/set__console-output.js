@@ -1,4 +1,5 @@
-const consoleOutput = true;
+
+const {consoleOutput} = require('../v_config');
 const runMode = require('./get__run-mode');
 
 setConsoleOutput = () => {

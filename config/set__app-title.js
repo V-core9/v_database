@@ -1,4 +1,4 @@
-const title = "V_Database";
+const {title} = require('../v_config');
 const runMode = require('./get__run-mode');
 
 setTitle = () => {

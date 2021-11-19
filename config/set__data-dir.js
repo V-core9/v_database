@@ -1,8 +1,9 @@
 const path = require('path');
 
-const userChoiceDir = `$_data`;
+const {dbName} = require('../v_config');
 
-dataDir = path.join(__dirname, `../${userChoiceDir}`);
+
+dataDir = path.join(__dirname, `../${dbName}`);
 const runMode = require('./get__run-mode');
 
 setDataDir = () => {
