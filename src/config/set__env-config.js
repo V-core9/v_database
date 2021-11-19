@@ -1,18 +1,19 @@
-const {title} = require('../v_config');
+
+const config = require('./v_config');
 const runMode = require('./get__run-mode');
 
-setTitle = () => {
+setEnvConfig = () => {
   try {
     if (runMode === "node") {
-      process.title = title;
+      process = config;
     } else {
-      window.title = title;
+      window = config;
     }
-    return title;
+    return dbMode;
   } catch (error) {
     //console.error(error);
     return false;
   }
 };
 
-module.exports = setTitle();
+module.exports = setEnvConfig();

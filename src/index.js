@@ -1,11 +1,15 @@
 
 const path = require('path');
 
+
 const v_db = {
-  config: require('../config'),
+  config: require(path.join(__dirname,"./config")),
   type: require(path.join(__dirname, './type')),
   item: require(path.join(__dirname, './item'))
 };
+
+console.log(`Process Title : ${process.title}`);
+console.log(`Process author : ${process.author}`);
 
 module.exports = v_db;
 

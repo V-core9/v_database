@@ -22,5 +22,17 @@
   "scripts": {
     "test": "jest",
     "test_cleanup": "bash -c \" PWD \" && echo \"🎉 Done Test Data Cleaning\" && exit "
+  },
+  "_v_": {
+    "title": "V_Database System",
+    "description": "V_Database System is a db solution that is built on top of the V_File_System Module thus extending, depending, testing and developing both further.",
+    "origin": "https://v-core9.com/",
+    "app_config":{
+      "dirs":{
+        "live_data": "$_live",
+        "dev_data": "$_dev",
+        "test_data": "$_test"
+      }
+    }
   }
 }

@@ -1,18 +1,14 @@
-const runMode = require("./get__run-mode");
-const appTitle = require("./set__app-title");
-const consoleOutput = require("./set__console-output");
-const dataDir = require("./set__data-dir");
-const dbMode = require("./set__db-mode");
+//const runMode = require("./..get__run-mode");
+//const appTitle = require("./..set__app-title");
+//const consoleOutput = require("./..set__console-output");
+//const dataDir = require("./..set__data-dir");
+const dbMode = require("./set__env-config");
 
 const config = {
-  appTitle,
-  runMode,
-  consoleOutput,
-  dataDir,
   dbMode
 };
 
-if (consoleOutput === true) {
+if (process.consoleOutput === true) {
   console.log(JSON.stringify(config, true, 4));
   console.log(`\n📑 Title : ${appTitle}`);
   console.log(`\n📡 Console Output : ${consoleOutput}`);
