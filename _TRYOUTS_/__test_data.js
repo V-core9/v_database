@@ -34,7 +34,7 @@ module.exports = {
   },
 
   demoUserBAD3: {
-    username: "Ye2wwwwwwwwwwwwwwwwwwwwwwwwwasdasdasdasdas",
+    username: "Ye2wwwwwwwwwwwwwwww wwwwwwwwwasdasdasdasdas",
     email: "slavko!gmail.com",
     password: "19",
     password_confirm: "123456789"

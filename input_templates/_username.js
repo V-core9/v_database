@@ -1,21 +1,22 @@
-const _config = {
+
+const _cfg = {
   min: 6,
   max: 32,
-  format: /^[A-Za-z][A-Za-z0-9_.]{(min-1),(max-1)}$/
+  format: /^[A-Za-z][A-Za-z0-9_.]{0,255}$/
 };
 
 const errorMsg = {
-  chars: { type: "ERROR", message: "🙋‍♂️ Username can only have letters, numbers, underscore and dot." },
-  min: { type: "ERROR", message: "🤯 Username minimum length is [ " + _config.min + " ]" },
-  max: { type: "ERROR", message: "💥 Username maximum length is [ " + _config.max + " ]" },
+  chars: "🙋‍♂️ Username can only have letters, numbers, underscore and dot.",
+  min: "🤯 Username minimum length is [ " + _cfg.min + " ]",
+  max: "💥 Username maximum length is [ " + _cfg.max + " ]",
 };
 
 module.exports = (username) => {
   var errorList = [];
-  if (username.length < _config.min) errorList.push( errorMsg.min );
-  if (username.length > _config.max)  errorList.push( errorMsg.max );
-  if (_config.format.test(username) === true) errorList.push( errorMsg.chars );
+  if (username.length < _cfg.min) errorList.push(errorMsg.min);
+  if (username.length > _cfg.max) errorList.push(errorMsg.max);
+  if (!_cfg.format.test(username)) errorList.push(errorMsg.chars);
 
   if (errorList.length === 0) return true;
-  return errorList;
+  return { type: "ERROR", items: errorList };
 };
