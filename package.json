@@ -17,7 +17,9 @@
   "main": "index.js",
   "repository": "V-core9/v_db",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "test_cleanup": "bash -c \" PWD \" && echo \"🎉 Done Test Data Cleaning\" && exit ",
+    "$_install": " npm install --also=dev"
   },
   "devDependencies": {
     "faker": "^5.5.3",
