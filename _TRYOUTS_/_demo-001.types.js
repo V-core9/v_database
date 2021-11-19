@@ -1,0 +1,19 @@
+module.exports = _types = [
+  "encryption_keys",
+  "api_keys",
+  "system_log",
+  "system_options",
+  "users",
+  "devices",
+  "pages",
+  "posts",
+  "links",
+  "images",
+  "tasks",
+  "notes",
+  "snippets",
+  "categories",
+  "tags",
+  "chat_groups",
+  "chat_messages"
+];
