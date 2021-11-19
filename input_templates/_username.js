@@ -11,8 +11,11 @@ const errorMsg = {
 };
 
 module.exports = (username) => {
-  if (username.length < _config.min) return errorMsg.min;
-  if (username.length > _config.max) return errorMsg.max;
-  if (_config.format.test(username) === true) return errorMsg.chars;
-  return true;
+  var errorList = [];
+  if (username.length < _config.min) errorList.push( errorMsg.min );
+  if (username.length > _config.max)  errorList.push( errorMsg.max );
+  if (_config.format.test(username) === true) errorList.push( errorMsg.chars );
+
+  if (errorList.length === 0) return true;
+  return errorList;
 };
