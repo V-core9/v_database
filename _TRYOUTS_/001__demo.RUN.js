@@ -1,26 +1,25 @@
 const v_db = require("../index");
 
-const demoTypes = require('./_demo-001.types');
-const demoContent = require('./_demo-001.content');
+const demoData = require('./001__demo.data');
 
 create_tables = async () => {
   const resp = [];
-  demoTypes.forEach(async (type) => {
-    resp.push(await v_db.type.new(type)); 
+  demoData._types.forEach(async (type) => {
+    resp.push(await v_db.type.new(type));
   });
   return resp;
 };
 
 generate_type_entries = async (type) => {
-  for (let i = 0; i < demoContent.typeCount; i++) {
-    return (await v_db.item.new(type, demoContent));
+  for (let i = 0; i < demoData._content.typeCount; i++) {
+    return (await v_db.item.new(type, demoData._content));
   }
 };
 
 
 create_entries = async () => {
   const resp = [];
-  demoTypes.forEach(async (type) => {
+  demoData._types.forEach(async (type) => {
     resp.push( await generate_type_entries(type));
   });
   return resp;
@@ -29,7 +28,7 @@ create_entries = async () => {
 
 list_entries = () => {
   const resp = [];
-  demoTypes.forEach(async (type) => {
+  demoData._types.forEach(async (type) => {
     resp.push(await v_db.item.list(type));
   });
   console.log(resp);
