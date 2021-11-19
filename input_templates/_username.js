@@ -19,6 +19,6 @@ module.exports = (username) => {
   if (username.length > _cfg.max) errorList.push(errorMsg.max);
   if (!_cfg.format.test(username)) errorList.push(errorMsg.chars);
 
-  return (errorList.length === 0)? true :  { type: "ERROR", items: errorList };
+  return (errorList.length === 0) ? true : { type: "ERROR", items: errorList };
 
 };
