@@ -9,6 +9,7 @@ const testData =  {
 };
 
 module.exports =   {
+    typeCount: 1250,
     expected_types,
     testData,
     inner : {

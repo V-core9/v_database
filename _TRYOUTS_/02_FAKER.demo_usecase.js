@@ -19,6 +19,6 @@ registerRandomUserFaker = async () => {
   user.register(randomUser());
 };
 
-for (let i = 0; i < 100; i++) {
+for (let i = 0; i < 2000; i++) {
   registerRandomUserFaker();
 }
