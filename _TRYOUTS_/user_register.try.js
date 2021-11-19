@@ -1,19 +1,16 @@
 const v_db = require("../index");
-const testData = require('./test_data');
+const testData = require('./__test_data');
 const user = require("../input_templates/user");
 
 
 
-register_user_type = async () => {
-  await v_db.type.new('users') ;
-};
-
-register_user_type();
-
 
 test_it = async () => {
-  await user.register(testData.demoUser);
+  await v_db.type.new('users') ;
   await user.register(testData.demoUserBAD);
+  await user.register(testData.demoUserBAD2);
+  await user.register(testData.demoUserBAD3);
+  await user.register(testData.demoUser);
 };
 
 test_it();

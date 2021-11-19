@@ -1,38 +1,28 @@
 const v_db = require("../index");
 
-const demoTypes = require('./_demo-001.types');
-const demoContent = require('./_demo-001.content');
+const demoData = require('./001.data.__demo');
 
 create_tables = async () => {
-  const resp = [];
-  demoTypes.forEach(async (type) => {
-    resp.push(await v_db.type.new(type)); 
+  demoData._types.forEach(async (type) => {
+    await v_db.type.new(type);
   });
-  return resp;
 };
-
-generate_type_entries = async (type) => {
-  for (let i = 0; i < demoContent.typeCount; i++) {
-    return (await v_db.item.new(type, demoContent));
-  }
-};
-
 
 create_entries = async () => {
   const resp = [];
-  demoTypes.forEach(async (type) => {
-    resp.push( await generate_type_entries(type));
+  demoData._types.forEach(async (type) => {
+    for (let i = 0; i < demoData._content.numberToGenerate; i++) {
+      resp.push(await v_db.item.new(type, demoData._content));
+    }
   });
   return resp;
 };
 
 
 list_entries = () => {
-  const resp = [];
-  demoTypes.forEach(async (type) => {
-    resp.push(await v_db.item.list(type));
+  demoData._types.forEach(async (type) => {
+    await v_db.item.view(type);
   });
-  console.log(resp);
 };
 
 run_it = async () => {
@@ -56,7 +46,10 @@ run_it = async () => {
 
   //var findUser04 = await v_db.item.view('users','000c6191-418f-4501-90a2-7d855f53833a');
   //console.log(findUser04);
-  console.log( JSON.stringify(await create_tables()) +"/"+ JSON.stringify(await create_entries()) + "++>> "+ (Date.now() - xTime1 ));
+
+  const tbl =  await create_tables();
+  const ent =  await create_entries();
+  console.log( tbl +"/"+ent + "++>> "+ (Date.now() - xTime1 ));
 };
 
 run_it();

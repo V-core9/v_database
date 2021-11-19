@@ -11,8 +11,9 @@
     ".vscode": true,
     ".gitignore": true,
     ".editorconfig": true,
-    "node_modules": true,
-    "coverage": true
+    "coverage": true,
+    ".github/*.*": true,
+    ".github": true,
   },
   "explorerExclude.backup": null
 }
