@@ -20,6 +20,11 @@ const user_schema = {
             error: {
                 format: "❌Error\n📑 Email verification failed."
             }
+        },
+        validate = (email) => {
+            await validate(user_schema.email, email);
+
+            return (errorList.length === 0) ? user_schema.email.success : { type: "ERROR", items: errorList };
         }
     },
     password: {
@@ -37,8 +42,8 @@ const user_schema = {
         },
         validate = (password, password_confirm) => {
             await validate(user_schema.password, password);
-            if (password !== password_confirm) errorList.push(validator_messages.password.error.confirm);
-            return (errorList.length === 0) ? validator_messages.password.success : { type: "ERROR", items: errorList };
+            if (password !== password_confirm) errorList.push(user_schema.password.error.confirm);
+            return (errorList.length === 0) ? user_schema.password.success : { type: "ERROR", items: errorList };
         },
     },
     username: {
