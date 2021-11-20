@@ -13,7 +13,8 @@
         ".editorconfig": true,
         ".gitignore": true,
         ".jshintrc": true,
-        "LICENSE": true
+        "LICENSE": true,
+        "jest.config.js": true
     },
     "explorerExclude.backup": null
 }
