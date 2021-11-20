@@ -11,8 +11,8 @@ const validate = async (data, content) => {
 //<- - - - - - - - - - - - - - - - - - ->
 
 const logIt = (msg) => {
-  if (process.v.consoleOutput)
-}
+  if (process.v.consoleOutput) console.log(msg);
+};
 
 
 //<[ 🔂 - user_schema ]>- - - - - - ->
@@ -49,7 +49,7 @@ const user_schema = {
       errorList = [];
       const isSame = (password === password_confirm);
       if (isSame !== true) errorList.push(user_schema.password.msg.error.confirm);
-      if (await validate(user_schema.password, password) === isSame === process.v.consoleOutput) console.log(user_schema.password.msg.success);
+      if (await validate(user_schema.password, password) === isSame) logIt(user_schema.password.msg.success);
       return (errorList.length === 0) ? true : { type: "ERROR", items: errorList };
     },
   },

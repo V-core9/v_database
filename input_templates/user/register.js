@@ -31,15 +31,15 @@ register = async (data) => {
   //console.timeEnd(data.username+"._unique_status");
 
   var resp = await user_schema.username.validate(data.username);
-  console.log(resp);
+  //console.log(resp);
   if (resp !== true) err.push(resp);
 
   resp = await user_schema.email.validate(data.email);
-  console.log(resp);
+  //console.log(resp);
   if (resp !== true) err.push(resp);
 
   resp = await user_schema.password.validate(data.password, data.password_confirm);
-  console.log(resp);
+  //console.log(resp);
   if (resp !== true) err.push(resp);
 
 
