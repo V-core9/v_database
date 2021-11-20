@@ -8,6 +8,12 @@ const v_db = {
   item: require(path.join(__dirname, './item'))
 };
 
+
+module.exports = v_db;
+
+
+
+/*
 console.log(`\n.=================================================.`);
 console.log(`| 🚀 - ${process.v.title}                           |`);
 console.log(`+ - - - - - - - - - - - - - - - - - - - - - - - - +`);
@@ -15,11 +21,7 @@ console.log(`| 📡 App Info :                                    |`);
 console.log(`| ${process.v.subtitle}           |`);
 console.log(`'================================================='`);
 
-module.exports = v_db;
 
-
-
-/*
 test_within = async () => {
 
   console.log(await v_db.type.view());
