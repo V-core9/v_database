@@ -4,7 +4,7 @@ var errorList = [];
 const validate = async (data, content) => {
     const len = String(content).length;
     if (typeof data.min !== 'undefined') if (len < data.min) errorList.push(data.msg.error.min);
-    if (typeof data.min !== 'undefined') if (len < data.max) errorList.push(data.msg.error.max);
+    if (typeof data.max !== 'undefined') if (len > data.max) errorList.push(data.msg.error.max);
     if (typeof data.format !== 'undefined') if (!data.format.test(content)) errorList.push(data.msg.error.format);
     return;
 };
