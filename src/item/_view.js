@@ -16,19 +16,15 @@ module.exports = async (type, filter = undefined) => {
   if (filter === undefined) return await read.list(typePath);
 
   if (typeof filter === 'string') {
-    //console.log("Filtering by ID");
     return await read.byId(typePath, filter);
   }
 
   if (filter.id !== undefined) {
-    //console.log("Filtering by ID");
     return await read.byId(typePath, filter.id);
   }
 
   if (filter.username !== undefined) {
-    //console.log("Filtering by USERNAME");
     const items = await read.list(typePath);
-    //console.log(items);
     var found = false;
     var i = 0;
     var count = items.length - 1;
@@ -36,7 +32,6 @@ module.exports = async (type, filter = undefined) => {
       i++;
       const itemId = items[i].split('.');
       const resp = JSON.parse(await read.byId(typePath, itemId[0]));
-      //console.log(`RESP: ${resp}`);
       if (resp.username === filter.username) found = resp;
     }
 

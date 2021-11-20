@@ -1,8 +1,10 @@
-const v_db = require('../');
+
 const v_fs = require('v_file_system');
 const path = require('path');
+const v_db = require(path.join(__dirname, '../..'));
 
-data_size = async () => {
+
+module.exports = async () => {
   console.log("🔀 Getting Data Size ");
 
   const helper = {
@@ -49,11 +51,10 @@ data_size = async () => {
   console.log("🔄 Total Data Disk Size : [ " + Math.trunc(v_fs.byteSizer.byteToGiga(helper.sizes.totalSize) * 100) / 100 + "GB ]");
   console.log("⏩ Total Items Count : [ " + helper.sizes.totalCount + " ]");
   console.log("🔂 Total Types Count : [ " + helper.typeCount + " ]");
+
+  return helper;
 };
 
 
-module.exports = async () => {
-  return await data_size();
-};
 
-data_size();
+

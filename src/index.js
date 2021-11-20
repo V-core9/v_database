@@ -1,17 +1,29 @@
 
-const path = require('path');
 
+const helpers = require('./helpers/');
+const config = require('./config/');
+const type = require('./type/');
+const item = require('./item/');
 
 const v_db = {
-  config: require(path.join(__dirname, "./config")),
-  type: require(path.join(__dirname, './type')),
-  item: require(path.join(__dirname, './item'))
+  config: config,
+  type: type,
+  item: item,
+  helpers: helpers
 };
 
 
 module.exports = v_db;
 
+console.log(`[ 🚀 :: ${process.v.title}  ]>- - - -`);
+console.log(v_db.helpers);
+sizeDB = async () => {
 
+  console.log(v_db.helpers);
+  console.log(await v_db.helpers.data_size());
+};
+
+sizeDB();
 
 /*
 console.log(`\n.=================================================.`);
