@@ -4,10 +4,11 @@ const npmInfoPath = path.join(__dirname, '../../package.json');
 
 const npmInfo = JSON.parse(v_fs.sync.read(npmInfoPath));
 
-console.log(npmInfo._v_);
+//console.log(npmInfo._v_);
 
 module.exports = {
   title: npmInfo._v_.name,
+  subtitle: npmInfo._v_.title,
   mode: `dev`,
   consoleOutput: true,
   data_dir: path.join(__dirname, `../../$_data`),

@@ -9,17 +9,17 @@ const v_db = {
 };
 
 console.log(`\n.=================================================.`);
-console.log(`| 🚀 - ${process.v.title}                          |`);
+console.log(`| 🚀 - ${process.v.title}                           |`);
 console.log(`+ - - - - - - - - - - - - - - - - - - - - - - - - +`);
-console.log(`| 📡 App Info :                                   |`);
-console.log(process.v);
+console.log(`| 📡 App Info :                                    |`);
+console.log(`| ${process.v.subtitle}           |`);
 console.log(`'================================================='`);
 
 module.exports = v_db;
 
 
 
-
+/*
 test_within = async () => {
 
   console.log(await v_db.type.view());
@@ -30,9 +30,9 @@ test_within = async () => {
 
   console.log(await v_db.type.view());
 
-  //console.log(await v_db.type.del('users'));
-  //console.log(await v_db.type.del('devices'));
-  //console.log(await v_db.type.del('demo_table'));
+  console.log(await v_db.type.del('users'));
+  console.log(await v_db.type.del('devices'));
+  console.log(await v_db.type.del('demo_table'));
 
   console.log(await v_db.type.view());
 
@@ -44,3 +44,4 @@ test_within = async () => {
 
 test_within();
 
+*/

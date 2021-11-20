@@ -26,7 +26,6 @@ const save = {
 module.exports = async (type) => {
   if (typeof type === 'undefined') return false;
 
-  console.log(process.v.db_mode);
   var resp = null;
   switch (process.v.db_mode) {
     case "perPost":
