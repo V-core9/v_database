@@ -3,7 +3,7 @@ const path = require('path');
 
 
 const v_db = {
-  config: require(path.join(__dirname,"./config")),
+  config: require(path.join(__dirname, "./config")),
   type: require(path.join(__dirname, './type')),
   item: require(path.join(__dirname, './item'))
 };
@@ -19,7 +19,7 @@ module.exports = v_db;
 
 
 
-/*
+
 test_within = async () => {
 
   console.log(await v_db.type.view());
@@ -38,9 +38,9 @@ test_within = async () => {
 
 
   console.log(await v_db.item.view('users'));
-  console.log(await v_db.item.view('users', {id: "b24c77fa-463f-4537-8d6c-347f438276fc"}));
-  console.log(await v_db.item.view('users', {username: "YeaDude_0981"}));
+  console.log(await v_db.item.view('users', { id: "b24c77fa-463f-4537-8d6c-347f438276fc" }));
+  console.log(await v_db.item.view('users', { username: "YeaDude_0981" }));
 };
 
 test_within();
-*/
+

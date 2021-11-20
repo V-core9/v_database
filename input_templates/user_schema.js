@@ -22,6 +22,7 @@ const user_schema = {
             }
         },
         validate: async (email) => {
+            errorList = [];
             await validate(user_schema.email, email);
 
             return (errorList.length === 0) ? user_schema.email.success : { type: "ERROR", items: errorList };
@@ -41,6 +42,7 @@ const user_schema = {
             }
         },
         validate: async (password, password_confirm) => {
+            errorList = [];
             await validate(user_schema.password, password);
             if (password !== password_confirm) errorList.push(user_schema.password.error.confirm);
             return (errorList.length === 0) ? user_schema.password.success : { type: "ERROR", items: errorList };
@@ -59,6 +61,7 @@ const user_schema = {
             }
         },
         validate: async (username) => {
+            errorList = [];
             await validate(user_schema.username, username);
             return (errorList.length === 0) ? user_schema.username.msg.success : { type: "ERROR", items: errorList };
         }

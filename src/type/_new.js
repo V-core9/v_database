@@ -8,17 +8,17 @@ const msgLog = (msg) => {
 const save = {
   oneForAll: async (type) => {
     msgLog('[oneForAll] mode >> save to single JSON file.');
-    return await v_fs.promise.write(path.join(process.dataDir, `${process.dataDir}.json`), JSON.stringify({ name: "yea", timestamp: Date.now() }));
+    return await v_fs.promise.write(path.join(process.app_config[process.mode].data_dir, `${process.app_config[process.mode].data_dir}.json`), JSON.stringify({ name: "yea", timestamp: Date.now() }));
   },
 
   perType: async (type) => {
     msgLog('[perType] mode >> JSON file per type.');
-    return await v_fs.promise.write(path.join(process.dataDir, `${type}.json`), JSON.stringify({ name: "yea", timestamp: Date.now() }));
+    return await v_fs.promise.write(path.join(process.app_config[process.mode].data_dir, `${type}.json`), JSON.stringify({ name: "yea", timestamp: Date.now() }));
   },
 
   perPost: async (type) => {
     msgLog('[perPost] mode >> separate JSON files per entry.');
-    return await v_fs.promise.mkdir(path.join(process.dataDir, type));
+    return await v_fs.promise.mkdir(path.join(process.app_config[process.mode].data_dir, type));
   },
 };
 
@@ -26,6 +26,7 @@ const save = {
 module.exports = async (type) => {
   if (typeof type === 'undefined') return false;
 
+  console.log(process.dbMode);
   var resp = null;
   switch (process.dbMode) {
     case "perPost":
