@@ -3,7 +3,7 @@ const v_db = require("../../index");
 
 
 
-const v_lidator = require('./v_lidator');
+const v_lidator = require('../v_lidator');
 
 user_input_template = (data) => {
   return {
