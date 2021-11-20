@@ -21,7 +21,7 @@ const user_schema = {
                 format: "❌Error\n📑 Email verification failed."
             }
         },
-        validate = (email) => {
+        validate = async (email) => {
             await validate(user_schema.email, email);
 
             return (errorList.length === 0) ? user_schema.email.success : { type: "ERROR", items: errorList };
@@ -66,3 +66,5 @@ const user_schema = {
 }
 
 module.exports = user_schema;
+
+console.log(user_schema);
