@@ -1,19 +1,19 @@
+const logIt = (msg) => {
+  if (process.v.consoleOutput) console.log(msg);
+};
+
+
 var errorList = [];
 
 //<[ 🩺 - Data Validator ]>- - - - - - ->
 const validate = async (data, content) => {
   const len = String(content).length;
-  if (typeof data.min !== 'undefined') if (len < data.min) errorList.push(data.msg.error.min);
-  if (typeof data.max !== 'undefined') if (len > data.max) errorList.push(data.msg.error.max);
-  if (typeof data.format !== 'undefined') if (!data.format.test(content)) errorList.push(data.msg.error.format);
+  if (data.min !== undefined) if (len < data.min) errorList.push(data.msg.error.min);
+  if (data.max !== undefined) if (len > data.max) errorList.push(data.msg.error.max);
+  if (data.format !== undefined) if (!data.format.test(content)) errorList.push(data.msg.error.format);
   return;
 };
 //<- - - - - - - - - - - - - - - - - - ->
-
-const logIt = (msg) => {
-  if (process.v.consoleOutput) console.log(msg);
-};
-
 
 //<[ 🔂 - user_schema ]>- - - - - - ->
 const user_schema = {
@@ -28,7 +28,6 @@ const user_schema = {
     validate: async (email) => {
       errorList = [];
       await validate(user_schema.email, email);
-
       return (errorList.length === 0) ? true : { type: "ERROR", items: errorList };
     }
   },
