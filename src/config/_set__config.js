@@ -1,6 +1,6 @@
 
 const config = require('./v_config');
-const runMode = require('./get__run-mode');
+const runMode = require('./_get__app-mode');
 
 setEnvConfig = () => {
   try {

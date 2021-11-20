@@ -3,11 +3,7 @@ const v_db = require("../../index");
 
 
 
-const v_lidator = {
-  email: require('../_email'),
-  username: require('../_username'),
-  password: require('../_password')
-};
+const v_lidator = require('./v_lidator');
 
 user_input_template = (data) => {
   return {
