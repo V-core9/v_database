@@ -25,7 +25,7 @@ const user_schema = {
       errorList = [];
       await validate(user_schema.email, email);
 
-      return (errorList.length === 0) ? user_schema.email.success : { type: "ERROR", items: errorList };
+      return (errorList.length === 0) ? true : { type: "ERROR", items: errorList };
     }
   },
   password: {

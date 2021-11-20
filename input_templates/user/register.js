@@ -8,7 +8,7 @@ const user_schema = require('../user_schema');
 user_input_template = (data) => {
   return {
     username: data.username,
-    password: data.password,
+    password: v_to_sha256(data.password),
     email: data.email,
     first_name: null,
     last_name: null,
