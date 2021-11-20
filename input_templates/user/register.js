@@ -1,8 +1,6 @@
 const v_to_sha256 = require('v_to_sha256');
 const v_db = require("../../index");
 
-
-
 const user_schema = require('../user_schema');
 
 user_input_template = (data) => {
@@ -47,7 +45,7 @@ register = async (data) => {
     return await v_db.item.new('users', user_input_template(data));
   }
 
-  if (process.consoleOutput === true) console.log('\n🔻Validations Failed : Looks like there were some errors.\n' + JSON.stringify(err, true, 2));
+  if (process.v.consoleOutput === true) console.log('\n🔻Validations Failed : Looks like there were some errors.\n' + JSON.stringify(err, true, 2));
 
   return err;
 };
