@@ -10,7 +10,7 @@ module.exports = {
   title: npmInfo._v_.name,
   mode: `dev`,
   consoleOutput: false,
-  dbName: path.join(__dirname, `../../$_data`),
-  dbMode: `perPost`,
+  data_dir: path.join(__dirname, `../../$_data`),
+  db_mode: `perPost`,
   npmInfo: npmInfo
 };

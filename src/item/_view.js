@@ -5,17 +5,17 @@ const read = {
   list: async (typePath) => {
     return await v_fs.promise.listDir(typePath);
   },
-  byId : async (typePath, id)=>{
-    return await v_fs.promise.read(typePath+'/'+id+".json");
+  byId: async (typePath, id) => {
+    return await v_fs.promise.read(typePath + '/' + id + ".json");
   }
 };
 
-module.exports = async (type, filter=undefined ) => {
-  const typePath = path.join(process.dataDir, type);
+module.exports = async (type, filter = undefined) => {
+  const typePath = path.join(process.v.data_dir, type);
 
   if (filter === undefined) return await read.list(typePath);
 
-  if (typeof filter === 'string')  {
+  if (typeof filter === 'string') {
     //console.log("Filtering by ID");
     return await read.byId(typePath, filter);
   }
@@ -27,10 +27,10 @@ module.exports = async (type, filter=undefined ) => {
 
   if (filter.username !== undefined) {
     //console.log("Filtering by USERNAME");
-    const items  = await read.list(typePath);
+    const items = await read.list(typePath);
     //console.log(items);
     var found = false;
-    var  i  = 0;
+    var i = 0;
     var count = items.length - 1;
     while (found === false && i < count) {
       i++;

@@ -5,11 +5,11 @@ const runMode = require('./_get__app-env');
 setEnvConfig = () => {
   try {
     if (runMode === "node") {
-      process = config;
+      process.vConfig = config;
     } else {
-      window = config;
+      window.vConfig = config;
     }
-    return dbMode;
+    return db_mode;
   } catch (error) {
     //console.error(error);
     return false;
