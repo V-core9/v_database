@@ -3,7 +3,7 @@ const v_db = require("../../index");
 
 
 
-const v_lidator = require('../v_lidator');
+const user_schema = require('../user_schema');
 
 user_input_template = (data) => {
   return {
@@ -30,13 +30,13 @@ register = async (data) => {
   //if (uniqueStatus) err.push({ type: "ERROR", message: "💎 Username is not unique. [ " + data.username + " ]" });
   //console.timeEnd(data.username+"._unique_status");
 
-  var resp = v_lidator.username(data.username);
+  var resp = user_schema.username.validate(data.username);
   if (resp !== true) err.push(resp);
 
-  resp = v_lidator.email(data.email);
+  resp = user_schema.email.validate(data.email);
   if (resp !== true) err.push(resp);
 
-  resp = v_lidator.password(data.password, data.password_confirm);
+  resp = user_schema.password.validate(data.password, data.password_confirm);
   if (resp !== true) err.push(resp);
 
 
