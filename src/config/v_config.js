@@ -9,7 +9,7 @@ console.log(npmInfo._v_);
 module.exports = {
   title: npmInfo._v_.name,
   mode: `dev`,
-  consoleOutput: false,
+  consoleOutput: true,
   data_dir: path.join(__dirname, `../../$_data`),
   db_mode: `perPost`,
   npmInfo: npmInfo

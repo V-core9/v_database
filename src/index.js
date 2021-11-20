@@ -30,9 +30,9 @@ test_within = async () => {
 
   console.log(await v_db.type.view());
 
-  console.log(await v_db.type.del('users'));
-  console.log(await v_db.type.del('devices'));
-  console.log(await v_db.type.del('demo_table'));
+  //console.log(await v_db.type.del('users'));
+  //console.log(await v_db.type.del('devices'));
+  //console.log(await v_db.type.del('demo_table'));
 
   console.log(await v_db.type.view());
 
