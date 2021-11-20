@@ -16,7 +16,7 @@ const user_schema = {
     email: {
         format: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
         msg: {
-            success: "✅ Success\n📫 Email verification successful.",
+            success: "✅ Success\n📫 Email Verified Successfully.",
             error: {
                 format: "❌Error\n📑 Email verification failed."
             }
@@ -32,12 +32,12 @@ const user_schema = {
         max: 32,
         format: /^[A-Za-z0-9!@#$%^&*()_.]{0,255}$/,
         msg: {
-            success: "✅ Success\n🔓 Password verification successful.",
+            success: "✅ Success\n🔓 Password Verified Successfully.",
             error: {
-                min: "❌ Error\n❓ Password minimum length is [ " + this.min + " ]",
-                max: "❌ Error\n📛 Password maximum length is [ " + this.max + " ]",
-                format: "❌ Error\n🔓 Password does not meet the requirements.",
-                confirm: "❌ Error\n🚨 Password Confirmation Entry Does Not Match Password Provided."
+                min: "❌ Error\n❓ Password is too short. Hint: Just make it little longer.",
+                max: "❌ Error\n📛 Pasword length exceeded allowed maximum. Hint: Make it shorter.",
+                format: "❌ Error\n🔓 Password contains characters that are not allowed. Hint: Try removing special characters.",
+                confirm: "❌ Error\n🚨 Confirmation Password Entry Does Not Match Password Provided. Hint: Make them same."
             }
         },
         validate: async (password, password_confirm) => {
@@ -51,11 +51,11 @@ const user_schema = {
         max: 32,
         format: /^[A-Za-z][A-Za-z0-9_.]{0,255}$/,
         msg: {
-            success: "✅ Success\n🤪 Username verification successful.",
+            success: "✅ Success\n🤪 Username Verified Successfully.",
             error: {
-                format: "🙋‍♂️ Username can only have letters, numbers, underscore and dot.",
-                min: "🤯 Username minimum length is [ " + this.min + " ]",
-                max: "💥 Username maximum length is [ " + this.max + " ]",
+                min: "❌ Error\n🤯 Username is too short. Hint: Just make it little longer.",
+                max: "❌ Error\n💥 Username exceeded allowed maximum. Hint: Make it shorter.",
+                format: "❌ Error\n🙋‍♂️ Username can only have letters, numbers, underscore and dot. Hint: Try removing special characters.",
             }
         },
         validate: async (username) => {

@@ -30,15 +30,15 @@ register = async (data) => {
   //if (uniqueStatus) err.push({ type: "ERROR", message: "💎 Username is not unique. [ " + data.username + " ]" });
   //console.timeEnd(data.username+"._unique_status");
 
-  var resp = user_schema.username.validate(data.username);
+  var resp = await user_schema.username.validate(data.username);
   console.log(resp);
   if (resp !== true) err.push(resp);
 
-  resp = user_schema.email.validate(data.email);
+  resp = await user_schema.email.validate(data.email);
   console.log(resp);
   if (resp !== true) err.push(resp);
 
-  resp = user_schema.password.validate(data.password, data.password_confirm);
+  resp = await user_schema.password.validate(data.password, data.password_confirm);
   console.log(resp);
   if (resp !== true) err.push(resp);
 
