@@ -16,8 +16,8 @@ const v_db = {
 module.exports = v_db;
 
 console.log(`[ 🚀 :: ${process.v.title}  ]>- - - -`);
-console.log(v_db.helpers);
-sizeDB = async () => {
+console.log(await v_db.helpers.data_size);
+const sizeDB = async () => {
 
   console.log(v_db.helpers);
   console.log(await v_db.helpers.data_size());

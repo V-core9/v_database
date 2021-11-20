@@ -1,10 +1,10 @@
 
 const v_fs = require('v_file_system');
 const path = require('path');
-const v_db = require(path.join(__dirname, '../..'));
+const v_db = require(path.join(__dirname, '..'));
 
 
-module.exports = async () => {
+const registerNewUser = async () => {
   console.log("🔀 Getting Data Size ");
 
   const helper = {
@@ -16,7 +16,7 @@ module.exports = async () => {
     types: null,
     typeCount: null,
   };
-
+  console.log(helper.types)
   helper.types = await v_db.type.view();
   helper.typeCount = helper.types.length;
 
@@ -56,5 +56,5 @@ module.exports = async () => {
 };
 
 
-
+module.exports = registerNewUser;
 

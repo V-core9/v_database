@@ -68,6 +68,6 @@ const user_schema = {
       return (errorList.length === 0) ? true : { type: "ERROR", items: errorList };
     }
   }
-}
+};
 
 module.exports = user_schema;
