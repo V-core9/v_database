@@ -2,9 +2,7 @@ const logIt = (msg) => {
   if (process.v.consoleOutput) console.log(msg);
 };
 
-
 var errorList = [];
-
 //<[ 🩺 - Data Validator ]>- - - - - - ->
 const validate = async (data, content) => {
   const len = String(content).length;
@@ -73,4 +71,3 @@ const user_schema = {
 }
 
 module.exports = user_schema;
-

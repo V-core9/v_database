@@ -19,8 +19,13 @@ user_input_template = (data) => {
   };
 };
 
+const resultCount = {
+  err: 0,
+  ok: 0
+}
 
 register = async (data) => {
+  //console.log(resultCount);
   const err = [];
 
   //console.time(data.username+"._unique_status");
@@ -42,12 +47,18 @@ register = async (data) => {
 
 
   if (err.length === 0) {
+    resultCount.ok++;
     return await v_db.item.new('users', user_input_template(data));
   }
 
   if (process.v.consoleOutput === true) console.log('\n🔻Validations Failed : Looks like there were some errors.\n' + JSON.stringify(err, true, 2));
 
+  resultCount.err++;
   return err;
 };
 
 module.exports = register;
+
+setInterval(() => {
+  console.log(resultCount);
+}, 1000);
