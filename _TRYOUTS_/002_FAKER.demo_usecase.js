@@ -32,7 +32,7 @@ const registerRandom = async () => {
     average_req_exec_time: (teTime / new_test_count),
     total_exec_time: teTime,
     req_per_second: Math.trunc(1000 * new_test_count / teTime)
-  }
+  };
   console.log(execResult);
   process.v.shouldStopLoopConsole = true;
 };

@@ -62,6 +62,7 @@ const stopInterval = () => {
 
 var intervalDemoConsole = setInterval(() => {
   if (process.v.shouldStopLoopConsole === true) {
+    process.v.resultCount = resultCount;
     stopInterval();
   } else {
     console.log(resultCount);
