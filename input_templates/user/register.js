@@ -20,8 +20,8 @@ user_input_template = (data) => {
 };
 
 const resultCount = {
-  err: 0,
-  ok: 0
+  failed: 0,
+  success: 0
 }
 
 register = async (data) => {
@@ -33,32 +33,39 @@ register = async (data) => {
   //if (uniqueStatus) err.push({ type: "ERROR", message: "💎 Username is not unique. [ " + data.username + " ]" });
   //console.timeEnd(data.username+"._unique_status");
 
-  var resp = await user_schema.username.validate(data.username);
-  //console.log(resp);
-  if (resp !== true) err.push(resp);
 
-  resp = await user_schema.email.validate(data.email);
-  //console.log(resp);
-  if (resp !== true) err.push(resp);
+  var validResp = await user_schema.username.validate(data.username);
+  if (validResp !== true) err.push(validResp);
 
-  resp = await user_schema.password.validate(data.password, data.password_confirm);
-  //console.log(resp);
-  if (resp !== true) err.push(resp);
+  validResp = await user_schema.email.validate(data.email);
+  if (validResp !== true) err.push(validResp);
+
+  validResp = await user_schema.password.validate(data.password, data.password_confirm);
+  if (validResp !== true) err.push(validResp);
 
 
   if (err.length === 0) {
-    resultCount.ok++;
+    resultCount.success++;
     return await v_db.item.new('users', user_input_template(data));
   }
 
   if (process.v.consoleOutput === true) console.log('\n🔻Validations Failed : Looks like there were some errors.\n' + JSON.stringify(err, true, 2));
 
-  resultCount.err++;
+  resultCount.failed++;
   return err;
 };
 
 module.exports = register;
 
-setInterval(() => {
-  console.log(resultCount);
+const stopInterval = () => {
+  clearInterval(intervalDemoConsole);
+  intervalDemoConsole = null;
+}
+
+var intervalDemoConsole = setInterval(() => {
+  if (process.v.shouldStopLoopConsole === true) {
+    stopInterval();
+  } else {
+    console.log(resultCount);
+  }
 }, 1000);
