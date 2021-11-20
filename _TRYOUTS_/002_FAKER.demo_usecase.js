@@ -16,7 +16,7 @@ registerRandomUserFaker = async () => {
   });
   return resp;
 };
-const new_test_count = 5000;
+const new_test_count = 100000;
 const x1 = Date.now();
 
 

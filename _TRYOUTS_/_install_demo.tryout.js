@@ -24,28 +24,40 @@ const questions = [
   {
     type: 'list',
     name: 'logLevel',
-    message: 'Application Log Level ? \n[ Chose the starting level you want to log.  ]\n[ Recommended Level ::  Errors Only     ]',
-    choices: ['All', 'Min Info', 'Warnings and Errors', 'Errors Only', 'None of it'],
-    default: 'Error',
-    filter(val) {
-      return val.toLowerCase();
-    },
+    message: 'Chose an application log level? [ Default Level :: < ERROR > ]',
+    choices: ['NONE', 'ALL', 'INFO', 'WARN', 'ERROR', 'FATAL'],
+    default: 'ERROR'
+  },
+  {
+    type: 'list',
+    name: 'log_to_console',
+    message: '📡 Print Log Output To Console?',
+    choices: ["YES", "NO", 'OPTIMIZED'],
+    default: "NO",
   },
   {
     type: 'confirm',
-    name: 'consoleOutput',
-    message: '📡 Print Log Output To Console ?',
-    default: false,
-  },
-  {
-    type: 'confirm',
-    name: 'saveLog',
-    message: '🔂 Save Log Output To File ?',
+    name: 'log_to_file',
+    message: '🔂 Save Log Output To File?',
     default: true,
-  }
+  },
+  {
+    type: 'list',
+    name: 'cpu_max_usage',
+    message: '📡 CPU Maximum Usage? [percents - %]',
+    choices: ["25", "50", "75", "100"],
+    default: "50",
+  },
+  {
+    type: 'list',
+    name: 'ram_max_usage',
+    message: '📡 RAM Maximum Usage? [GB]',
+    choices: ["1", "2", "3", "4", "5", "6", "7", "8"],
+    default: "4",
+  },
 ];
 
 inquirer.prompt(questions).then((answers) => {
-  console.log('\nOrder receipt:');
+  console.log('🚀 Installation Config Results:');
   console.log(answers);
 });
