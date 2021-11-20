@@ -1,4 +1,4 @@
 
-const v_db = require("./src/index");
+const v_db = require("./src");
 
 module.exports = v_db;

@@ -1,15 +1,11 @@
 
 
-const helpers = require('./helpers/');
-const config = require('./config/');
-const type = require('./type/');
-const item = require('./item/');
 
 const v_db = {
-  config: config,
-  type: type,
-  item: item,
-  helpers: helpers
+  helpers: require('./helpers'),
+  config: require('./config'),
+  type: require('./type'),
+  item: require('./item')
 };
 
 

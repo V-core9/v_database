@@ -1,8 +1,7 @@
+const path = require('path');
 
 module.exports = {
-  new: require('./_new'),
-  del: require('./_del'),
-  view: async () => {
-    return await v_fs.promise.listDir(process.v.data_dir) || false;
-  },
+  new: require(path.join(__dirname, './_new')),
+  del: require(path.join(__dirname, './_del')),
+  view: require(path.join(__dirname, './_view')),
 };

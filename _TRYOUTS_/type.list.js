@@ -2,7 +2,7 @@ const v_db = require("../index");
 
 listTypesTest = async () => {
   try {
-    console.log(await v_db.type.list());
+    console.log(await v_db.type.view());
     return true;
   } catch (error) {
     return false;

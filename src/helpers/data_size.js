@@ -1,10 +1,9 @@
 
 const v_fs = require('v_file_system');
 const path = require('path');
-const v_db = require(path.join(__dirname, '..'));
 
 
-const registerNewUser = async () => {
+data_size = async () => {
   console.log("🔀 Getting Data Size ");
 
   const helper = {
@@ -16,8 +15,8 @@ const registerNewUser = async () => {
     types: null,
     typeCount: null,
   };
-  console.log(helper.types)
-  helper.types = await v_db.type.view();
+
+  helper.types = await v_fs.promise.listDir(process.v.data_dir);
   helper.typeCount = helper.types.length;
 
 
@@ -26,7 +25,7 @@ const registerNewUser = async () => {
       type: helper.types[i],
       items: [],
     };
-    helper.types[i].items = await v_db.item.view(helper.types[i].type);
+    helper.types[i].items = await v_fs.promise.listDir(process.v.data_dir + '/' + helper.types[i].type);
     var typeSize = 0;
     var innerCount = helper.types[i].items.length;
     //console.log("inner count: " +innerCount);
@@ -55,6 +54,6 @@ const registerNewUser = async () => {
   return helper;
 };
 
+//data_size();
 
-module.exports = registerNewUser;
-
+module.exports = data_size;
