@@ -9,10 +9,10 @@ const v_db = {
 };
 
 console.log(`\n.=================================================.`);
-console.log(`| 🚀 - ${process.title}                          |`);
+console.log(`| 🚀 - ${process.v.title}                          |`);
 console.log(`+ - - - - - - - - - - - - - - - - - - - - - - - - +`);
 console.log(`| 📡 App Info :                                   |`);
-console.log(process.npmInfo._v_);
+console.log(process.v);
 console.log(`'================================================='`);
 
 module.exports = v_db;

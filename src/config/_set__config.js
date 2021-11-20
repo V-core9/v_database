@@ -5,9 +5,9 @@ const runMode = require('./_get__app-env');
 setEnvConfig = () => {
   try {
     if (runMode === "node") {
-      process.vConfig = config;
+      process.v = config;
     } else {
-      window.vConfig = config;
+      window.v = config;
     }
     return db_mode;
   } catch (error) {
