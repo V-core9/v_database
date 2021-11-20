@@ -2,7 +2,7 @@
 //const appTitle = require("./..set__app-title");
 //const consoleOutput = require("./..set__console-output");
 //const dataDir = require("./..set__data-dir");
-const dbMode = require("./set__env-config");
+const dbMode = require("./_set__config");
 
 const config = {
   dbMode
