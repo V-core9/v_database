@@ -2,15 +2,8 @@ const logIt = (msg) => {
   if (process.v.consoleOutput) console.log(msg);
 };
 
-var errorList = [];
 //<[ 🩺 - Data Validator ]>- - - - - - ->
-const validate = async (data, content) => {
-  const len = String(content).length;
-  if (data.min !== undefined) if (len < data.min) errorList.push(data.msg.error.min);
-  if (data.max !== undefined) if (len > data.max) errorList.push(data.msg.error.max);
-  if (data.format !== undefined) if (!data.format.test(content)) errorList.push(data.msg.error.format);
-  return;
-};
+const v_lidator = require('./v_lidator');
 //<- - - - - - - - - - - - - - - - - - ->
 
 //<[ 🔂 - user_schema ]>- - - - - - ->
@@ -24,9 +17,7 @@ const user_schema = {
       }
     },
     validate: async (email) => {
-      errorList = [];
-      await validate(user_schema.email, email);
-      return (errorList.length === 0) ? true : { type: "ERROR", items: errorList };
+      return await v_lidator(user_schema.email, email);
     }
   },
   password: {
@@ -43,11 +34,7 @@ const user_schema = {
       }
     },
     validate: async (password, password_confirm) => {
-      errorList = [];
-      const isSame = (password === password_confirm);
-      if (isSame !== true) errorList.push(user_schema.password.msg.error.confirm);
-      if (await validate(user_schema.password, password) === isSame) logIt(user_schema.password.msg.success);
-      return (errorList.length === 0) ? true : { type: "ERROR", items: errorList };
+      return (password === password_confirm) ? await v_lidator(user_schema.password, password) : user_schema.password.msg.error.confirm;
     },
   },
   username: {
@@ -63,9 +50,7 @@ const user_schema = {
       }
     },
     validate: async (username) => {
-      errorList = [];
-      if (await validate(user_schema.username, username) === process.v.consoleOutput) logIt(user_schema.username.msg.success);
-      return (errorList.length === 0) ? true : { type: "ERROR", items: errorList };
+      return await v_lidator(user_schema.username, username);
     }
   }
 };
