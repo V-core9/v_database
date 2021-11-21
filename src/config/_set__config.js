@@ -2,12 +2,14 @@
 const config = require('./v_config');
 const runMode = require('./_get__app-env');
 
-setEnvConfig = () => {
+console.log(config.npmInfo._v_.app_config[config.mode]);
+
+module.exports = () => {
   try {
     if (runMode === "node") {
-      process.v = config;
+      process.v = config.npmInfo._v_.app_config[config.mode];
     } else {
-      window.v = config;
+      window.v = config.npmInfo._v_.app_config[config.mode];
     }
     return db_mode;
   } catch (error) {
@@ -15,5 +17,3 @@ setEnvConfig = () => {
     return false;
   }
 };
-
-module.exports = setEnvConfig();

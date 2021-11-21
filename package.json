@@ -35,11 +35,11 @@
       },
       "dev": {
         "data_dir": "$_dev",
-        "data_mode": "\"perPost\""
+        "data_mode": "perPost"
       },
       "test": {
         "data_dir": "$_test",
-        "data_mode": "\"perPost\""
+        "data_mode": "perPost"
       }
     }
   }

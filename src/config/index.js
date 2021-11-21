@@ -1,5 +1,5 @@
 
-const db_mode = require("./_set__config");
+const config = require("./_set__config");
 
 /*
 if (process.v.consoleOutput === true) {
@@ -11,4 +11,4 @@ if (process.v.consoleOutput === true) {
   console.log(`\n📁 Database Mode : ${process.v.db_mode}`);
 }*/
 
-module.exports = db_mode;
+module.exports = config;

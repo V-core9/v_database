@@ -15,7 +15,8 @@ data_size = async () => {
     types: null,
     typeCount: null,
   };
-
+  console.log(process)
+  
   helper.types = await v_fs.promise.listDir(process.v.data_dir);
   helper.typeCount = helper.types.length;
 
@@ -54,6 +55,6 @@ data_size = async () => {
   return helper;
 };
 
-//data_size();
+data_size();
 
 module.exports = data_size;
