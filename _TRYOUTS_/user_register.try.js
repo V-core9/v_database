@@ -1,7 +1,7 @@
 const v_db = require("../index");
 
 const testData = require('./__test_data');
-const user = require("../input_templates/user");
+const user = require("../sys_module/user");
 
 
 

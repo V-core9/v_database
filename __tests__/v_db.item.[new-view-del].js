@@ -1,3 +1,5 @@
+var usersCountPreTestValue = 0;
+
 
 const v_db = require("../index");
 const v_fs = require("v_file_system");
@@ -13,6 +15,8 @@ const new_test_count = 3000;
 
 
 preTest = async () => {
+  var usersCountPreVal = await v_db.item.view('users');
+  usersCountPreTestValue = usersCountPreVal.length;
   var checkRes = await v_fs.promise.isDir(process.v.data_dir);
   console.log(`Test Dir Status : ${checkRes}`);
   if (!checkRes) checkRes = await v_fs.promise.mkdir(process.v.data_dir);
@@ -25,16 +29,6 @@ preTest = async () => {
   }
   return checkRes;
 };
-
-
-test('Creating Tables', async () => {
-  expect(await preTest()).toEqual(true);
-});
-
-test('After Created Tables', async () => {
-  const resTest = await v_db.type.view();
-  expect(testData._types).toEqual(expect.arrayContaining(resTest));
-});
 
 
 
@@ -77,6 +71,16 @@ const registerRandom = async () => {
   return true;
 };
 
+
+test('Creating Tables', async () => {
+  expect(await preTest()).toEqual(true);
+});
+
+test('After Created Tables', async () => {
+  const resTest = await v_db.type.view();
+  expect(testData._types).toEqual(expect.arrayContaining(resTest));
+});
+
 test('Creating ITEMS', async () => {
   expect(await registerRandom()).toEqual(true);
   console.log(process.v.resultCount);
@@ -84,7 +88,7 @@ test('Creating ITEMS', async () => {
 
 test('CHECKING UP THOSE ITEMS', async () => {
   const resItems = await v_db.item.view('users');
-  expect(resItems.length).toEqual(process.v.resultCount.success);
+  expect(resItems.length).toEqual((process.v.resultCount.success + usersCountPreTestValue));
 });
 
 
