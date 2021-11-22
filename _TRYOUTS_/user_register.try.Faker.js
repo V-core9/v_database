@@ -14,6 +14,7 @@ test_it = async () => {
     });
   }
 
+  process.v.shouldStopLoopConsole = true;
 };
 
 test_it();

@@ -1,19 +1,20 @@
 {
-  "files.exclude": {
-    "**/.git": true,
-    "**/.svn": true,
-    "**/.hg": true,
-    "**/CVS": true,
-    "**/.DS_Store": true,
-    "**/Thumbs.db": true,
-    ".jshintrc": true,
-    "package-lock.json": true,
-    ".vscode": true,
-    ".gitignore": true,
-    ".editorconfig": true,
-    "coverage": true,
-    ".github/*.*": true,
-    ".github": true,
-  },
-  "explorerExclude.backup": null
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "**/Thumbs.db": true,
+        "package-lock.json": true,
+        ".vscode": true,
+        ".github": true,
+        "node_modules": true,
+        ".editorconfig": true,
+        ".gitignore": true,
+        ".jshintrc": true,
+        "LICENSE": true,
+        "jest.config.js": true
+    },
+    "explorerExclude.backup": null
 }

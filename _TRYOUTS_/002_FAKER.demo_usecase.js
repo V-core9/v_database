@@ -16,19 +16,25 @@ registerRandomUserFaker = async () => {
   });
   return resp;
 };
-const newCount = 150000;
+const new_test_count = 100000;
 const x1 = Date.now();
 
 
 const registerRandom = async () => {
-  var i = 1;
-  var result = null;
-  for (i = 1; i < newCount; i++) {
+  for (let i = 1; i < new_test_count; i++) {
     //console.log(await registerRandomUserFaker());
     await registerRandomUserFaker();
   }
 
-  console.log('New Users [ ' + newCount + ' ] | Average Exec Time  [ ' + (Date.now() - x1) / newCount + ' ms ] | Total Exec Time  [ ' + (Date.now() - x1) + ' ms ]');
+  const teTime = (Date.now() - x1);
+  const execResult = {
+    requests_count: new_test_count,
+    average_req_exec_time: (teTime / new_test_count),
+    total_exec_time: teTime,
+    req_per_second: Math.trunc(1000 * new_test_count / teTime)
+  };
+  console.log(execResult);
+  process.v.shouldStopLoopConsole = true;
 };
 
 registerRandom();

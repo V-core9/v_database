@@ -1,7 +1,7 @@
 const v_db = require("../index");
 
 listItemsTest = async (type) => {
-  const items = await v_db.item.list(type);
+  const items = await v_db.item.view(type);
   console.log(items);
   var resp = [];
   items.forEach(async (item) => {
