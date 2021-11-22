@@ -1,13 +1,13 @@
 const v_db = require("../index");
-const testData = require('./test_data');
+const testData = require('./__test_data');
 
 
 mkTestBases = async () => {
   try {
-    const res = [ v_db.type.new(testData.db.name) ];
+    const res = [v_db.type.new(testData.db.name)];
 
     for (let i = 1; i <= testData.typeCount; i++) {
-      res.push(await v_db.type.new( testData.db.name + "__" + i));
+      res.push(await v_db.type.new(testData.db.name + "__" + i));
     }
     return true;
   } catch (error) {
