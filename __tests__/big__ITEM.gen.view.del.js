@@ -6,7 +6,7 @@ const testData = require('./.test_._data');
 
 process.v.data_dir = process.v.npmInfo._v_.app_config.test.data_dir;
 
-const user = require("../input_templates/user");
+const user = require("../sys_module/user");
 var faker = require('faker');
 const new_test_count = 3000;
 

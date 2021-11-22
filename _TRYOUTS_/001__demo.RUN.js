@@ -27,8 +27,8 @@ list_entries = () => {
 
 run_it = async () => {
   const xTime1 = Date.now();
-  //await list_entries();
-  //await v_db.item.view('users');
+  await list_entries();
+  await v_db.item.view('users');
 
 
   //const mojFilter = { id: '000c6191-418f-4501-90a2-7d855f53833a' };
@@ -47,9 +47,9 @@ run_it = async () => {
   //var findUser04 = await v_db.item.view('users','000c6191-418f-4501-90a2-7d855f53833a');
   //console.log(findUser04);
 
-  const tbl =  await create_tables();
-  const ent =  await create_entries();
-  console.log( tbl +"/"+ent + "++>> "+ (Date.now() - xTime1 ));
+  const tbl = await create_tables();
+  const ent = await create_entries();
+  console.log(tbl + "/" + ent + "++>> " + (Date.now() - xTime1));
 };
 
 run_it();

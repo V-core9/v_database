@@ -69,5 +69,6 @@ var intervalDemoConsole = setInterval(() => {
   }
 }, 1000);
 
+process.v.resultCount = resultCount;
 
 module.exports = register;

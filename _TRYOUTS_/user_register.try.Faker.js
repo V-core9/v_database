@@ -1,5 +1,5 @@
 const v_db = require("../index");
-const user = require("../input_templates/user");
+const user = require("../sys_module/user");
 var faker = require('faker');
 
 test_it = async () => {
