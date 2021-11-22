@@ -35,7 +35,7 @@ const user_schema = {
     },
   },
   username: {
-    min: 6,
+    min: 4,
     max: 32,
     format: /^[A-Za-z][A-Za-z0-9_.]{0,255}$/,
     msg: {

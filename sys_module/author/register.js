@@ -55,6 +55,7 @@ register = async (data) => {
   return err;
 };
 
+/*
 const stopInterval = () => {
   clearInterval(intervalDemoConsole);
   intervalDemoConsole = null;
@@ -68,6 +69,6 @@ var intervalDemoConsole = setInterval(() => {
     console.log(resultCount);
   }
 }, 1000);
-
+*/
 
 module.exports = register;

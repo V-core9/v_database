@@ -1,7 +1,7 @@
 const v_db = require("../index");
 const v_fs = require("v_file_system");
 
-const testData = require('./.test_._data');
+const testData = require('../.test_._data');
 
 process.v.data_dir = process.v.npmInfo._v_.app_config.test.data_dir;
 
