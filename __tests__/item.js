@@ -1,16 +1,14 @@
 var usersCountPreTestValue = 0;
 
-
+const testData = require('../.test_._data');
+var faker = require('faker');
 const v_db = require("../index");
 const v_fs = require("v_file_system");
 
-const testData = require('../.test_._data');
 
 process.v.data_dir = process.v.npmInfo._v_.app_config.test.data_dir;
 
 const user = require("../sys_module/user");
-var faker = require('faker');
-
 
 
 preTest = async () => {
@@ -28,8 +26,6 @@ preTest = async () => {
   }
   return checkRes;
 };
-
-
 
 
 
@@ -62,7 +58,7 @@ executionProfileMetrics = async () => {
   return process.v.shouldStopLoopConsole;
 };
 
-const registerRandom = async () => {
+(async () => {
 
   test('Creating Tables', async () => {
     expect(await preTest()).toEqual(true);
@@ -73,11 +69,11 @@ const registerRandom = async () => {
     expect(testData._types).toEqual(expect.arrayContaining(resTest));
   });
 
-  for (let i = 1; i < testData._content.numberToGenerate; i++) {
 
+  for (let i = 1; i < testData._content.numberToGenerate; i++) {
     test('Creating ITEMS', async () => {
-      expect(await registerRandomUserFaker()).toEqual(true);
-      //console.log(process.v.resultCount);
+      const res = await registerRandomUserFaker();
+      expect((typeof res.input_value !== 'undefined') ? (res.input_value.length < 4) : true).toEqual(true);
     });
   }
 
@@ -88,11 +84,5 @@ const registerRandom = async () => {
   });
 
   await executionProfileMetrics();
-
   return true;
-};
-
-
-
-
-registerRandom();
+})();

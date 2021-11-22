@@ -20,7 +20,7 @@
   "main": "index.js",
   "repository": "V-core9/v_db",
   "scripts": {
-    "test": "jest",
+    "test": "bash -c \"rm -r -f \\$_test/* ; jest \"",
     "test_cleanup": "bash -c \" PWD \" && echo \"🎉 Done Test Data Cleaning\" && exit "
   },
   "_v_": {
