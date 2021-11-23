@@ -1,108 +1,8 @@
-const gradient = require('gradient-string');
+
 const readline = require('readline');
 const chalk = require('chalk');
 
-
-const vMenu = {
-  name: 'vMenu',
-  val: {
-    _val: 1,
-    min: 1,
-    max: 7,
-    set: (val) => {
-      //console.log(`[INTO]  IN: ${val}  [is :: ${vMenu.val._val} | min : ${vMenu.val.min} | max : ${vMenu.val.max}]`);
-      if (val >= vMenu.val.min && val <= vMenu.val.max) {
-        vMenu.val._val = val;
-        v_cli._redraw_needed = true;
-      } else {
-        //console.log(`[ERROR] Invalid Value <: IN: ${val} :> [is :: ${vMenu.val._val} | min : ${vMenu.val.min} | max : ${vMenu.val.max}]`);
-        return false;
-      }
-      return v_cli._redraw_needed;
-    },
-    get: () => {
-      return vMenu.val._val;
-    }
-  },
-  items: [
-    {
-      name: "app.install",
-      text: () => {
-        var helperName = "Start Install Process";
-        return `  ${(vMenu.val.get() === 1) ? '▶ [ ' + helperName + '  ]' : '  ▷ ' + helperName} `;
-      },
-      do: () => {
-        console.log('YEA1');
-        process.exit();
-      }
-    },
-    {
-      name: "type.new",
-      text: () => {
-        var helperName = "Create New TYPE";
-        return `  ${(vMenu.val.get() === 2) ? '▶ [ ' + helperName + '  ]' : '  ▷ ' + helperName} `;
-      },
-      do: () => {
-        console.log('YEA2');
-        process.exit();
-      }
-    },
-    {
-      name: "type.view.all",
-      text: () => {
-        var helperName = "View TYPES";
-        return `  ${(vMenu.val.get() === 3) ? '▶ [ ' + helperName + '  ]' : '  ▷ ' + helperName} `;
-      },
-      do: () => {
-        console.log('YEA13');
-        process.exit();
-      }
-    },
-    {
-      name: "type.remove",
-      text: () => {
-        var helperName = "Remove TYPE";
-        return `  ${(vMenu.val.get() === 4) ? '▶ [ ' + helperName + '  ]' : '  ▷ ' + helperName} `;
-      },
-      do: () => {
-        console.log('YEA14');
-        process.exit();
-      }
-    },
-    {
-      name: "item.new",
-      text: () => {
-        var helperName = "New ITEM";
-        return `  ${(vMenu.val.get() === 5) ? '▶ [ ' + helperName + '  ]' : '  ▷ ' + helperName} `;
-      },
-      do: () => {
-        console.log('YEA15');
-        process.exit();
-      }
-    },
-    {
-      name: "item.view.all",
-      text: () => {
-        var helperName = "View ITEMS";
-        return `  ${(vMenu.val.get() === 6) ? '▶ [ ' + helperName + '  ]' : '  ▷ ' + helperName} `;
-      },
-      do: () => {
-        console.log('YEA16');
-        process.exit();
-      }
-    },
-    {
-      name: "menu.align_toggle",
-      text: () => {
-        var helperName = "Toggle Alignment : " + v_cli.$_PAGE_ALIGN;
-        return `  ${(vMenu.val.get() === 7) ? '▶ [ ' + helperName + '  ]' : '  ▷ ' + helperName} `;
-      },
-      do: () => {
-        v_cli.$_PAGE_ALIGN_Toggle();
-      }
-    }
-  ]
-};
+var current_menu = null;
 
 const v_cli = {
   $_redraw_mode: 'keypress',
@@ -164,18 +64,19 @@ const v_cli = {
       y_min: 15
     }
   },
+
   keypress(str, key) {
 
     if (key.name === 'up') {
-      vMenu.val.set(vMenu.val._val - 1);
+      current_menu.val.set(current_menu.val._val - 1);
     }
 
     if (key.name === 'down') {
-      vMenu.val.set(vMenu.val._val + 1);
+      current_menu.val.set(current_menu.val._val + 1);
     }
 
     if (key.name === 'return') {
-      vMenu.items[vMenu.val._val - 1].do();
+      current_menu.items[current_menu.val._val - 1].do();
     }
 
     if (key.ctrl && key.name === 'c') {
@@ -363,23 +264,172 @@ const v_cli = {
 
 };
 
+
+//?<[ CONTENT ]>
+//?- - - - - - - - - - - - - 
+
+//* PAGE : Home >- - - - - - - - - 
 const page_homepage = () => {
   return [
     '  WELCOME TO V_Database CLI Admin ',
     '  - - - - - - - - - - - - - - - - -  ',
     '',
     `${vMenu.items[0].text()}`,
+    ` `,
     `${vMenu.items[1].text()}`,
+    ` `,
     `${vMenu.items[2].text()}`,
-    `${vMenu.items[3].text()}`,
-    `${vMenu.items[4].text()}`,
-    `${vMenu.items[5].text()}`,
-    `${vMenu.items[6].text()}`,
     '',
     '  - - - - - - - - - - - - - - - - -  ',
   ];
 };
 
+//* MENU : Main  >- - - - - - - - - 
+const vMenu = {
+  name: 'vMenu',
+  val: {
+    _val: 1,
+    min: 1,
+    max: 3,
+    set: (val) => {
+      if (val >= vMenu.val.min && val <= vMenu.val.max) {
+        vMenu.val._val = val;
+        v_cli._redraw_needed = true;
+      } else {
+        return false;
+      }
+      return v_cli._redraw_needed;
+    },
+    get: () => {
+      return vMenu.val._val;
+    }
+  },
+  items: [
+    {
+      text: () => {
+        var helperName = "System Settings";
+        return `  ${(vMenu.val.get() === 1) ? '▶ [ ' + helperName + '  ]' : '  ▷ ' + helperName} `;
+      },
+      do: () => {
+        v_cli.$_PAGE = page_settings_page;
+        v_cli.$_PAGE_ALIGN = 'left';
+        v_cli._redraw_needed = true;
+        current_menu = vMenu_settings;
+        v_cli.draw_container();
+      }
+    },
+    {
+      text: () => {
+        var helperName = "Toggle Alignment : << " + v_cli.$_PAGE_ALIGN + " >> ";
+        return `  ${(vMenu.val.get() === 2) ? '▶ [ ' + helperName + '  ]' : '  ▷ ' + helperName} `;
+      },
+      do: () => {
+        v_cli.$_PAGE_ALIGN_Toggle();
+      }
+    },
+    {
+      text: () => {
+        var helperName = "Exit";
+        return `  ${(vMenu.val.get() === 3) ? '▶ X ' + helperName + '  X' : '  ▷ ' + helperName} `;
+      },
+      do: () => {
+        process.exit();
+      }
+    }
+  ]
+};
+
+//* PAGE : Settings >- - - - - - - - - 
+const page_settings_page = () => {
+  return [
+    '  ⋚ V_Database :: System Settings Page ',
+    '  - - - - - - - - - - - - - - - - -  ',
+    '',
+    `${vMenu_settings.items[0].text()}`,
+    `${vMenu_settings.items[1].text()}`,
+    `${vMenu_settings.items[2].text()}`,
+    `${vMenu_settings.items[3].text()}`,
+    ` `,
+    `${vMenu_settings.items[4].text()}`,
+    '',
+    '  - - - - - - - - - - - - - - - - -  ',
+  ];
+};
+
+//* Homepage MENU >- - - - - - - - - 
+const vMenu_settings = {
+  name: 'vMenu',
+  val: {
+    _val: 1,
+    min: 1,
+    max: 6,
+    set: (val) => {
+      if (val >= vMenu_settings.val.min && val <= vMenu_settings.val.max) {
+        vMenu_settings.val._val = val;
+        v_cli._redraw_needed = true;
+      } else {
+        return false;
+      }
+      return v_cli._redraw_needed;
+    },
+    get: () => {
+      return vMenu_settings.val._val;
+    }
+  },
+  items: [
+    {
+      text: () => {
+        var helperName = "Redraw Mode : << " + v_cli.$_redraw_mode + " >>";
+        return `  ${(vMenu_settings.val.get() === 1) ? '▶ [ ' + helperName + '  ]' : '  ▷ ' + helperName} `;
+      },
+      do: () => {
+        v_cli.$_PAGE_ALIGN_Toggle();
+      }
+    },
+    {
+      text: () => {
+        var helperName = "App Mode << " + v_cli.config.mode.$_val + " >> ";
+        return `  ${(vMenu_settings.val.get() === 2) ? '▶ [ ' + helperName + '  ]' : '  ▷ ' + helperName} `;
+      },
+      do: () => {
+        v_cli.$_PAGE_ALIGN_Toggle();
+      }
+    },
+    {
+      text: () => {
+        var helperName = "Redraw Interval << " + v_cli.$_redraw_interval + "ms >> ";
+        return `  ${(vMenu_settings.val.get() === 3) ? '▶ [ ' + helperName + '  ]' : '  ▷ ' + helperName} `;
+      },
+      do: () => {
+        process.exit();
+      }
+    },
+    {
+      text: () => {
+        var helperName = "Toggle Alignment : " + v_cli.$_PAGE_ALIGN;
+        return `  ${(vMenu_settings.val.get() === 4) ? '▶ [ ' + helperName + '  ]' : '  ▷ ' + helperName} `;
+      },
+      do: () => {
+        v_cli.$_PAGE_ALIGN_Toggle();
+      }
+    },
+    {
+      text: () => {
+        var helperName = "Go Back ";
+        return `  ${(vMenu_settings.val.get() === 5) ? '▶ [ ' + helperName + '  ]' : '  ▷ ' + helperName} `;
+      },
+      do: () => {
+        v_cli.$_PAGE = page_homepage;
+        v_cli.$_PAGE_ALIGN = 'center';
+        v_cli._redraw_needed = true;
+        current_menu = vMenu;
+        v_cli.draw_container();
+      }
+    }
+  ]
+};
+
+current_menu = vMenu;
 v_cli.$_PAGE_ALIGN = 'center';
 v_cli.$_PAGE = page_homepage;
 
