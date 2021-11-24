@@ -57,7 +57,7 @@ const email_test_list = [
   },
   {
     input: 'Demo_____1@mail.com',
-    output: true
+    output: errorFormatString
   },
   {
     input: 'Demo123455367345531231264362352341234123123123123',
@@ -68,7 +68,7 @@ const email_test_list = [
     output: errorFormatString
   },
   {
-    input: 'Demo123123@mail.com',
+    input: 'Demo12312312312@mail.com',
     output: true
   },
   {
@@ -77,6 +77,22 @@ const email_test_list = [
   },
   {
     input: 'WEQ23652@mail.com',
+    output: true
+  },
+  {
+    input: '214219407124a@mail.com',
+    output: true
+  },
+  {
+    input: '214219407124@mail.com',
+    output: errorFormatString
+  },
+  {
+    input: 'QWUE.OW.Q.IN.ANDPIn@mail.com',
+    output: true
+  },
+  {
+    input: 'demo53266@mail.com',
     output: true
   },
   {

@@ -5,7 +5,7 @@ const v_lidator = require('../v_lidator');
 //<[ 🔂 - user_schema ]>- - - - - - ->
 const user_schema = {
   email: {
-    format: /^[A-Za-z][A-Za-z0-9_.]+@[^\s@]+\.[^\s@]+$/,
+    format: /^[A-Za-z0-9][A-Za-z0-9.]+@[^\s@]+\.[^\s@]+$/,
     //format: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
     msg: {
       success: "✅ Success\n📫 Email Verified Successfully.",
@@ -14,7 +14,9 @@ const user_schema = {
       }
     },
     validate: async (email) => {
-      return await v_lidator(user_schema.email, email);
+      if (email.split('@').length === 2 && isNaN(email.split('@')[0])) {
+        return await v_lidator(user_schema.email, email);
+      } return [{"confirm": undefined, "input_value": email, "msg": user_schema.email.msg.error.format, "suggest": "Try removing special characters.", "type": "error"}];
     }
   },
   password: {
