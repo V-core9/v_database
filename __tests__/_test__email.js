@@ -93,11 +93,11 @@ const email_test_list = [
   },
   {
     input: 'WEQ23652+@mail.com',
-    output: true
+    output: outString
   },
   {
     input: 'WEQ2+3652@mail.com',
-    output: true
+    output: outString
   },
   {
     input: '@@+WEQ23652@mail.com',
@@ -105,7 +105,7 @@ const email_test_list = [
   },
   {
     input: '+WEQ23652@mail.com',
-    output: true
+    output: outString
   },
   {
     input: 'shouldWork11@mail+com',
