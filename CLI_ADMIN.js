@@ -4,7 +4,7 @@ const chalk = require('chalk');
 
 
 const v_cli_paint = {
-  colorSchemes : {
+  colorSchemes: {
     default: {
       name: "default",
       logo: {
@@ -23,7 +23,7 @@ const v_cli_paint = {
         b: 255,
       },
     },
-  
+
     light: {
       name: "light",
       logo: {
@@ -44,10 +44,10 @@ const v_cli_paint = {
     }
   },
   scheme: null,
-  checkScheme (){
+  checkScheme() {
     if (this.scheme === null) {
       this.scheme = this.colorSchemes.default;
-    } 
+    }
   },
   $__Color(rgb, text) {
     return chalk.rgb(rgb.r, rgb.g, rgb.b)(text);
@@ -60,7 +60,7 @@ const v_cli_paint = {
     v_cli_paint.checkScheme();
     return v_cli_paint.$__Color(v_cli_paint.scheme.border, text);
   },
-  toggleTheme(){
+  toggleTheme() {
     v_cli_paint.scheme = (v_cli_paint.scheme.name === "default") ? v_cli_paint.colorSchemes.light : v_cli_paint.colorSchemes.default;
   }
 };
@@ -139,12 +139,28 @@ const v_cli = {
       __options: ['dev', 'test', 'live'],
       $_val: "dev",
       set(value) {
-        if (!this.__options.includes(value)) return false;
-        this.$_val = value;
+        if (!v_cli.config.mode.__options.includes(value)) return false;
+        v_cli.config.mode.$_val = value;
+
+        v_cli._redraw_needed = true;
+        v_cli.draw_container();
       },
       get() {
-        return this.$_val;
+        return v_cli.config.mode.$_val;
       },
+      toggle() {
+        if (v_cli.config.mode.$_val === 'dev') {
+          v_cli.config.mode.set('test');
+        } else if (this.$_val === 'test') {
+          v_cli.config.mode.set('live');
+        } else if (v_cli.config.mode.$_val === 'live') {
+          v_cli.config.mode.set('dev');
+        }
+
+        if (!v_cli.config.mode.__options.includes(v_cli.config.mode.$_val)) {
+          v_cli.config.mode.set('live');
+        }
+      }
     },
     redraws: 0
   },
@@ -417,7 +433,7 @@ const $_HOME = {
       {
         text: () => {
           var helperName = "System Settings";
-          return `  ${($_HOME.menu.val.get() === 1) ? '▶ [ ' + helperName + '  ]' : '  ▷ ' + helperName} `;
+          return `  ${($_HOME.menu.val.get() === 1) ? ' ▶  ' + helperName : '  ▷ ' + helperName} `;
         },
         do: () => {
           v_cli.$_PAGE = $_SETTINGS;
@@ -427,8 +443,8 @@ const $_HOME = {
       },
       {
         text: () => {
-          var helperName = "Toggle Alignment : << " + v_cli.$_PAGE.config.align + " >> ";
-          return `  ${($_HOME.menu.val.get() === 2) ? '▶ [ ' + helperName + '  ]' : '  ▷ ' + helperName} `;
+          var helperName = "Toggle Alignment : [ " + v_cli.$_PAGE.config.align + " ]";
+          return `  ${($_HOME.menu.val.get() === 2) ? ' ▶  ' + helperName : '  ▷ ' + helperName} `;
         },
         do: () => {
           v_cli.$alignToggle();
@@ -492,8 +508,8 @@ const $_SETTINGS = {
     items: [
       {
         text: () => {
-          var helperName = "Redraw Mode : << " + v_cli.$_redraw_mode + " >>";
-          return `  ${($_SETTINGS.menu.val.get() === 1) ? '▶ [ ' + helperName + '  ]' : '  ▷ ' + helperName} `;
+          var helperName = "Redraw Mode : [ " + v_cli.$_redraw_mode + " ] ";
+          return `  ${($_SETTINGS.menu.val.get() === 1) ? ' ▶  ' + helperName : '  ▷ ' + helperName} `;
         },
         do: () => {
           v_cli.$alignToggle();
@@ -501,8 +517,17 @@ const $_SETTINGS = {
       },
       {
         text: () => {
-          var helperName = "App Mode << " + v_cli.config.mode.$_val + " >> ";
-          return `  ${($_SETTINGS.menu.val.get() === 2) ? '▶ [ ' + helperName + '  ]' : '  ▷ ' + helperName} `;
+          var helperName = "App Mode :  [ " + v_cli.config.mode.$_val + " ] ";
+          return `  ${($_SETTINGS.menu.val.get() === 2) ? ' ▶  ' + helperName : '  ▷ ' + helperName} `;
+        },
+        do: () => {
+          v_cli.config.mode.toggle();
+        }
+      },
+      {
+        text: () => {
+          var helperName = "Redraw Interval : [ " + v_cli.$_redraw_interval + "ms ] ";
+          return `  ${($_SETTINGS.menu.val.get() === 3) ? ' ▶  ' + helperName : '  ▷ ' + helperName} `;
         },
         do: () => {
           v_cli.$alignToggle();
@@ -510,8 +535,8 @@ const $_SETTINGS = {
       },
       {
         text: () => {
-          var helperName = "Redraw Interval << " + v_cli.$_redraw_interval + "ms >> ";
-          return `  ${($_SETTINGS.menu.val.get() === 3) ? '▶ [ ' + helperName + '  ]' : '  ▷ ' + helperName} `;
+          var helperName = "Toggle Alignment : [ " + v_cli.$_PAGE.config.align + " ] ";
+          return `  ${($_SETTINGS.menu.val.get() === 4) ? ' ▶  ' + helperName : '  ▷ ' + helperName} `;
         },
         do: () => {
           v_cli.$alignToggle();
@@ -519,17 +544,8 @@ const $_SETTINGS = {
       },
       {
         text: () => {
-          var helperName = "Toggle Alignment : " + v_cli.$_PAGE.config.align;
-          return `  ${($_SETTINGS.menu.val.get() === 4) ? '▶ [ ' + helperName + '  ]' : '  ▷ ' + helperName} `;
-        },
-        do: () => {
-          v_cli.$alignToggle();
-        }
-      },
-      {
-        text: () => {
-          var helperName = "Change Theme :    <<  " + v_cli_paint.scheme.name + "  >>  ";
-          return `  ${($_SETTINGS.menu.val.get() === 5) ? '▶ [ ' + helperName + '  ]' : '  ▷ ' + helperName} `;
+          var helperName = "Change Theme :    [ " + v_cli_paint.scheme.name + " ]  ";
+          return `  ${($_SETTINGS.menu.val.get() === 5) ? ' ▶  ' + helperName : '  ▷ ' + helperName} `;
         },
         do: () => {
           v_cli_paint.toggleTheme();
@@ -540,7 +556,7 @@ const $_SETTINGS = {
       {
         text: () => {
           var helperName = "Go Back ";
-          return `  ${($_SETTINGS.menu.val.get() === 6) ? '▶ [ ' + helperName + '  ]' : '  ▷ ' + helperName} `;
+          return `  ${($_SETTINGS.menu.val.get() === 6) ? ' ▶  ' + helperName : '  ▷ ' + helperName} `;
         },
         do: () => {
           v_cli.$_PAGE = $_HOME;
