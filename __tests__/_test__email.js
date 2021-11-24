@@ -100,6 +100,10 @@ const email_test_list = [
     output: errorFormatString
   },
   {
+    input: 'WEQ2365....2@mail.com',
+    output: errorFormatString
+  },
+  {
     input: 'WEQ@23652@mail.com',
     output: errorFormatString
   },

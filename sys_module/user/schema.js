@@ -14,7 +14,7 @@ const user_schema = {
       }
     },
     validate: async (email) => {
-      if (email.split('@').length === 2 && isNaN(email.split('@')[0])) {
+      if (email.split('..').length === 1 && email.split('@').length === 2 && isNaN(email.split('@')[0])) {
         return await v_lidator(user_schema.email, email);
       } return [{"confirm": undefined, "input_value": email, "msg": user_schema.email.msg.error.format, "suggest": "Try removing special characters.", "type": "error"}];
     }
