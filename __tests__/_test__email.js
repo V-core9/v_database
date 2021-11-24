@@ -1,7 +1,7 @@
 const user_schema = require('../sys_module/user/schema.js');
 
 
-const outString = (string) => {
+const errorFormatString = (string) => {
   return [
     { 
       "confirm": undefined, 
@@ -17,43 +17,43 @@ const outString = (string) => {
 const email_test_list = [
   {
     input: 'Demo',
-    output: outString
+    output: errorFormatString
   },
   {
     input: 'DemoUser',
-    output: outString
+    output: errorFormatString
   },
   {
     input: '.',
-    output: outString
+    output: errorFormatString
   },
   {
     input: '..',
-    output: outString
+    output: errorFormatString
   },
   {
     input: '.._',
-    output: outString
+    output: errorFormatString
   },
   {
     input: 'De_',
-    output: outString
+    output: errorFormatString
   },
   {
     input: 'De/.mo',
-    output: outString
+    output: errorFormatString
   },
   {
     input: 'De\lmo',
-    output: outString
+    output: errorFormatString
   },
   {
     input: 'De\\mo',
-    output: outString
+    output: errorFormatString
   },
   {
     input: 'Demo\\',
-    output: outString
+    output: errorFormatString
   },
   {
     input: 'Demo_____1@mail.com',
@@ -61,11 +61,11 @@ const email_test_list = [
   },
   {
     input: 'Demo123455367345531231264362352341234123123123123',
-    output: outString
+    output: errorFormatString
   },
   {
     input: 'Demo@@3123@mail.com',
-    output: outString
+    output: errorFormatString
   },
   {
     input: 'Demo123123@mail.com',
@@ -81,35 +81,35 @@ const email_test_list = [
   },
   {
     input: '@WEQ23652@mail.com',
-    output: outString
+    output: errorFormatString
   },
   {
     input: 'WEQ@23652@mail.com',
-    output: outString
+    output: errorFormatString
   },
   {
     input: 'WEQ23@@652@mail.com',
-    output: outString
+    output: errorFormatString
   },
   {
     input: 'WEQ23652+@mail.com',
-    output: outString
+    output: errorFormatString
   },
   {
     input: 'WEQ2+3652@mail.com',
-    output: outString
+    output: errorFormatString
   },
   {
     input: '@@+WEQ23652@mail.com',
-    output: outString
+    output: errorFormatString
   },
   {
     input: '+WEQ23652@mail.com',
-    output: outString
+    output: errorFormatString
   },
   {
     input: 'shouldWork11@mail+com',
-    output: outString
+    output: errorFormatString
   }
 ];
 
