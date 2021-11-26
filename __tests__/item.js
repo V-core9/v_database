@@ -1,15 +1,12 @@
 var usersCountPreTestValue = 0;
 
-const testData = require('../.test_._data');
-var faker = require('faker');
 const v_db = require("../index");
 const v_fs = require("v_file_system");
-
+const testData = require('../test-data/');
 
 process.v.data_dir = process.v.npmInfo._v_.app_config.test.data_dir;
 
-const user = require("../sys_module/user");
-
+const x1 = Date.now();
 
 preTest = async () => {
   var usersCountPreVal = await v_db.item.view('users');
@@ -21,28 +18,11 @@ preTest = async () => {
 
   const typesCount = testData._types.length;
 
-  for (let i = 1; i <= typesCount; i++) {
+  for (let i = 0; i < typesCount; i++) {
     res.push(await v_db.type.new(testData._types[i]));
   }
   return checkRes;
 };
-
-
-
-registerRandomUserFaker = async () => {
-  var emailH = faker.internet.email();
-  var userNameH = faker.internet.userName();
-  var passwordH = 'faker.internet.password()';
-
-  const resp = await user.register({
-    username: userNameH,
-    email: emailH,
-    password: passwordH,
-    password_confirm: passwordH
-  });
-  return resp;
-};
-const x1 = Date.now();
 
 
 executionProfileMetrics = async () => {
@@ -72,15 +52,20 @@ executionProfileMetrics = async () => {
 
   for (let i = 1; i < testData._content.numberToGenerate; i++) {
     test('Creating ITEMS', async () => {
-      const res = await registerRandomUserFaker();
-      expect((typeof res.input_value !== 'undefined') ? (res.input_value.length < 4) : true).toEqual(true);
+      const itemNumber = i % testData._types.length;
+      const typeNum = Math.trunc(itemNumber);
+      const helpType = testData._types[typeNum];
+      const res = await v_db.item.new(helpType, JSON.stringify(testData));
+      console.log("Type Number" + typeNum + "| " + helpType + "| Item Number : " + itemNumber + "| RES: " + res);
+      expect(res).toEqual(true);
     });
   }
 
 
   test('CHECKING UP THOSE ITEMS', async () => {
-    const resItems = await v_db.item.view('users');
-    expect(resItems.length).toEqual((process.v.resultCount.success + usersCountPreTestValue));
+    const resTest = await v_db.item.view('users');
+    const usersList = await v_fs.promise.listDir(process.v.data_dir + '/' + 'users');
+    expect(resTest.length).toEqual(usersList.length);
   });
 
   await executionProfileMetrics();
