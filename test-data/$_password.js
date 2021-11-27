@@ -35,11 +35,11 @@ const $_password = {
         var formErr = $_password.formatErr(string, confirm);
         return [minErr[0], formErr[0]];
     },
-    maxConfirmErr(string, confirm = undefined) {
-        var maxErr = $_password.maxErr(string, confirm);
-        var confErr = $_password.confirmErr(string, confirm);
-        return [maxErr[0], confErr[0]];
-    }
+    // maxConfirmErr(string, confirm = undefined) {
+    //     var maxErr = $_password.maxErr(string, confirm);
+    //     var confErr = $_password.confirmErr(string, confirm);
+    //     return [maxErr[0], confErr[0]];
+    // }
 };
 
 exports.$_password = $_password;
