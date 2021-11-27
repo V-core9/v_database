@@ -1,8 +1,8 @@
-
+const types = require('./types');
 
 module.exports = {
     items_count: 500,
-    _types: require('./types').default,
+    _types: types,
     _content: {
         testData: {
             key: 1234567890,

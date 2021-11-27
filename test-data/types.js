@@ -1,4 +1,4 @@
-export default [
+module.exports = [
     "encryption_keys",
     "system_api_keys",
     "system_log",
