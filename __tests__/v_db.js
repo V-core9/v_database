@@ -10,9 +10,7 @@ const x1 = Date.now();
 
 preTest = async () => {
   var usersCountPreVal = await v_db.item.view("users");
-  usersCountPreTestValue = isNaN(usersCountPreVal.length)
-    ? 0
-    : usersCountPreVal.length;
+  usersCountPreTestValue = isNaN(usersCountPreVal.length) ? 0 : usersCountPreVal.length;
   var checkRes = await v_fs.promise.isDir(process.v.data_dir);
   console.log(`Test Dir Status : ${checkRes}`);
   if (!checkRes) checkRes = await v_fs.promise.mkdir(process.v.data_dir);
