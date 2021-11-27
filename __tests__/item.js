@@ -28,10 +28,10 @@ preTest = async () => {
 executionProfileMetrics = async () => {
   const teTime = (Date.now() - x1);
   const execResult = {
-    requests_count: testData._content.numberToGenerate,
-    average_req_exec_time: (teTime / testData._content.numberToGenerate),
+    requests_count: testData.items_count,
+    average_req_exec_time: (teTime / testData.items_count),
     total_exec_time: teTime,
-    req_per_second: Math.trunc(1000 * testData._content.numberToGenerate / teTime)
+    req_per_second: Math.trunc(1000 * testData.items_count / teTime)
   };
   console.log(execResult);
   process.v.shouldStopLoopConsole = true;
@@ -50,7 +50,7 @@ executionProfileMetrics = async () => {
   });
 
 
-  for (let i = 1; i < testData._content.numberToGenerate; i++) {
+  for (let i = 1; i < testData.items_count; i++) {
     test('Creating ITEMS', async () => {
       const itemNumber = i % testData._types.length;
       const typeNum = Math.trunc(itemNumber);
