@@ -99,16 +99,7 @@ executionProfileMetrics = async () => {
       const typeNum = Math.trunc(itemNumber);
       const helpType = testData._types[typeNum];
       const res = await v_db.item.new(helpType, JSON.stringify(testData));
-      console.log(
-        "Type Number" +
-          typeNum +
-          "| " +
-          helpType +
-          "| Item Number : " +
-          itemNumber +
-          "| RES: " +
-          res
-      );
+      //console.log( "Type Number" + typeNum + "| " + helpType + "| Item Number : " + itemNumber + "| RES: " + res );
       expect(res).toEqual(true);
     });
   }
