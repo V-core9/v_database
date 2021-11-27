@@ -110,6 +110,6 @@ executionProfileMetrics = async () => {
     expect(resTest.length).toEqual(usersList.length);
   });
 
-  await executionProfileMetrics();
+  //await executionProfileMetrics();
   return true;
 })();
