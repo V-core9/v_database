@@ -7,7 +7,7 @@ const testData = require("../test-data");
 
 console.log(process.v);
 
-process.v.data_dir = path.join(__dirname,"../$_test");
+process.v.data_dir = path.join(__dirname, "../$_test");
 
 const x1 = Date.now();
 
@@ -40,75 +40,81 @@ executionProfileMetrics = async () => {
   return process.v.shouldStopLoopConsole;
 };
 
-  //----------------------------------------------------------
-  //----------------------------------------------------------
+//----------------------------------------------------------
+//----------------------------------------------------------
 
-  testData._types.forEach((type) => {
-    test(`⚡ Adding Types : ${type}`, async () => {
-      expect(await v_db.type.new(type)).toBe(true);
-    });
+testData._types.forEach((type) => {
+  test(`⚡ Adding Types : ${type}`, async () => {
+    expect(await v_db.type.new(type)).toBe(true);
   });
+});
 
-  test("🚩 ERROR Handle for Empty Value Creation as new type.", async () => {
-    expect(await v_db.type.new()).toEqual(false);
+test("🚩 ERROR Handle for Empty Value Creation as new type.", async () => {
+  expect(await v_db.type.new()).toEqual(false);
+});
+
+//----------------------------------------------------------
+//----------------------------------------------------------
+
+testData._types.forEach((type) => {
+  test(`🔄 Type Exists : [ ${type} ]`, async () => {
+    expect((await v_db.type.view(type)).length).toBe(0);
   });
+});
 
-  //----------------------------------------------------------
-  //----------------------------------------------------------
+test("🧱 VALIDATE TYPES : [ Comparing Types found with types from testData._types ]", async () => {
+  const resTest = await v_db.type.view();
+  expect(testData._types).toEqual(expect.arrayContaining(resTest));
+});
 
-  testData._types.forEach((type) => {
-    test(`🔄 Type Exists : [ ${type} ]`, async () => {
-      expect((await v_db.type.view(type)).length).toBe(0);
-    });
+//----------------------------------------------------------
+//----------------------------------------------------------
+
+testData._types.forEach(async (type) => {
+  test(`📍 [OK]: Delete Type by Name : <[ ${type} ]>`, async () => {
+    expect(await v_db.type.del(type)).toBe(true);
   });
+});
 
-  test("🧱 VALIDATE TYPES : [ Comparing Types found with types from testData._types ]", async () => {
-    const resTest = await v_db.type.view();
-    expect(testData._types).toEqual(expect.arrayContaining(resTest));
+test("💥 [ERROR]: Remove Type [empty_value].", async () => {
+  expect(await v_db.type.del()).toEqual(false);
+});
+
+test("🔥 [0]: After Removing Types.", async () => {
+  expect((await v_db.type.view()).length).toEqual(0);
+});
+
+test("Creating Tables", async () => {
+  expect(await preTest()).toEqual(true);
+});
+
+test("After Created Tables", async () => {
+  const resTest = await v_db.type.view();
+  expect(testData._types).toEqual(expect.arrayContaining(resTest));
+});
+
+for (let i = 0; i < testData.items_count; i++) {
+  test("Creating ITEMS", async () => {
+    const itemNumber = i % testData._types.length;
+    const typeNum = Math.trunc(itemNumber);
+    const helpType = testData._types[typeNum];
+    const res = await v_db.item.new(helpType, JSON.stringify(testData));
+    //console.log( "Type Number" + typeNum + "| " + helpType + "| Item Number : " + itemNumber + "| RES: " + res );
+    expect(res).toEqual(true);
   });
+}
 
-  //----------------------------------------------------------
-  //----------------------------------------------------------
+test("CHECKING UP THOSE ITEMS", async () => {
+  const resTest = await v_db.item.view("users");
+  const usersList = await v_fs.listDir(
+    process.v.data_dir + "/" + "users"
+  );
+  expect(resTest.length).toEqual(usersList.length);
+});
 
-  testData._types.forEach(async (type) => {
-    test(`📍 [OK]: Delete Type by Name : <[ ${type} ]>`, async () => {
-      expect(await v_db.type.del(type)).toBe(true);
-    });
-  });
 
-  test("💥 [ERROR]: Remove Type [empty_value].", async () => {
-    expect(await v_db.type.del()).toEqual(false);
-  });
-
-  test("🔥 [0]: After Removing Types.", async () => {
-    expect((await v_db.type.view()).length).toEqual(0);
-  });
-
-  test("Creating Tables", async () => {
-    expect(await preTest()).toEqual(true);
-  });
-
-  test("After Created Tables", async () => {
-    const resTest = await v_db.type.view();
-    expect(testData._types).toEqual(expect.arrayContaining(resTest));
-  });
-
-  for (let i = 1; i < testData.items_count; i++) {
-    test("Creating ITEMS", async () => {
-      const itemNumber = i % testData._types.length;
-      const typeNum = Math.trunc(itemNumber);
-      const helpType = testData._types[typeNum];
-      const res = await v_db.item.new(helpType, JSON.stringify(testData));
-      //console.log( "Type Number" + typeNum + "| " + helpType + "| Item Number : " + itemNumber + "| RES: " + res );
-      expect(res).toEqual(true);
-    });
-  }
-
-  test("CHECKING UP THOSE ITEMS", async () => {
-    const resTest = await v_db.item.view("users");
-    const usersList = await v_fs.listDir(
-      process.v.data_dir + "/" + "users"
-    );
-    expect(resTest.length).toEqual(usersList.length);
-  });
-
+test("Data size", async () => {
+  const resTest = await v_db.data_size();
+  console.log(resTest);
+  expect(resTest.sizes.totalCount).toEqual(testData.items_count);
+});
