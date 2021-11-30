@@ -9,7 +9,7 @@ setEnvConfig = () => {
     } else {
       window.v = config;
     }
-    return db_mode;
+    return config;
   } catch (error) {
     //console.error(error);
     return false;
