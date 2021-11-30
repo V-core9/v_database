@@ -1,5 +1,5 @@
 const path = require('path');
-const appInfo = require('./info/');
+const appInfo = require('./info');
 const appConfig = require('../../v__config');
 
 module.exports = {
@@ -9,5 +9,6 @@ module.exports = {
   consoleOutput: false,
   data_dir: path.join(__dirname, `../../$_data`),
   db_mode: `perPost`,
-  npmInfo: appInfo
+  info: appInfo,
+  config: appConfig
 };

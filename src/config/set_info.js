@@ -1,5 +1,5 @@
 
-const config = require('./v_config');
+const config = require('./_config');
 const runMode = require('./get_env');
 
 setEnvConfig = () => {
