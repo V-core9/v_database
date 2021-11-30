@@ -5,7 +5,7 @@ const v_db = require("../index");
 const v_fs = require("v_file_system");
 const testData = require("../test-data");
 
-console.log(process.v);
+//console.log(process.v);
 
 process.v.data_dir = path.join(__dirname,"../$_test");
 

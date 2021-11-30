@@ -1,4 +1,4 @@
-const user_schema = require('../sys_module/user/schema.js');
+const user_schema = require('../v_lidator/user/schema.js');
 const { test_data_list } = require("../test-data/test_data_list");
 
 
