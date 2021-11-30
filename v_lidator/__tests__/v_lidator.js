@@ -1,4 +1,4 @@
-const user_schema = require('../v_lidator/src/user/schema.js');
+const v_lidator = require('../v_lidator');
 const { test_data_list } = require("../test-data/test_data_list");
 
 
@@ -11,11 +11,11 @@ test_data_list.forEach(item => {
   //});
 
   test('User Schema : EMAIL  ?? [ ' + item.input.email + ' ]', async () => {
-    expect(await user_schema.email.validate(item.input.email)).toEqual((item.output.email === true) ? true : item.output.email(item.input.email));
+    expect(await v_lidator.user.schema.email.validate(item.input.email)).toEqual((item.output.email === true) ? true : item.output.email(item.input.email));
   });
 
   test('User Schema : PASSWORD  ?? [ ' + item.input.password + ' ]', async () => {
-    expect(await user_schema.password.validate(item.input.password, item.input.password_confirm)).toEqual((item.output.password === true) ? true : item.output.password(item.input.password, item.input.password_confirm));
+    expect(await v_lidator.user.schema.password.validate(item.input.password, item.input.password_confirm)).toEqual((item.output.password === true) ? true : item.output.password(item.input.password, item.input.password_confirm));
   });
 });
 

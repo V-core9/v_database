@@ -1,6 +1,5 @@
 const v_to_sha256 = require('v_to_sha256');
-const v_db = require("../../index");
-
+const v_db = require("../../../index");
 const user_schema = require('./schema');
 
 user_input_template = (data) => {
@@ -55,20 +54,5 @@ register = async (data) => {
   return err;
 };
 
-const stopInterval = () => {
-  clearInterval(intervalDemoConsole);
-  intervalDemoConsole = null;
-};
-
-var intervalDemoConsole = setInterval(() => {
-  if (process.v.shouldStopLoopConsole === true) {
-    process.v.resultCount = resultCount;
-    stopInterval();
-  } else {
-    console.log(resultCount);
-  }
-}, 1000);
-
-process.v.resultCount = resultCount;
 
 module.exports = register;

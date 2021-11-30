@@ -1,4 +1,4 @@
-const user_schema = require('../v_lidator/user/schema.js');
+const user_schema = require('../v_lidator/src/user/schema.js');
 
 const $_email = (string) => {
     return [
