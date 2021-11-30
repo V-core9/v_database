@@ -1,4 +1,4 @@
-const logLevels = {
+module.exports =  {
   FATAL: {
     level: 110,
     description: "Fatal errors are those that actually break the application in most cases....or your code might be somehow able to start aborting prevention of some data corruption, so it all goes sideways. Very serious thing to deal with, type of problem that should result in people getting emergency calls in the middle of the night.",
@@ -57,4 +57,3 @@ const logLevels = {
   }
 };
 
-module.exports = logLevels;
