@@ -16,7 +16,7 @@ data_size = async () => {
     typeCount: null,
   };
 
-  helper.types = await v_fs.promise.listDir(process.v.data_dir);
+  helper.types = await v_fs.listDir(process.v.data_dir);
   helper.typeCount = helper.types.length;
 
 
@@ -25,14 +25,14 @@ data_size = async () => {
       type: helper.types[i],
       items: [],
     };
-    helper.types[i].items = await v_fs.promise.listDir(process.v.data_dir + '/' + helper.types[i].type);
+    helper.types[i].items = await v_fs.listDir(process.v.data_dir + '/' + helper.types[i].type);
     var typeSize = 0;
     var innerCount = helper.types[i].items.length;
     //console.log("inner count: " +innerCount);
     for (let j = 0; j < innerCount; j++) {
       const itemPath = path.join(__dirname, '../../$_data/' + helper.types[i].type + '/' + helper.types[i].items[j]);
       //console.log(itemPath);
-      const stats = await v_fs.promise.statsFile(itemPath);
+      const stats = await v_fs.statsFile(itemPath);
       typeSize += stats.size;
       //console.log(stats);
     }

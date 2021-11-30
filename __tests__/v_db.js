@@ -11,9 +11,9 @@ const x1 = Date.now();
 preTest = async () => {
   var usersCountPreVal = await v_db.item.view("users");
   usersCountPreTestValue = isNaN(usersCountPreVal.length) ? 0 : usersCountPreVal.length;
-  var checkRes = await v_fs.promise.isDir(process.v.data_dir);
+  var checkRes = await v_fs.isDir(process.v.data_dir);
   console.log(`Test Dir Status : ${checkRes}`);
-  if (!checkRes) checkRes = await v_fs.promise.mkdir(process.v.data_dir);
+  if (!checkRes) checkRes = await v_fs.mkdir(process.v.data_dir);
   const res = [];
 
   const typesCount = testData._types.length;
@@ -104,7 +104,7 @@ executionProfileMetrics = async () => {
 
   test("CHECKING UP THOSE ITEMS", async () => {
     const resTest = await v_db.item.view("users");
-    const usersList = await v_fs.promise.listDir(
+    const usersList = await v_fs.listDir(
       process.v.data_dir + "/" + "users"
     );
     expect(resTest.length).toEqual(usersList.length);

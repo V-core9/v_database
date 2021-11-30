@@ -10,7 +10,7 @@
     "inquirer": "^8.2.0",
     "jest": "^27.3.1",
     "uuid": "^8.3.2",
-    "v_file_system": "^1.0.1",
+    "v_file_system": "^1.0.3",
     "v_to_sha256": "^1.0.7"
   },
   "homepage": "https://github.com/V-core9/v_db",
