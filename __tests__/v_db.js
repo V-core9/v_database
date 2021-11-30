@@ -21,7 +21,7 @@ preTest = async () => {
 
   const typesCount = testData._types.length;
 
-  for (let i = 0; i < typesCount; i++) {
+  for (let i = 0; i <= typesCount; i++) {
     res.push(await v_db.type.new(testData._types[i]));
   }
   return checkRes;
@@ -40,7 +40,6 @@ executionProfileMetrics = async () => {
   return process.v.shouldStopLoopConsole;
 };
 
-(async () => {
   //----------------------------------------------------------
   //----------------------------------------------------------
 
@@ -113,6 +112,3 @@ executionProfileMetrics = async () => {
     expect(resTest.length).toEqual(usersList.length);
   });
 
-  //await executionProfileMetrics();
-  return true;
-})();

@@ -1,6 +1,6 @@
 
 //<[ 🩺 - Data Validator ]>- - - - - - ->
-const v_lidator = require('../_lidator');
+const v_lidator = require('../v_lidator');
 
 //<[ 🔂 - user_schema ]>- - - - - - ->
 const user_schema = {

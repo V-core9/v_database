@@ -1,17 +1,5 @@
 const os = require('os');
 const v_fs = require("v_file_system");
-
-const coreChoices = {
-  maxUsage: {
-    ram: 25,
-    cpu: 50,
-  },
-  username: process.env.USERNAME,
-  userDomain: process.env.USERNAME,
-};
-
-console.log(coreChoices);
-
 const inquirer = require('inquirer');
 
 console.log(`  _______________________________________

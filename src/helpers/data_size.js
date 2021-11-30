@@ -30,7 +30,7 @@ data_size = async () => {
     var innerCount = helper.types[i].items.length;
     //console.log("inner count: " +innerCount);
     for (let j = 0; j < innerCount; j++) {
-      const itemPath = path.join(__dirname, '../../$_data/' + helper.types[i].type + '/' + helper.types[i].items[j]);
+      const itemPath = path.join(process.v.data_dir +'/'+ helper.types[i].type + '/' + helper.types[i].items[j]);
       //console.log(itemPath);
       const stats = await v_fs.statsFile(itemPath);
       typeSize += stats.size;
