@@ -10,3 +10,4 @@
 /$_data/*
 !/$_data/.gitkeep
 $_test/
+v__config.js

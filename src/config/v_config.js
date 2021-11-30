@@ -1,5 +1,6 @@
 const path = require('path');
 const appInfo = require('./info/');
+const appConfig = require('../../v__config');
 
 module.exports = {
   title: appInfo.name,
