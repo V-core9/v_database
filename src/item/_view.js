@@ -3,10 +3,10 @@ const path = require('path');
 
 const read = {
   list: async (typePath) => {
-    return await v_fs.promise.listDir(typePath);
+    return await v_fs.listDir(typePath);
   },
   byId: async (typePath, id) => {
-    return await v_fs.promise.read(typePath + '/' + id + ".json");
+    return await v_fs.read(typePath + '/' + id + ".json");
   }
 };
 
