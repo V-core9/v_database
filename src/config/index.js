@@ -1,5 +1,5 @@
 
-const db_mode = require("./_set__config");
+const db_mode = require("./set_info");
 
 /*
 if (process.v.consoleOutput === true) {
