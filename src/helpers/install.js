@@ -134,7 +134,7 @@ const install = () => {
     answers.version = os.version();
 
 
-    v_fs.write(`${process.v.data_dir}/../v__config.js`, `module.exports = ${JSON.stringify(answers, null, 2)};`);
+    v_fs.write(`${process.v.config.data_dir}/../v__config.js`, `module.exports = ${JSON.stringify(answers, null, 2)};`);
 
     console.log(answers);
 
