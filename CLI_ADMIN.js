@@ -43,27 +43,35 @@ const v_cli_paint = {
       },
     }
   },
+
   scheme: null,
+
   checkScheme() {
     if (this.scheme === null) {
       this.scheme = this.colorSchemes.default;
     }
   },
+
   $__Color(rgb, text) {
     return chalk.rgb(rgb.r, rgb.g, rgb.b)(text);
   },
+
   logo(text) {
     v_cli_paint.checkScheme();
     return v_cli_paint.$__Color(v_cli_paint.scheme.logo, text);
   },
+
   border(text) {
     v_cli_paint.checkScheme();
     return v_cli_paint.$__Color(v_cli_paint.scheme.border, text);
   },
+
   toggleTheme() {
     v_cli_paint.scheme = (v_cli_paint.scheme.name === "default") ? v_cli_paint.colorSchemes.light : v_cli_paint.colorSchemes.default;
   }
+
 };
+
 
 const v_cli = {
 
@@ -385,6 +393,9 @@ const v_cli = {
 };
 
 
+
+
+//?- - - - - - - - - - - - - 
 //?<[ CONTENT ]>
 //?- - - - - - - - - - - - - 
 
