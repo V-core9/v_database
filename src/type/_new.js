@@ -24,8 +24,17 @@ const save = {
 
 
 module.exports = async (type) => {
+  if (save.indexOf(process.v.db_mode) > -1) {
+    return save[process.v.db_mode](type);
+  }
+  return false;
+
+};
+
+
+  /*
+module.exports = async (type) => {
   if (typeof type === 'undefined') return false;
-  
   var resp = null;
   switch (process.v.db_mode) {
     case "perPost":
@@ -46,4 +55,5 @@ module.exports = async (type) => {
       return resp;
   }
 };
+  */
 

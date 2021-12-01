@@ -70,6 +70,15 @@ console.log(`  _______________________________________
       default: '$_DATA',
     },
 
+    //? Data Directory Path
+    {
+      type: 'list',
+      name: 'db_structure',
+      message: ' ⏣  - Database Mode ? [structure]',
+      choices: ["oneForAll", "perType", "perItem"],
+      default: "perItem",
+    },
+
     //? System Autostart Application 
     {
       type: 'confirm',
@@ -130,7 +139,7 @@ console.log(`  _______________________________________
     answers.totalmem = os.totalmem();
     answers.type = os.type();
     answers.installed_by = os.userInfo().username;
-    answers.installed_by = os.userInfo().username;
+    answers.installed_ts = Date.now();
     answers.version = os.version();
 
 
