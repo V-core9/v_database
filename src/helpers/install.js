@@ -2,6 +2,9 @@ const os = require('os');
 const v_fs = require("v_file_system");
 const inquirer = require('inquirer');
 
+const install = () => {
+
+
 console.log(`  _______________________________________
  /[ 🚀 - V_Database System Installation ]\\___________________
 |''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''|
@@ -9,7 +12,6 @@ console.log(`  _______________________________________
 |  should be easy to finish.                                 |
 \\____________________________________________________________/\n`);
 
-const install = () => {
 
   const questions = [
     {
@@ -116,21 +118,19 @@ const install = () => {
     answers.cpu_max_usage = Number(answers.cpu_max_usage);
     answers.cache_size = Number(answers.cache_size);
     answers.arch = os.arch();
-    answers.cpus = os.cpus();
-    answers.endianness = os.endianness();
-    answers.freemem = os.freemem();
-    answers.getPriority = os.getPriority();
+    answers.cpu_model = os.cpus()[0].model;
+    answers.cpu_count = os.cpus().length;
+    answers.cpu_speed = os.cpus()[0].speed;
     answers.homedir = os.homedir();
     answers.hostname = os.hostname();
-    answers.loadavg = os.loadavg();
-    answers.networkInterfaces = os.networkInterfaces();
+    answers.network = os.networkInterfaces()[`Ethernet`];
     answers.platform = os.platform();
     answers.release = os.release();
     answers.tmpdir = os.tmpdir();
     answers.totalmem = os.totalmem();
     answers.type = os.type();
-    answers.userInfo = os.userInfo();
-    answers.uptime = os.uptime();
+    answers.installed_by = os.userInfo().username;
+    answers.installed_by = os.userInfo().username;
     answers.version = os.version();
 
 

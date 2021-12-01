@@ -7,7 +7,7 @@ const testData = require("../test-data");
 
 console.log(process.v);
 
-process.v.data_dir = path.join(__dirname, "../$_test");
+process.v.data_dir = path.join(__dirname, "../$_TEST");
 
 const x1 = Date.now();
 
