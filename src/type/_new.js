@@ -15,12 +15,11 @@ const type_saver = {
     return await v_fs.write(`${process.v.data_dir}/${type}.json`, JSON.stringify({ name: "yea", timestamp: Date.now() }));
   },
 
-  perPost: async (type) => {
-    msgLog(`[perPost] mode >> separate JSON files per entry.`);
+  perItem: async (type) => {
+    msgLog(`[perItem] mode >> separate JSON files per entry.`);
     return await v_fs.mkdir(`${process.v.data_dir}/${type}`);
   },
 };
-
 
 module.exports = async (type) => {
   return (Object.keys(type_saver).indexOf(process.v.db_mode) > -1 && type !== undefined) ? await type_saver[process.v.db_mode](type): false;
