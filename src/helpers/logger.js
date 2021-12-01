@@ -1,10 +1,18 @@
 const vLog = {
     config : {
-        consoleOutput : (process.v.consoleOutput !== undefined) ? process.v.consoleOutput : true,
-        logLevel : (process.v.logLevel !== undefined) ? process.v.logLevel : 40,
+        log_to_console : (process.v.config.log_to_console !== undefined) ? process.v.config.log_to_console : true,
+        logLevel : (process.v.config.logLevel !== undefined) ? process.v.config.logLevel : "ALL",
+        console_colors: (process.v.config.console_colors !== undefined) ? process.v.config.console_colors : true,
     },
     log (message, type='log') {
-        if (vLog.config.consoleOutput === true) console[type](message);        
+        if (vLog.config.log_to_console === true) {
+            if (vLog.config.console_colors === true) {
+                const chalk = require('chalk');
+                console[type](chalk.greenBright(`[${message}]`));
+            } else {
+                console[type](message);
+            }
+        }   
     },
     info (message) {
         vLog.log(message, 'info');

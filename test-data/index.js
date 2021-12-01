@@ -1,7 +1,7 @@
 const types = require('./types');
 
 module.exports = {
-    items_count: 20,
+    items_count: 5000,
     _types: types,
     _content: {
         testData: {
