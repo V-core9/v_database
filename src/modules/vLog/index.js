@@ -4,6 +4,7 @@ const vLog = {
         logLevel : (process.v.config.logLevel !== undefined) ? process.v.config.logLevel : "ALL",
         console_colors: (process.v.config.console_colors !== undefined) ? process.v.config.console_colors : true,
     },
+    logLevels : require("./log_levels"),
     log (message, type='log') {
         if (vLog.config.log_to_console === true) {
             if (vLog.config.console_colors === true) {

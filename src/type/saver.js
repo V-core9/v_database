@@ -1,5 +1,5 @@
 const v_fs = require('v_file_system');
-const vLog = require('../helpers/logger');
+const vLog = require('../modules/vLog');
 
 msgLog = vLog.log;
 
