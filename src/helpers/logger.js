@@ -4,8 +4,7 @@ const vLog = {
         logLevel : (process.v.logLevel !== undefined) ? process.v.logLevel : 40,
     },
     log (message, type='log') {
-        if (vLog.config.consoleOutput === true) console.log(msg);
-        console[type](message);
+        if (vLog.config.consoleOutput === true) console[type](message);        
     },
     info (message) {
         vLog.log(message, 'info');

@@ -6,7 +6,7 @@ module.exports = [
     "authors",
     "users",
     "user_api_keys",
-    "devices",
+    /*"devices",
     "user_devices",
     "pages",
     "posts",
@@ -32,5 +32,5 @@ module.exports = [
     "ip_blacklist",
     "ip_whitelist",
     "reserved_words",
-    "aes_keys"
+    "aes_keys"*/
 ];
