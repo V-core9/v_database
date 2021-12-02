@@ -1,3 +1,3 @@
 module.exports = {
-    logger: require(path.join(__dirname, './vLog')),
+    logger: require('./vLog'),
 };
