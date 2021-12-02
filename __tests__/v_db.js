@@ -8,7 +8,7 @@ process.v.data_dir = path.join(__dirname, "../$_TEST");
 
 preTest = async () => {
   var checkRes = await v_fs.isDir(process.v.data_dir);
-  console.log(`Test Dir Status : ${checkRes}`);
+  //console.log(`Test Dir Status : ${checkRes}`);
   if (!checkRes) checkRes = await v_fs.mkdir(process.v.data_dir);
   const res = [];
 
@@ -20,6 +20,8 @@ preTest = async () => {
   return checkRes;
 };
 
+
+if (!v_fs.isDirSy(process.v.data_dir)) v_fs.mkdirSy(process.v.data_dir);
 
 //----------------------------------------------------------
 //----------------------------------------------------------
@@ -95,7 +97,12 @@ test("CHECKING UP THOSE ITEMS", async () => {
 
 
 test("Data size", async () => {
-  const resTest = await v_db.data_size();
-  console.log(resTest);
-  expect(resTest.sizes.totalCount).toEqual(testData.items_count);
+  expect(await v_db.data_size()).toEqual(testData.items_count);
+});
+
+test("System Data Purge", async () => {
+  expect(await v_db.purge_database()).toEqual(true);
+});
+test("Data size After Format", async () => {
+  expect(await v_db.data_size()).toEqual(0);
 });

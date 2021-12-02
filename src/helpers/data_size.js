@@ -51,7 +51,7 @@ data_size = async () => {
   console.log("⏩ Total Items Count : [ " + helper.sizes.totalCount + " ]");
   console.log("🔂 Total Types Count : [ " + helper.typeCount + " ]");
 
-  return helper;
+  return helper.sizes.totalCount ;
 };
 
 //data_size();
