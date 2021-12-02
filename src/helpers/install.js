@@ -5,7 +5,7 @@ const inquirer = require('inquirer');
 const install = () => {
 
 
-console.log(`  _______________________________________
+  console.log(`  _______________________________________
  /[ 🚀 - V_Database System Installation ]\\___________________
 |''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''|
 |  This will now walk you through the setup process,         |

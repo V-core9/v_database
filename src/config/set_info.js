@@ -1,10 +1,10 @@
 
 const config = require('./_config');
-const runMode = require('./get_env');
+const isNodeOrWeb = require('./is_node_or_web');
 
 setEnvConfig = () => {
   try {
-    if (runMode === "node") {
+    if (isNodeOrWeb === "node") {
       process.v = config;
     } else {
       window.v = config;

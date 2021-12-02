@@ -19,7 +19,6 @@ data_size = async () => {
   helper.types = await v_fs.listDir(process.v.config.data_dir);
   helper.typeCount = helper.types.length;
 
-
   for (let i = 0; i < helper.typeCount; i++) {
     helper.types[i] = {
       type: helper.types[i],
@@ -30,7 +29,7 @@ data_size = async () => {
     var innerCount = helper.types[i].items.length;
     //console.log("inner count: " +innerCount);
     for (let j = 0; j < innerCount; j++) {
-      const itemPath = path.join(process.v.config.data_dir +'/'+ helper.types[i].type + '/' + helper.types[i].items[j]);
+      const itemPath = path.join(process.v.config.data_dir + '/' + helper.types[i].type + '/' + helper.types[i].items[j]);
       //console.log(itemPath);
       const stats = await v_fs.statsFile(itemPath);
       typeSize += stats.size;
@@ -41,17 +40,17 @@ data_size = async () => {
     helper.sizes.totalCount += innerCount;
   }
 
-
   helper.sizes.types.forEach(item => {
     item.percent = Math.round((item.size / helper.sizes.totalSize) * 100 * 10) / 10 + "%";
     item.size = Math.trunc(v_fs.byteSizer.byteToMega(item.size) * 100) / 100 + "MB";
   });
+
   console.table(helper.sizes.types);
   console.log("🔄 Total Data Disk Size : [ " + Math.trunc(v_fs.byteSizer.byteToGiga(helper.sizes.totalSize) * 100) / 100 + "GB ]");
   console.log("⏩ Total Items Count : [ " + helper.sizes.totalCount + " ]");
   console.log("🔂 Total Types Count : [ " + helper.typeCount + " ]");
 
-  return helper;
+  return helper.sizes.totalCount;
 };
 
 //data_size();
