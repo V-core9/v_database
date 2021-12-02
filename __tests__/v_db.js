@@ -1,19 +1,12 @@
-var usersCountPreTestValue = 0;
 
 const path = require("path");
 const v_db = require("../index");
 const v_fs = require("v_file_system");
 const testData = require("../test-data");
 
-console.log(process.v);
-
 process.v.data_dir = path.join(__dirname, "../$_TEST");
 
-const x1 = Date.now();
-
 preTest = async () => {
-  var usersCountPreVal = await v_db.item.view("users");
-  usersCountPreTestValue = isNaN(usersCountPreVal.length) ? 0 : usersCountPreVal.length;
   var checkRes = await v_fs.isDir(process.v.data_dir);
   console.log(`Test Dir Status : ${checkRes}`);
   if (!checkRes) checkRes = await v_fs.mkdir(process.v.data_dir);
@@ -27,18 +20,6 @@ preTest = async () => {
   return checkRes;
 };
 
-executionProfileMetrics = async () => {
-  const teTime = Date.now() - x1;
-  const execResult = {
-    requests_count: testData.items_count,
-    average_req_exec_time: teTime / testData.items_count,
-    total_exec_time: teTime,
-    req_per_second: Math.trunc((1000 * testData.items_count) / teTime),
-  };
-  console.log(execResult);
-  process.v.shouldStopLoopConsole = true;
-  return process.v.shouldStopLoopConsole;
-};
 
 //----------------------------------------------------------
 //----------------------------------------------------------

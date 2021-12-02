@@ -8,7 +8,7 @@ module.exports =  {
   },
   ERROR: {
     level: 90,
-    description: "An error is a serious issue and represents the failure of something important going on in your application.  Unlike FATAL, the application itself isn’t going down the tubes.  Here you’ve got something like dropped database connections or the inability to access a file or service.  This will require someone’s attention probably sooner than later, but the application can limp along.",
+    description: "An error is a serious issue and represents the failure of something important going on in your application.  Unlike FATAL, the application itself isn't going down the tubes.  Here you've got something like dropped database connections or the inability to access a file or service.  This will require someone's attention probably sooner than later, but the application can limp along.",
     icon: "🚨",
     print_to_console: ["development"],
     save_to_file: ["all"]

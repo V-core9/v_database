@@ -1,4 +1,4 @@
-const log_levels= require('./log_levels');
+
 
 module.exports = {
     name: "V_Database System",
@@ -6,5 +6,4 @@ module.exports = {
     description: "V_Database System is a db solution that is built on top of the V_File_System Module thus extending, depending, testing and developing both further.",
     home: "https://v-core9.com/",
     author: "V-core9",
-    log_levels,
 };
