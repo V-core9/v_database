@@ -164,4 +164,4 @@ const install = () => {
 
 };
 
-module.exports = install;
+install();

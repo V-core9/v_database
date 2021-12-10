@@ -1,7 +1,7 @@
 {
   "name": "v_database",
   "description": "v_db is a small/basic database solution that utilizes filesystem to manipulate database",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "author": "V-core9",
   "bugs": "https://github.com/V-core9/v_db/issues",
   "dependencies": {
@@ -22,6 +22,7 @@
   "repository": "V-core9/v_db",
   "scripts": {
     "test": "jest",
+    "install" : "node install.js",
     "readme_gen" : "node $_HELP_$/readme.generate.js "
   },
   "devDependencies": {
