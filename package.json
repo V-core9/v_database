@@ -23,6 +23,7 @@
   "repository": "V-core9/v_db",
   "scripts": {
     "test": "bash -c \"rm -r -f \\$_test/* ; jest \"",
+    "readme_gen" : "node $_HELP_$/readme.generate.js ",
     "test_cleanup": "bash -c \" PWD \" && echo \"🎉 Done Test Data Cleaning\" && exit "
   },
   "devDependencies": {
