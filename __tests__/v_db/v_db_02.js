@@ -1,10 +1,10 @@
 
 const path = require("path");
-const v_db = require("../index");
+const { v_db } = require("../../index");
 const v_fs = require("v_file_system");
-const testData = require("../_tDdata_");
+const testData = require("../../_tDdata_");
 
-process.v.data_dir = path.join(__dirname, "../$_TEST_01");
+process.v.data_dir = path.join(__dirname, "../../$_TEST_02");
 
 v_fs.removeDirSy(process.v.data_dir, {recursive: true});
 
@@ -99,14 +99,18 @@ test("CHECKING UP THOSE ITEMS", async () => {
 
 
 test("Data size", async () => {
+  process.v.log_to_console = true;
   expect(await v_db.data_size()).toEqual(testData.items_count);
+  process.v.log_to_console = false;
 });
 
 test("System Data Purge", async () => {
   expect(await v_db.purge_database()).toEqual(true);
 });
 test("Data size After Format", async () => {
+  process.v.log_to_console = true;
   expect(await v_db.data_size()).toEqual(0);
-  
   v_fs.removeDirSy(process.v.data_dir, { recursive: true });
+  process.v.log_to_console = false;
 });
+

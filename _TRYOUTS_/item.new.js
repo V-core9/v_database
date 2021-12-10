@@ -1,4 +1,4 @@
-const v_db = require("../index");
+const { v_db } = require("../index");
 
 testNewSingleItem = async () => {
   await v_db.type.new("api_keys");

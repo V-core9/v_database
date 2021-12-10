@@ -1,4 +1,4 @@
-const v_db = require("../index");
+const { v_db } = require("../index");
 
 const demoData = require('./001.data.__demo');
 

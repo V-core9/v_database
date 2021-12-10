@@ -1,4 +1,4 @@
-const v_db = require("../index");
+const { v_db } = require("../index");
 
 listItemsTest = async (type) => {
   const items = await v_db.item.view(type);

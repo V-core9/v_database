@@ -1,4 +1,4 @@
-const app = require('../src/config/version');
+const app = require('../../v_db/config/version');
 
 
 test("🔥 Get App Version.", async () => {

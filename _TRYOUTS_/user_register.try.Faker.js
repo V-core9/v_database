@@ -1,4 +1,4 @@
-const v_db = require("../index");
+const { v_db } = require("../index");
 const user = require("../sys_module/user");
 var faker = require('faker');
 

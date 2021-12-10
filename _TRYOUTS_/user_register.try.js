@@ -1,4 +1,4 @@
-const v_db = require("../index");
+const { v_db } = require("../index");
 
 const testData = require('./__test_data');
 const user = require("../sys_module/user");
