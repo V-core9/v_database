@@ -1,6 +1,5 @@
 module.exports = {
     icon: "💭",
     title: "Short Description",
-    content: `Made to help out hunting ghost bugs in front and backend.
-                  Currently in state of organization of files and building up the idea what else to include`
+    content: `Simple way to make data available in your website/application for a single database.`
 };

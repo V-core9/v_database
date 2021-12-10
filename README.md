@@ -8,8 +8,7 @@
 >---   
 ## **💭 Short Description**    
 
-Made to help out hunting ghost bugs in front and backend.
-                  Currently in state of organization of files and building up the idea what else to include    
+Simple way to make data available in your website/application for a single database.    
 
 ---
 ## **🚕 Install and Setting up**    
@@ -78,4 +77,4 @@ Look into system folder for more info about project structure.
 > ⛔ Any Edits Done To Generated Files Will Be Overwritten Next Time These Files Get Re-Generated!  
 >  
 > _Made 💖 using [v_scrolls]("https://github.com/V-core9/v_scrolls")_      
-> Last Updated:  2021/12/10 17:08:06 
+> Last Updated:  2021/12/10 17:09:16 
