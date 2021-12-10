@@ -32,7 +32,7 @@ const install = () => {
       type: 'list',
       name: 'log_to_console',
       message: ' ⍍  - Print Log Output To Console?',
-      choices: ["YES", "NO", "OPTIMIZED"],
+      choices: [true, false, "OPTIMIZED"],
       default: "OPTIMIZED",
     },
     {

@@ -1,3 +1,3 @@
 module.exports = {
-    logger: require('./vLog'),
+    //logger: require('./vLog'),
 };

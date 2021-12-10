@@ -16,7 +16,7 @@ data_size = async () => {
     typeCount: null,
   };
 
-  helper.types = await v_fs.listDir(process.v.config.data_dir);
+  helper.types = await v_fs.listDir(process.v.data_dir);
   helper.typeCount = helper.types.length;
 
   for (let i = 0; i < helper.typeCount; i++) {
@@ -24,18 +24,18 @@ data_size = async () => {
       type: helper.types[i],
       items: [],
     };
-    helper.types[i].items = await v_fs.listDir(process.v.config.data_dir + '/' + helper.types[i].type);
+    helper.types[i].items = await v_fs.listDir(process.v.data_dir + '/' + helper.types[i].type);
     var typeSize = 0;
     var innerCount = helper.types[i].items.length;
-    //console.log("inner count: " +innerCount);
+    
     for (let j = 0; j < innerCount; j++) {
-      const itemPath = path.join(process.v.config.data_dir + '/' + helper.types[i].type + '/' + helper.types[i].items[j]);
-      //console.log(itemPath);
+      const itemPath = path.join(process.v.data_dir + '/' + helper.types[i].type + '/' + helper.types[i].items[j]);
       const stats = await v_fs.statsFile(itemPath);
       typeSize += stats.size;
-      //console.log(stats);
     }
+
     helper.sizes.types.push({ type: helper.types[i].type, count: innerCount, size: typeSize });
+
     helper.sizes.totalSize += typeSize;
     helper.sizes.totalCount += innerCount;
   }
@@ -45,10 +45,12 @@ data_size = async () => {
     item.size = Math.trunc(v_fs.byteSizer.byteToMega(item.size) * 100) / 100 + "MB";
   });
 
-  console.table(helper.sizes.types);
-  console.log("🔄 Total Data Disk Size : [ " + Math.trunc(v_fs.byteSizer.byteToGiga(helper.sizes.totalSize) * 100) / 100 + "GB ]");
-  console.log("⏩ Total Items Count : [ " + helper.sizes.totalCount + " ]");
-  console.log("🔂 Total Types Count : [ " + helper.typeCount + " ]");
+  if (process.v.config.log_to_console === true || process.v.config.log_to_console === 'OPTIMIZED')  { 
+    console.table(helper.sizes.types);
+    console.log("🔄 Total Data Disk Size : [ " + Math.trunc(v_fs.byteSizer.byteToGiga(helper.sizes.totalSize) * 100) / 100 + "GB ]");
+    console.log("⏩ Total Items Count : [ " + helper.sizes.totalCount + " ]");
+    console.log("🔂 Total Types Count : [ " + helper.typeCount + " ]");
+  }
 
   return helper.sizes.totalCount;
 };

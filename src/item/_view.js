@@ -13,28 +13,19 @@ const read = {
 module.exports = async (type, filter = undefined) => {
   const typePath = path.join(process.v.data_dir, type);
 
+  //? List type dir if no filter provided
   if (filter === undefined) return await read.list(typePath);
+  //!- - - - - 
 
+  //? Find by ID if filter is string
   if (typeof filter === 'string') {
     return await read.byId(typePath, filter);
   }
+  //!- - - - - 
 
+  //? Filter by id if id is defined in an object
   if (filter.id !== undefined) {
     return await read.byId(typePath, filter.id);
   }
-
-  if (filter.username !== undefined) {
-    const items = await read.list(typePath);
-    var found = false;
-    var i = 0;
-    var count = items.length - 1;
-    while (found === false && i < count) {
-      i++;
-      const itemId = items[i].split('.');
-      const resp = JSON.parse(await read.byId(typePath, itemId[0]));
-      if (resp.username === filter.username) found = resp;
-    }
-
-    return found;
-  }
+  //!- - - - - 
 };
