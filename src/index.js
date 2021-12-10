@@ -15,7 +15,6 @@
     data_size,
     install,
     purge_database,
-    logger: modules.logger,
     type: require('./type'),
     item: require('./item')
   };

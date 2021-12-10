@@ -1,37 +1,18 @@
-const v_to_sha256 = require('v_to_sha256');
 const v_db = require("../../../index");
 const user_schema = require('./schema');
 
-user_input_template = (data) => {
-  return {
-    username: data.username,
-    password: v_to_sha256(data.password),
-    email: data.email,
-    first_name: null,
-    last_name: null,
-    middle_name: null,
-    register_ts: Date.now(),
-    type: "user",
-    status: "active",
-    verified: false,
-    verification_ts: null
-  };
-};
-
-const resultCount = {
-  failed: 0,
-  success: 0
-};
+user_template = require('../templates/user');
+email_template = require('../templates/user_emails');
 
 register = async (data) => {
-  //console.log(resultCount);
+  
   const err = [];
 
-  //console.time(data.username+"._unique_status");
-  //const uniqueStatus = await v_db.item.view('users', { username: data.username });
-  //if (uniqueStatus) err.push({ type: "ERROR", message: "💎 Username is not unique. [ " + data.username + " ]" });
-  //console.timeEnd(data.username+"._unique_status");
+  const users = await v_db.item.view('users');
+  const user_emails = await v_db.item.view('user_emails');
 
+  if (users.indexOf(data.username) > -1) err.push({ type: "ERROR", message: "💎 USERNAME is not unique. [ " + data.username + " ]" });
+  if (user_emails.indexOf(data.email) > -1) err.push({ type: "ERROR", message: "💎 EMAIL is not unique. [ " + data.email + " ]" });
 
   var validResp = await user_schema.username.validate(data.username);
   if (validResp !== true) err.push(validResp);
@@ -44,13 +25,12 @@ register = async (data) => {
 
 
   if (err.length === 0) {
-    resultCount.success++;
-    return await v_db.item.new('users', user_input_template(data));
+
+    return ( await v_db.item.new('users', await user_template(data)) && await v_db.item.new('user_emails', await email_template(data)) );
   }
 
-  if (process.v.consoleOutput === true) console.log('\n🔻Validations Failed : Looks like there were some errors.\n' + JSON.stringify(err, true, 2));
+  if (process.v.log_to_console === true || process.v.log_to_console === 'OPTIMIZED') console.log('\n🔻Validations Failed : Looks like there were some errors.\n' + JSON.stringify(err, true, 2));
 
-  resultCount.failed++;
   return err;
 };
 

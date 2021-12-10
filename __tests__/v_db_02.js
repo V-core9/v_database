@@ -6,6 +6,8 @@ const testData = require("../test-data");
 
 process.v.data_dir = path.join(__dirname, "../$_TEST_02");
 
+v_fs.removeDirSy(process.v.data_dir, {recursive: true});
+
 preTest = async () => {
   var checkRes = await v_fs.isDir(process.v.data_dir);
   //console.log(`Test Dir Status : ${checkRes}`);
@@ -24,7 +26,7 @@ preTest = async () => {
 if (!v_fs.isDirSy(process.v.data_dir)) v_fs.mkdirSy(process.v.data_dir);
 
 //----------------------------------------------------------
-
+//----------------------------------------------------------
 
 testData._types.forEach((type) => {
   test(`⚡ Adding Types : ${type}`, async () => {
@@ -37,7 +39,7 @@ test("🚩 ERROR Handle for Empty Value Creation as new type.", async () => {
 });
 
 //----------------------------------------------------------
-
+//----------------------------------------------------------
 
 testData._types.forEach((type) => {
   test(`🔄 Type Exists : [ ${type} ]`, async () => {
@@ -51,7 +53,7 @@ test("🧱 VALIDATE TYPES : [ Comparing Types found with types from testData._ty
 });
 
 //----------------------------------------------------------
-
+//----------------------------------------------------------
 
 testData._types.forEach(async (type) => {
   test(`📍 [OK]: Delete Type by Name : <[ ${type} ]>`, async () => {

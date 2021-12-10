@@ -1,19 +1,9 @@
 
 const config = require('./_config');
-const isNodeOrWeb = require('./is_node_or_web');
+const isNode = require('./is_node');
 
 setEnvConfig = () => {
-  try {
-    if (isNodeOrWeb === "node") {
-      process.v = config;
-    } else {
-      window.v = config;
-    }
-    return config;
-  } catch (error) {
-    //console.error(error);
-    return false;
-  }
+  return (isNode === "node") ? (process.v = config) : false;
 };
 
 module.exports = setEnvConfig();

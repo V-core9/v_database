@@ -6,6 +6,8 @@ const testData = require("../test-data");
 
 process.v.data_dir = path.join(__dirname, "../$_TEST_01");
 
+v_fs.removeDirSy(process.v.data_dir, {recursive: true});
+
 preTest = async () => {
   var checkRes = await v_fs.isDir(process.v.data_dir);
   //console.log(`Test Dir Status : ${checkRes}`);

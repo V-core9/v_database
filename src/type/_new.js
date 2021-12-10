@@ -1,5 +1,5 @@
-const type_saver = require('./saver');
+const v_fs = require('v_file_system');
 
 module.exports = async (type) => {
-  return (Object.keys(type_saver).indexOf(process.v.db_mode) > -1 && type !== undefined) ? await type_saver[process.v.db_mode](type): false;
+  return (type !== undefined && type) ? await v_fs.mkdir(`${process.v.data_dir}/${type}`) : false;
 };
