@@ -4,7 +4,7 @@ module.exports = {
     content: `Currently only through the github repo can be installed...
     But soon we will have something like:
           
-          npm install v_db --save
+          npm i v_database --save
           
     Soon... 🚀`
 };
