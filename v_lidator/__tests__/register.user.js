@@ -86,6 +86,5 @@ test('User REMOVE test 014', async () => {
 
 test('User REMOVE test 015', async () => {
     expect(await v_db.item.del('users', { id: 'yea_mki11' })).toEqual(true);
+    v_fs.removeDirSy(process.v.data_dir, { recursive: true });
 });
-
-//v_fs.removeDirSy(process.v.data_dir, { recursive: true });

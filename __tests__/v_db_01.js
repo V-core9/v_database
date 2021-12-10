@@ -107,4 +107,6 @@ test("System Data Purge", async () => {
 });
 test("Data size After Format", async () => {
   expect(await v_db.data_size()).toEqual(0);
+  
+  v_fs.removeDirSy(process.v.data_dir, { recursive: true });
 });
