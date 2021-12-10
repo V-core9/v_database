@@ -81,7 +81,7 @@ for (let i = 0; i < testData.items_count; i++) {
     const itemNumber = i % testData._types.length;
     const typeNum = Math.trunc(itemNumber);
     const helpType = testData._types[typeNum];
-    const res = await v_db.item.new(helpType, JSON.stringify(testData));
+    const res = await v_db.item.new(helpType, testData);
     //console.log( "Type Number" + typeNum + "| " + helpType + "| Item Number : " + itemNumber + "| RES: " + res );
     expect(res).toEqual(true);
   });

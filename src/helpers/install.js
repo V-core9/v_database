@@ -124,27 +124,40 @@ const install = () => {
   inquirer.prompt(questions).then((answers) => {
     console.log('🚀 Installation Config Results:');
 
+    //? Mark it 
+    answers.installed_ts = Date.now();
+
+    //? How much to use it
     answers.cpu_max_usage = Number(answers.cpu_max_usage);
     answers.cache_size = Number(answers.cache_size);
-    answers.arch = os.arch();
+
+    //? System Architecture data
+    answers.architecture = os.arch();
+    answers.installed_os_platform = os.platform();
+    answers.installed_os_version = os.version();
+    answers.installed_os_release = os.release();
+    answers.installed_os_type = os.type();
+
+    //? CPU Info
     answers.cpu_model = os.cpus()[0].model;
     answers.cpu_count = os.cpus().length;
     answers.cpu_speed = os.cpus()[0].speed;
+
+    //? Users Home Directory
     answers.homedir = os.homedir();
     answers.hostname = os.hostname();
-    answers.network = os.networkInterfaces()[`Ethernet`];
-    answers.platform = os.platform();
-    answers.release = os.release();
-    answers.tmpdir = os.tmpdir();
-    answers.totalmem = os.totalmem();
-    answers.type = os.type();
     answers.installed_by = os.userInfo().username;
-    answers.installed_ts = Date.now();
-    answers.version = os.version();
 
-
+    //? Network Information
+    answers.network = os.networkInterfaces()[`Ethernet`];
+    
+    //? Create the config file
     v_fs.write(`${process.v.config.data_dir}/../v__config.js`, `module.exports = ${JSON.stringify(answers, null, 2)};`);
 
+    //? Create the data folder
+    v_fs.mkdir(answers.data_dir);
+
+    //* Just log info to see what it got.
     console.log(answers);
 
   });

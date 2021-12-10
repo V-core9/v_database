@@ -1,19 +1,18 @@
 const v_fs = require('v_file_system');
 const vLog = require('../modules/vLog');
 
+const basic_data = JSON.stringify({ name: "yea", timestamp: Date.now() });
+
 const type_saver = {
     oneForAll: async (type) => {
-        vLog.log('[oneForAll] mode >> save to single JSON file.');
-        return await v_fs.write(`${process.v.data_dir}/${process.v.data_dir}.json`), JSON.stringify({ name: "yea", timestamp: Date.now() });
+        return await v_fs.write(`${process.v.data_dir}/index.json`, basic_data) ;
     },
 
     perType: async (type) => {
-        vLog.log('[perType] mode >> JSON file per type.');
-        return await v_fs.write(`${process.v.data_dir}/${type}.json`, JSON.stringify({ name: "yea", timestamp: Date.now() }));
+        return await v_fs.write(`${process.v.data_dir}/${type}.json`, basic_data);
     },
 
     perItem: async (type) => {
-        vLog.log(`[perItem] mode >> separate JSON files per entry.`);
         return await v_fs.mkdir(`${process.v.data_dir}/${type}`);
     },
 };
