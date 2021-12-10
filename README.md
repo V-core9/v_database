@@ -1,16 +1,11 @@
 # **🧾 V_Database - README.md**    
  
 
- **Description**: _Basically generates MD files...so a Markdown generator...pack data where ever you want and just use this to organize it how file will be printed._  
+ **Description**: _Simple way to make data available in your website/application for a single database._  
   
 >---  
 >### 🚧 **WARNING: APPLICATION STILL IN 🧱 [ALPHA] **  🚧  
 >---   
-## **💭 Short Description**    
-
-Simple way to make data available in your website/application for a single database.    
-
----
 ## **🚕 Install and Setting up**    
 
 Currently only through the github repo can be installed...
@@ -77,4 +72,4 @@ Look into system folder for more info about project structure.
 > ⛔ Any Edits Done To Generated Files Will Be Overwritten Next Time These Files Get Re-Generated!  
 >  
 > _Made 💖 using [v_scrolls]("https://github.com/V-core9/v_scrolls")_      
-> Last Updated:  2021/12/10 17:09:16 
+> Last Updated:  2021/12/10 17:11:07 
