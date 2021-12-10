@@ -1,12 +1,11 @@
 
-//<[ 🩺 - Data Validator ]>- - - - - - ->
+// [ 🩺 - Data Validator ]>- - - - - - -
 const v_lidator = require('../v_lidator');
 
-//<[ 🔂 - user_schema ]>- - - - - - ->
+// [ 🔂 - user_schema ]>- - - - - - -
 const user_schema = {
   email: {
     format: /^[A-Za-z0-9][A-Za-z0-9.]+@[^\s@]+\.[^\s@]+$/,
-    //format: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
     msg: {
       success: "✅ Success\n📫 Email Verified Successfully.",
       error: {

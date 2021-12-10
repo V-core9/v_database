@@ -4,21 +4,10 @@ const user_schema = require('./schema');
 user_template = require('../templates/user');
 email_template = require('../templates/user_emails');
 
-is_unique_username = async (username) => {
-  const users = await v_db.item.view('users');
-  if (users.indexOf(username) > -1) {
-    return false;
-  }
-  return true;
-};
+const is_unique_username = require('../helpers/is_unique_username');
+const is_unique_email = require('../helpers/is_unique_email');
 
-is_unique_email = async (email) => {
-  const user_emails = await v_db.item.view('user_emails');
-  if (user_emails.indexOf(email) > -1) {
-    return false;
-  }
-  return true;
-};
+
 
 register = async (data) => {
 
