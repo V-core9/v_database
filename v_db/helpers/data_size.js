@@ -45,7 +45,7 @@ data_size = async () => {
     item.size = Math.trunc(v_fs.byteSizer.byteToMega(item.size) * 100) / 100 + "MB";
   });
 
-  if (process.v.config.log_to_console === true || process.v.config.log_to_console === 'OPTIMIZED')  { 
+  if (process.v.log_to_console === true || process.v.log_to_console === 'OPTIMIZED')  { 
     console.table(helper.sizes.types);
     console.log("🔄 Total Data Disk Size : [ " + Math.trunc(v_fs.byteSizer.byteToGiga(helper.sizes.totalSize) * 100) / 100 + "GB ]");
     console.log("⏩ Total Items Count : [ " + helper.sizes.totalCount + " ]");
