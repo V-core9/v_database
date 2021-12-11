@@ -158,7 +158,7 @@ const install = async () => {
     v_fs.writeSy(process.env.home + `/.v_db/v__config.js`, `module.exports = ${JSON.stringify(answers, null, 2)};`);
 
     //? Create the data folder
-    v_fs.mkdirSy(answers.data_dir);
+    v_fs.mkdirSy(process.env.home + `/.v_db/` + answers.data_dir);
 
     //* Just log info to see what it got.
     console.log(answers);
