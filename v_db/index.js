@@ -4,7 +4,6 @@ console.log('starting v_db...');
 const info = require('./info');
 const { config } = require('./config');
 const { data_size, purge_database , install } = require('./helpers');
-const modules = require('./modules');
 
 const v_db = {
   info,
