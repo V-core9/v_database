@@ -2,8 +2,6 @@ const os = require('os');
 const v_fs = require("v_file_system");
 const inquirer = require('inquirer');
 
-const install = () => {
-
 
   console.log(`  _______________________________________
  /[ 🚀 - V_Database System Installation ]\\___________________
@@ -32,7 +30,7 @@ const install = () => {
       type: 'list',
       name: 'log_to_console',
       message: ' ⍍  - Print Log Output To Console?',
-      choices: [true, false, "OPTIMIZED"],
+      choices: ["true", "false", "OPTIMIZED"],
       default: "OPTIMIZED",
     },
     {
@@ -71,13 +69,13 @@ const install = () => {
     },
 
     //? Data Directory Path
-    {
-      type: 'list',
-      name: 'db_structure',
-      message: ' ⏣  - Database Mode ? [structure]',
-      choices: ["oneForAll", "perType", "perItem"],
-      default: "perItem",
-    },
+    // {
+    //   type: 'list',
+    //   name: 'db_structure',
+    //   message: ' ⏣  - Database Mode ? [structure]',
+    //   choices: ["oneForAll", "perType", "perItem"],
+    //   default: "perItem",
+    // },
 
     //? System Autostart Application 
     {
@@ -152,16 +150,12 @@ const install = () => {
     answers.network = os.networkInterfaces()[`Ethernet`];
     
     //? Create the config file
-    v_fs.write(`${process.v.config.data_dir}/../v__config.js`, `module.exports = ${JSON.stringify(answers, null, 2)};`);
+    v_fs.writeSy(`./v__config.js`, `module.exports = ${JSON.stringify(answers, null, 2)};`);
 
     //? Create the data folder
-    v_fs.mkdir(answers.data_dir);
+    v_fs.mkdirSy(answers.data_dir);
 
     //* Just log info to see what it got.
     console.log(answers);
 
   });
-
-};
-
-install();
