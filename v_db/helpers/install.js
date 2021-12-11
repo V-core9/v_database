@@ -3,6 +3,9 @@ const v_fs = require("v_file_system");
 const inquirer = require('inquirer');
 
 
+
+const install = async () => {
+
   console.log(`  _______________________________________
  /[ 🚀 - V_Database System Installation ]\\___________________
 |''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''|
@@ -10,7 +13,6 @@ const inquirer = require('inquirer');
 |  should be easy to finish.                                 |
 \\____________________________________________________________/\n`);
 
-const install = async () => {
   const questions = [
     {
       type: 'list',
