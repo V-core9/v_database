@@ -1,7 +1,7 @@
 const path = require('path');
 
 try {
-  const config = require(path.join(__dirname,'../../v__config'));
+  const config = require(process.env.home+'/.v_db/v__config');
 
   module.exports = {
     data_dir: path.join(__dirname,`../../${config.data_dir}`),
