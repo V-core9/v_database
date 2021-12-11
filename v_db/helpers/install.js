@@ -151,8 +151,11 @@ const install = async () => {
     //? Network Information
     answers.network = os.networkInterfaces()[`Ethernet`];
 
+    //? Create the data folder
+    v_fs.mkdirSy(process.env.home + `/.v_db`);
+
     //? Create the config file
-    v_fs.writeSy(`./v__config.js`, `module.exports = ${JSON.stringify(answers, null, 2)};`);
+    v_fs.writeSy(process.env.home + `/.v_db/v__config.js`, `module.exports = ${JSON.stringify(answers, null, 2)};`);
 
     //? Create the data folder
     v_fs.mkdirSy(answers.data_dir);
