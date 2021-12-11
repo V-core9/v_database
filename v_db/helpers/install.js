@@ -10,7 +10,7 @@ const inquirer = require('inquirer');
 |  should be easy to finish.                                 |
 \\____________________________________________________________/\n`);
 
-
+install = async () => {
   const questions = [
     {
       type: 'list',
@@ -77,7 +77,7 @@ const inquirer = require('inquirer');
     //   default: "perItem",
     // },
 
-    //? System Autostart Application 
+    //? System Autostart Application
     {
       type: 'confirm',
       name: 'os_autostart',
@@ -85,7 +85,7 @@ const inquirer = require('inquirer');
       default: true,
     },
 
-    //? System Notifications 
+    //? System Notifications
     {
       type: 'confirm',
       name: 'os_notify',
@@ -122,7 +122,7 @@ const inquirer = require('inquirer');
   inquirer.prompt(questions).then((answers) => {
     console.log('🚀 Installation Config Results:');
 
-    //? Mark it 
+    //? Mark it
     answers.installed_ts = Date.now();
 
     //? How much to use it
@@ -148,7 +148,7 @@ const inquirer = require('inquirer');
 
     //? Network Information
     answers.network = os.networkInterfaces()[`Ethernet`];
-    
+
     //? Create the config file
     v_fs.writeSy(`./v__config.js`, `module.exports = ${JSON.stringify(answers, null, 2)};`);
 
@@ -159,3 +159,6 @@ const inquirer = require('inquirer');
     console.log(answers);
 
   });
+};
+
+module.exports = install;
