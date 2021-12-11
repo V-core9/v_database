@@ -1,5 +1,5 @@
 module.exports = {
   data_size: require('./data_size'),
-  install: install('./install'),
+  install: require('./install'),
   purge_database: require('./purge_database')
 };

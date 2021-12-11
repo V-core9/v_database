@@ -10,7 +10,7 @@ const inquirer = require('inquirer');
 |  should be easy to finish.                                 |
 \\____________________________________________________________/\n`);
 
-install = async () => {
+const install = async () => {
   const questions = [
     {
       type: 'list',
