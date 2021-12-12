@@ -2,6 +2,7 @@ const os = require('os');
 const v_fs = require("v_file_system");
 const inquirer = require('inquirer');
 
+const {d_dir,  d_cfg,  cfg_dpath, cfg_fpath} = require('../config/_$');
 
 
 const install = async () => {
@@ -152,13 +153,13 @@ const install = async () => {
     answers.network = os.networkInterfaces()[`Ethernet`];
 
     //? Create the data folder
-    v_fs.mkdirSy(process.env.home + `/.v_database`);
+    v_fs.mkdirSy(cfg_dpath);
 
     //? Create the config file
-    v_fs.writeSy(process.env.home + `/.v_database/v__config.js`, `module.exports = ${JSON.stringify(answers, null, 2)};`);
+    v_fs.writeSy(cfg_fpath + '.js', `module.exports = ${JSON.stringify(answers, null, 2)};`);
 
     //? Create the data folder
-    v_fs.mkdirSy(process.env.home + `/.v_database/` + answers.data_dir);
+    v_fs.mkdirSy(cfg_dpath + '/' + answers.data_dir);
 
     //* Just log info to see what it got.
     console.log(answers);
