@@ -4,7 +4,7 @@ const path = require('path');
 
 
 data_size = async () => {
-  console.log("🔀 Getting Data Size ");
+  //console.log("🔀 Getting Data Size ");
 
   const helper = {
     sizes: {
@@ -27,7 +27,7 @@ data_size = async () => {
     helper.types[i].items = await v_fs.listDir(process.v.data_dir + '/' + helper.types[i].type);
     var typeSize = 0;
     var innerCount = helper.types[i].items.length;
-    
+
     for (let j = 0; j < innerCount; j++) {
       const itemPath = path.join(process.v.data_dir + '/' + helper.types[i].type + '/' + helper.types[i].items[j]);
       const stats = await v_fs.statsFile(itemPath);
@@ -45,7 +45,7 @@ data_size = async () => {
     item.size = Math.trunc(v_fs.byteSizer.byteToMega(item.size) * 100) / 100 + "MB";
   });
 
-  if (process.v.log_to_console === true || process.v.log_to_console === 'OPTIMIZED')  { 
+  if (process.v.log_to_console === true || process.v.log_to_console === 'OPTIMIZED')  {
     console.table(helper.sizes.types);
     console.log("🔄 Total Data Disk Size : [ " + Math.trunc(v_fs.byteSizer.byteToGiga(helper.sizes.totalSize) * 100) / 100 + "GB ]");
     console.log("⏩ Total Items Count : [ " + helper.sizes.totalCount + " ]");
