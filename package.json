@@ -23,9 +23,6 @@
     "readme_gen" : "node $_HELP_$/readme.generate.js "
   },
   "devDependencies": {
-    "chalk": "^4.1.2",
-    "gradient-string": "^1.2.0",
-    "faker": "^5.5.3",
     "jest": "^27.3.1"
   }
 }
