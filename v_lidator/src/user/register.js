@@ -1,4 +1,4 @@
-const { v_db } = require("../../../index");
+const { v_database } = require("../../../index");
 const user_schema = require('./schema');
 
 user_template = require('../templates/user');
@@ -26,7 +26,7 @@ register = async (data) => {
   if (validResp !== true) err.push(validResp);
 
   if (err.length === 0) {
-    return (await v_db.item.new('users', await user_template(data)) && await v_db.item.new('user_emails', await email_template(data)));
+    return (await v_database.item.new('users', await user_template(data)) && await v_database.item.new('user_emails', await email_template(data)));
   }
 
   if (process.v.log_to_console === true || process.v.log_to_console === 'OPTIMIZED') console.log('\n🔻Validations Failed : Looks like there were some errors.\n' + JSON.stringify(err, true, 2));

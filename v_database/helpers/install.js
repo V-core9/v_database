@@ -152,13 +152,13 @@ const install = async () => {
     answers.network = os.networkInterfaces()[`Ethernet`];
 
     //? Create the data folder
-    v_fs.mkdirSy(process.env.home + `/.v_db`);
+    v_fs.mkdirSy(process.env.home + `/.v_database`);
 
     //? Create the config file
-    v_fs.writeSy(process.env.home + `/.v_db/v__config.js`, `module.exports = ${JSON.stringify(answers, null, 2)};`);
+    v_fs.writeSy(process.env.home + `/.v_database/v__config.js`, `module.exports = ${JSON.stringify(answers, null, 2)};`);
 
     //? Create the data folder
-    v_fs.mkdirSy(process.env.home + `/.v_db/` + answers.data_dir);
+    v_fs.mkdirSy(process.env.home + `/.v_database/` + answers.data_dir);
 
     //* Just log info to see what it got.
     console.log(answers);

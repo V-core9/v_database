@@ -1,6 +1,6 @@
 
 const path = require("path");
-const { v_db } = require("../../index");
+const { v_database } = require("../../index");
 const v_fs = require("v_file_system");
 const testData = require("../../_tDdata_");
 
@@ -17,7 +17,7 @@ preTest = async () => {
   const typesCount = testData._types.length;
 
   for (let i = 0; i <= typesCount; i++) {
-    res.push(await v_db.type.new(testData._types[i]));
+    res.push(await v_database.type.new(testData._types[i]));
   }
   return checkRes;
 };
@@ -30,12 +30,12 @@ if (!v_fs.isDirSy(process.v.data_dir)) v_fs.mkdirSy(process.v.data_dir);
 
 testData._types.forEach((type) => {
   test(`⚡ Adding Types : ${type}`, async () => {
-    expect(await v_db.type.new(type)).toBe(true);
+    expect(await v_database.type.new(type)).toBe(true);
   });
 });
 
 test("🚩 ERROR Handle for Empty Value Creation as new type.", async () => {
-  expect(await v_db.type.new()).toEqual(false);
+  expect(await v_database.type.new()).toEqual(false);
 });
 
 //----------------------------------------------------------
@@ -43,12 +43,12 @@ test("🚩 ERROR Handle for Empty Value Creation as new type.", async () => {
 
 testData._types.forEach((type) => {
   test(`🔄 Type Exists : [ ${type} ]`, async () => {
-    expect((await v_db.type.view(type)).length).toBe(0);
+    expect((await v_database.type.view(type)).length).toBe(0);
   });
 });
 
 test("🧱 VALIDATE TYPES : [ Comparing Types found with types from testData._types ]", async () => {
-  const resTest = await v_db.type.view();
+  const resTest = await v_database.type.view();
   expect(testData._types).toEqual(expect.arrayContaining(resTest));
 });
 
@@ -57,16 +57,16 @@ test("🧱 VALIDATE TYPES : [ Comparing Types found with types from testData._ty
 
 testData._types.forEach(async (type) => {
   test(`📍 [OK]: Delete Type by Name : <[ ${type} ]>`, async () => {
-    expect(await v_db.type.del(type)).toBe(true);
+    expect(await v_database.type.del(type)).toBe(true);
   });
 });
 
 test("💥 [ERROR]: Remove Type [empty_value].", async () => {
-  expect(await v_db.type.del()).toEqual(false);
+  expect(await v_database.type.del()).toEqual(false);
 });
 
 test("🔥 [0]: After Removing Types.", async () => {
-  expect((await v_db.type.view()).length).toEqual(0);
+  expect((await v_database.type.view()).length).toEqual(0);
 });
 
 test("Creating Tables", async () => {
@@ -74,7 +74,7 @@ test("Creating Tables", async () => {
 });
 
 test("After Created Tables", async () => {
-  const resTest = await v_db.type.view();
+  const resTest = await v_database.type.view();
   expect(testData._types).toEqual(expect.arrayContaining(resTest));
 });
 
@@ -83,14 +83,14 @@ for (let i = 0; i < testData.items_count; i++) {
     const itemNumber = i % testData._types.length;
     const typeNum = Math.trunc(itemNumber);
     const helpType = testData._types[typeNum];
-    const res = await v_db.item.new(helpType, testData);
+    const res = await v_database.item.new(helpType, testData);
     //console.log( "Type Number" + typeNum + "| " + helpType + "| Item Number : " + itemNumber + "| RES: " + res );
     expect(res).toEqual(true);
   });
 }
 
 test("CHECKING UP THOSE ITEMS", async () => {
-  const resTest = await v_db.item.view("users");
+  const resTest = await v_database.item.view("users");
   const usersList = await v_fs.listDir(
     process.v.data_dir + "/" + "users"
   );
@@ -100,16 +100,17 @@ test("CHECKING UP THOSE ITEMS", async () => {
 
 test("Data size", async () => {
   process.v.log_to_console = true;
-  expect(await v_db.data_size()).toEqual(testData.items_count);
+  expect(await v_database.data_size()).toEqual(testData.items_count);
   process.v.log_to_console = false;
 });
 
 test("System Data Purge", async () => {
-  expect(await v_db.purge_database()).toEqual(true);
+  expect(await v_database.purge_database()).toEqual(true);
 });
+
 test("Data size After Format", async () => {
   process.v.log_to_console = true;
-  expect(await v_db.data_size()).toEqual(0);
+  expect(await v_database.data_size()).toEqual(0);
   v_fs.removeDirSy(process.v.data_dir, { recursive: true });
   process.v.log_to_console = false;
 });

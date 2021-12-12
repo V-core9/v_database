@@ -11,7 +11,7 @@
 Currently only through the github repo can be installed...
     But soon we will have something like:
           
-          npm install v_db --save
+          npm install v_database --save
           
     Soon... 🚀    
 
@@ -21,19 +21,19 @@ Currently only through the github repo can be installed...
 here is an example code that is being used to export this example readme file in the fist place. 
           
           
-          const v_db = require('v_db');
+          const v_database = require('v_database');
           
-          v_db.type.new('books'); // returns true if it created new type or false if it already exists or fails
-          v_db.type.new('links');
+          v_database.type.new('books'); // returns true if it created new type or false if it already exists or fails
+          v_database.type.new('links');
           
-          v_db.item.new('books', {name: 'book title text' , description : 'demo' }); 
-          v_db.item.new('links', {name: 'v-core9' , path : 'https://v-core9.com/' });
+          v_database.item.new('books', {name: 'book title text' , description : 'demo' }); 
+          v_database.item.new('links', {name: 'v-core9' , path : 'https://v-core9.com/' });
           
-          v_db.item.new('books', { id: 'sample_id', name: 'book title text' , description : 'demo' }); //Adding ID will try to use it as an ID
+          v_database.item.new('books', { id: 'sample_id', name: 'book title text' , description : 'demo' }); //Adding ID will try to use it as an ID
     
-          v_db.install() // trigger installation process 
-          v_db.data_size() // returns the size of the data 
-          v_db.purge_data() // removes all data from the database
+          v_database.install() // trigger installation process 
+          v_database.data_size() // returns the size of the data 
+          v_database.purge_data() // removes all data from the database
         
 
 ---
@@ -43,7 +43,7 @@ Look into system folder for more info about project structure.
     
     These are some important folders that are used when generating this document:
       📁 __tests__ /
-      📁 __tests__ / v_db /
+      📁 __tests__ / v_database /
       📁 __tests__ / v_lidator /
 
       📁 _tDdata_ / 
@@ -52,14 +52,14 @@ Look into system folder for more info about project structure.
       📁 $_HELP_$ / 
       📁 $_HELP_$ / readme / 
 
-      📁 v_db / 
-      📁 v_db / config / 
-      📁 v_db / config / version / 
-      📁 v_db / helpers / 
-      📁 v_db / info / 
-      📁 v_db / item / 
-      📁 v_db / modules / 
-      📁 v_db / type / 
+      📁 v_database / 
+      📁 v_database / config / 
+      📁 v_database / config / version / 
+      📁 v_database / helpers / 
+      📁 v_database / info / 
+      📁 v_database / item / 
+      📁 v_database / modules / 
+      📁 v_database / type / 
       
       📁 v_lidator / 
       📁 v_lidator / src /     

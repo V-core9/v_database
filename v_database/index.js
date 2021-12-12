@@ -2,7 +2,7 @@ const info = require('./info');
 const { config } = require('./config');
 const { data_size, purge_database , install } = require('./helpers');
 
-const v_db = {
+const v_database = {
   info,
   config,
   data_size,
@@ -12,5 +12,5 @@ const v_db = {
   item: require('./item')
 };
 
-module.exports = v_db;
+module.exports = v_database;
 

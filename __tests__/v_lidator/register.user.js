@@ -1,5 +1,5 @@
 const register = require('../../v_lidator/src/user/register');
-const { v_db } = require('../../index');
+const { v_database } = require('../../index');
 const v_fs = require('v_file_system');
 const path = require("path");
 
@@ -10,8 +10,8 @@ v_fs.mkdirSy(process.v.data_dir);
 
 
 test('User register test 001 OK', async () => {
-    const user_type = await v_db.type.new('users');
-    const user_emails_type = await v_db.type.new('user_emails');
+    const user_type = await v_database.type.new('users');
+    const user_emails_type = await v_database.type.new('user_emails');
     expect(await register({ username: 'yeaJ11', email: 'yeamiki11@gmail.com', password: '1234567890', password_confirm: '1234567890' })).toBe(true);
 });
 
@@ -47,18 +47,18 @@ test(test_name006, async () => {
 });
 
 test('User view 007', async () => {
-    expect(await v_db.item.view('users')).toEqual(["yeaJ11", "yea_mki11", "yea_mki11ZZZZZ"]);
+    expect(await v_database.item.view('users')).toEqual(["yeaJ11", "yea_mki11", "yea_mki11ZZZZZ"]);
 });
 
 test('User view with id 008', async () => {
     var compar = JSON.parse(v_fs.readSy(process.v.data_dir + '/users/yeaJ11.json'));
-    expect(await v_db.item.view('users', "yeaJ11")).toEqual(compar);
+    expect(await v_database.item.view('users', "yeaJ11")).toEqual(compar);
 });
 
 
 test('User view with id 009', async () => {
     var compar = JSON.parse(v_fs.readSy(process.v.data_dir + '/users/yeaJ11.json'));
-    expect(await v_db.item.view('users', { id: "yeaJ11" })).toEqual(compar);
+    expect(await v_database.item.view('users', { id: "yeaJ11" })).toEqual(compar);
 });
 
 test('User register test 010', async () => {
@@ -77,14 +77,14 @@ test('User register test 012', async () => {
 });
 
 test('User REMOVE test 013', async () => {
-    expect(await v_db.item.del('users')).toEqual(false);
+    expect(await v_database.item.del('users')).toEqual(false);
 });
 
 test('User REMOVE test 014', async () => {
-    expect(await v_db.item.del('users', 'yeaJ11')).toEqual(true);
+    expect(await v_database.item.del('users', 'yeaJ11')).toEqual(true);
 });
 
 test('User REMOVE test 015', async () => {
-    expect(await v_db.item.del('users', { id: 'yea_mki11' })).toEqual(true);
+    expect(await v_database.item.del('users', { id: 'yea_mki11' })).toEqual(true);
     v_fs.removeDirSy(process.v.data_dir, { recursive: true });
 });
