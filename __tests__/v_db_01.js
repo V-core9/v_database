@@ -96,6 +96,30 @@ test("🔂 Data size", async () => {
 });
 
 
+var demo_user_return_value = {"_content": {"testData": {"calls_made": 0, "cts": 0, "key": 1234567890, "origin": "www.google.com", "owner_id": 1234567890}}, "_types": ["encryption_keys", "system_api_keys", "system_log", "system_settings", "authors", "users", "user_api_keys", "devices", "user_devices", "pages", "posts", "posts_categories", "forum_threads", "forum_tags", "forum_categories", "forum_posts", "links", "images", "tasks", "workplaces", "notes", "snippets", "categories", "tags", "chat_groups", "chat_messages", "chat_assets", "companies", "support_questions", "support_categories", "ip_blacklist", "ip_whitelist", "reserved_words", "aes_keys"], "items_count": 5000};
+test("📡 Viewing every 10th user", async () => {
+  const users = await v_database.item.view("users");
+  for (let i = 0; i < users.length; i++) {
+    if (i % 10 === 0) {
+      //console.log(users[i]);
+      var res = await v_database.item.view('users', users[i]);
+      demo_user_return_value._content.testData.cts = res._content.testData.cts;
+      expect(res).toEqual(demo_user_return_value);
+    }
+  }
+});
+
+test("📃 Viewing every 10th user [object filter]", async () => {
+  const users = await v_database.item.view("users");
+  for (let i = 0; i < users.length; i++) {
+    if (i % 10 === 0) {
+      var res = await v_database.item.view('users', {id : users[i]});
+      demo_user_return_value._content.testData.cts = res._content.testData.cts;
+      expect(res).toEqual(demo_user_return_value);
+    }
+  }
+});
+
 
 
 test("💥 Deleting every 3rd user", async () => {
@@ -104,6 +128,18 @@ test("💥 Deleting every 3rd user", async () => {
     if (i % 3 === 0) {
       //console.log(users[i]);
       expect(await v_database.item.del('users', users[i])).toEqual(true);
+    }
+  }
+});
+
+
+
+test("💥 Deleting every 3rd user [repeat for filtering] ", async () => {
+  const users = await v_database.item.view("users");
+  for (let i = 0; i < users.length; i++) {
+    if (i % 3 === 0) {
+      //console.log(users[i]);
+      expect(await v_database.item.del('users', {id : users[i]})).toEqual(true);
     }
   }
 });
