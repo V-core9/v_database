@@ -1,9 +1,9 @@
 const path = require('path');
 
-const { cfg_path } = require('./_$');
+const { cfg_fpath } = require('./_$');
 
 try {
-  const config = require(cfg_path);
+  const config = require(cfg_fpath);
 
   module.exports = {
     data_dir: path.join(__dirname, `../../${config.data_dir}`),
