@@ -1,5 +1,5 @@
 const { v_lidator } = require('../../index');
-const { test_data_list } = require("../../_tDdata_/_test-data/test_data_list");
+const { test_data_list } = require("../_test-data/test_data_list");
 
 
 
