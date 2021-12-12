@@ -1,12 +1,10 @@
-const path = require('path');
-
-const { cfg_fpath } = require('./_$');
+const { cfg_dpath, cfg_fpath } = require('./_$');
 
 try {
   const config = require(cfg_fpath);
 
   module.exports = {
-    data_dir: path.join(__dirname, `../../${config.data_dir}`),
+    data_dir: cfg_dpath+'/'+config.data_dir,
     db_mode: "perItem",
     config
   };
