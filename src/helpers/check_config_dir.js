@@ -4,7 +4,7 @@ module.exports = async () => {
 
   var dir_status = false;
   try {
-    await v_fs.listDir(cfg_dpath, 'utf8');
+    await v_fs.listDir(cfg_dpath);
     dir_status = true;
   } catch (e) {
     //console.log(e);
