@@ -6,7 +6,7 @@ try {
   module.exports = {
     data_dir: cfg_dpath+'/'+config.data_dir,
     db_mode: "perItem",
-    config
+    config : config
   };
 
 

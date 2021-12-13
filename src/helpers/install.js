@@ -2,7 +2,7 @@ const os = require('os');
 const v_fs = require("v_file_system");
 const inquirer = require('inquirer');
 
-const {d_dir,  d_cfg,  cfg_dpath, cfg_fpath} = require('../config/_$');
+const { d_dir, d_cfg, cfg_dpath, cfg_fpath } = require('../config/_$');
 
 
 const install = async () => {
@@ -12,80 +12,86 @@ const install = async () => {
 |''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''|
 |  This will now walk you through the setup process,         |
 |  should be easy to finish.                                 |
-\\____________________________________________________________/\n`);
+\\____________________________________________________________/`);
 
   const questions = [
     {
       type: 'list',
       name: 'app_mode',
-      message: ' ⌘  - Run Mode?',
+      message: '  - Run Mode?',
       choices: ["TEST", "DEV", "LIVE"],
       default: "LIVE",
     },
-    {
-      type: 'list',
-      name: 'logLevel',
-      message: ' ⌨  - Chose an application log level?',
-      choices: ['NONE', 'ALL', 'INFO', 'WARN', 'ERROR', 'FATAL'],
-      default: 'ERROR'
-    },
-    {
-      type: 'list',
-      name: 'log_to_console',
-      message: ' ⍍  - Print Log Output To Console?',
-      choices: ["true", "false", "OPTIMIZED"],
-      default: "OPTIMIZED",
-    },
+    // {
+    //   type: 'list',
+    //   name: 'logLevel',
+    //   message: '⌨  - Chose an application log level?',
+    //   choices: ['NONE', 'ALL', 'INFO', 'WARN', 'ERROR', 'FATAL'],
+    //   default: 'ERROR'
+    // },
+    //{
+    //  type: 'list',
+    //  name: 'log_to_console',
+    //  message: '⍍  - Print Log Output To Console?',
+    //  choices: ["true", "false", "OPTIMIZED"],
+    //  default: "false",
+    //},
     {
       type: 'confirm',
-      name: 'console_colors',
-      message: ' ⎚  - Enable Console Colors?',
-      default: true,
+      name: 'log_to_console',
+      message: '  - Print Log Output To Console?',
+      default: false,
     },
+    //{
+    //  type: 'confirm',
+    //  name: 'console_colors',
+    //  message: '⎚  - Enable Console Colors?',
+    //  default: true,
+    //},
     {
       type: 'confirm',
       name: 'log_to_file',
-      message: ' ⎙  - Save Log Output To File?',
+      message: '  - Save Log Output To File?',
       default: true,
     },
-    {
-      type: 'list',
-      name: 'cpu_max_usage',
-      message: ' ⏣  - CPU Maximum Usage? [percents - %]',
-      choices: ["25", "50", "75", "100"],
-      default: "50",
-    },
-    {
-      type: 'list',
-      name: 'cache_size',
-      message: ' ⎆  - Database Cache Maximum RAM usage? [GB]',
-      choices: ["2", "4", "6", "8"],
-      default: "4",
-    },
+    //{
+    //  type: 'list',
+    //  name: 'cpu_max_usage',
+    //  message: ' ⏣  - CPU Maximum Usage? [percents - %]',
+    //  choices: ["25", "50", "75", "100"],
+    //  default: "50",
+    //},
+    //{
+    //  type: 'list',
+    //  name: 'cache_size',
+    //  message: ' ⎆  - Database Cache Maximum RAM usage? [GB]',
+    //  choices: ["2", "4", "6", "8"],
+    //  default: "4",
+    //},
 
     //? Data Directory Path
     {
       type: 'input',
       name: 'data_dir',
-      message: ' ⏎  - Data Location?',
+      message: '  - Data Location?',
       default: '$_DATA',
     },
 
     //? System Autostart Application
-    {
-      type: 'confirm',
-      name: 'os_autostart',
-      message: ' ⍢  - Enable Auto Startup with OS?',
-      default: true,
-    },
+    //{
+    //  type: 'confirm',
+    //  name: 'os_autostart',
+    //  message: '⍢  - Enable Auto Startup with OS?',
+    //  default: true,
+    //},
 
     //? System Notifications
-    {
-      type: 'confirm',
-      name: 'os_notify',
-      message: ' ⍔  - Send OS Notifications?',
-      default: true,
-    },
+    //{
+    //  type: 'confirm',
+    //  name: 'os_notify',
+    //  message: ' ⍔  - Send OS Notifications?',
+    //  default: true,
+    //},
 
     //? Root Admin Username
     //{
@@ -114,7 +120,7 @@ const install = async () => {
   ];
 
   inquirer.prompt(questions).then((answers) => {
-    console.log('🚀 Installation Config Results:');
+    //console.log('🚀 Installation Config Results:');
 
     //? Root Admin Salt
     //answers.root_admin_salt = ''$12399!';
@@ -123,8 +129,8 @@ const install = async () => {
     answers.installed_ts = Date.now();
 
     //? How much to use it
-    answers.cpu_max_usage = Number(answers.cpu_max_usage);
-    answers.cache_size = Number(answers.cache_size);
+    // answers.cpu_max_usage = Number(answers.cpu_max_usage);
+    // answers.cache_size = Number(answers.cache_size);
 
     //? System Architecture data
     answers.architecture = os.arch();
@@ -156,7 +162,7 @@ const install = async () => {
     v_fs.mkdirSy(cfg_dpath + '/' + answers.data_dir);
 
     //* Just log info to see what it got.
-    console.log(answers);
+    //console.log(answers);
 
   });
 };
