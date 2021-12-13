@@ -71,15 +71,6 @@ const install = async () => {
       default: '$_DATA',
     },
 
-    //? Data Directory Path
-    // {
-    //   type: 'list',
-    //   name: 'db_structure',
-    //   message: ' ⏣  - Database Mode ? [structure]',
-    //   choices: ["oneForAll", "perType", "perItem"],
-    //   default: "perItem",
-    // },
-
     //? System Autostart Application
     {
       type: 'confirm',
@@ -97,33 +88,36 @@ const install = async () => {
     },
 
     //? Root Admin Username
-    {
-      type: 'input',
-      name: 'root_admin',
-      message: ' ⏎  - Application Root Admin Username?',
-      default: '$_Vdb_Admin',
-    },
+    //{
+    //  type: 'input',
+    //  name: 'root_admin',
+    //  message: ' ⏎  - Application Root Admin Username?',
+    //  default: '$_Vdb_Admin',
+    //},
 
     //? Password Hashing Algorithm
-    {
-      type: 'list',
-      name: 'pass_alg',
-      message: ' ⎆  - Password Hashing Algorithm?',
-      choices: ["md5", "sha256", "DISABLED"],
-      default: "sha256",
-    },
+    //{
+    //  type: 'list',
+    //  name: 'pass_alg',
+    //  message: ' ⎆  - Password Hashing Algorithm?',
+    //  choices: ["md5", "sha256", "DISABLED"],
+    //  default: "sha256",
+    //},
 
     //? Root Admin Password
-    {
-      type: 'input',
-      name: 'root_admin_password',
-      message: ' ⏎  - Application Root Admin Password?',
-      default: '$123..PASS%\\\';,.\\99!',
-    },
+    //{
+    //  type: 'input',
+    //  name: 'root_admin_password',
+    //  message: ' ⏎  - Application Root Admin Password?',
+    //  default: '$123..PASS%\\\';,.\\99!',
+    //},
   ];
 
   inquirer.prompt(questions).then((answers) => {
     console.log('🚀 Installation Config Results:');
+
+    //? Root Admin Salt
+    //answers.root_admin_salt = ''$12399!';
 
     //? Mark it
     answers.installed_ts = Date.now();
@@ -150,7 +144,7 @@ const install = async () => {
     answers.installed_by = os.userInfo().username;
 
     //? Network Information
-    answers.network = os.networkInterfaces()[`Ethernet`];
+    //answers.network = os.networkInterfaces()[`Ethernet`];
 
     //? Create the data folder
     v_fs.mkdirSy(cfg_dpath);
