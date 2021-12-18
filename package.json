@@ -1,19 +1,26 @@
 {
   "name": "v_database",
   "description": "v_database is a small/basic database solution that utilizes filesystem to manipulate database",
-  "version": "0.0.25",
+  "version": "0.0.26",
   "author": "V-core9",
   "bugs": "https://github.com/V-core9/v_database/issues",
   "dependencies": {
     "inquirer": "^8.2.0",
     "uuid": "^8.3.2",
     "v_file_system": "^1.0.3",
-    "v_scrolls": "^0.1.12",
     "v_to_sha256": "^1.0.7"
   },
   "homepage": "https://github.com/V-core9/v_database",
   "keywords": [
-    "database"
+    "database",
+    "filesystem",
+    "v_database",
+    "v_file_system",
+    "v_scrolls",
+    "v_to_sha256",
+    "v-core9",
+    "db",
+    "JSON"
   ],
   "license": "MIT",
   "main": "index.js",
@@ -24,6 +31,7 @@
     "readme_gen": "node $_HELP_$/readme.generate.js"
   },
   "devDependencies": {
-    "jest": "^27.3.1"
+    "jest": "^27.3.1",
+    "v_scrolls": "^0.1.12"
   }
 }
