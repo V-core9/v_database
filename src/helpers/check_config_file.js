@@ -10,7 +10,7 @@ module.exports = async () => {
     //console.log(e);
   }
 
-  console.log(file_status === true ? '📑 Found Root Config File. ✅' : '📑 Missing Root Config File. 🔻');
+  //console.log(file_status === true ? '📑 Found Root Config File. ✅' : '📑 Missing Root Config File. 🔻');
 
   return file_status;
 };

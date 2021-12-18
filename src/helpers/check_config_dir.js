@@ -10,7 +10,7 @@ module.exports = async () => {
     //console.log(e);
   }
 
-  console.log(dir_status === true ? '📂 Found Root Config Directory. ✅' : '📂 Missing Root Config Directory. 🔻');
+  //console.log(dir_status === true ? '📂 Found Root Config Directory. ✅' : '📂 Missing Root Config Directory. 🔻');
 
   return dir_status;
 };
