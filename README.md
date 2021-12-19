@@ -9,10 +9,17 @@
 ## **🚕 Install and Setting up**    
 
 Currently only through the github repo can be installed...
-    But soon we will have something like:
-          
+    Run these commands in sequence to install:
+
+          // Install the dependency
           npm i v_database --save
-          
+          // Start node
+          node
+          // Load it into the console
+          const v_db = require('.');
+          // Trigger the install
+          await v_db.install();
+
     Soon... 🚀    
 
 ---
@@ -77,4 +84,4 @@ Look into system folder for more info about project structure.
 > ⛔ Any Edits Done To Generated Files Will Be Overwritten Next Time These Files Get Re-Generated!  
 >  
 > _Made 💖 using [v_scrolls]("https://github.com/V-core9/v_scrolls")_      
-> Last Updated:  2021/12/19 13:35:56 
+> Last Updated:  2021/12/19 13:40:26 
