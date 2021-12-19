@@ -1,7 +1,7 @@
 {
   "name": "v_database",
   "description": "v_database is a small/basic database solution that utilizes filesystem to manipulate database",
-  "version": "0.0.34",
+  "version": "0.0.35",
   "author": "V-core9",
   "bugs": "https://github.com/V-core9/v_database/issues",
   "dependencies": {
