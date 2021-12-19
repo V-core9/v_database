@@ -1,19 +1,12 @@
-const v_fs = require('v_file_system');
-const path = require('path');
 
-const read = {
-  list: async (typePath) => {
-    return await v_fs.listDir(typePath);
-  },
-  byId: async (typePath, id) => {
-    return JSON.parse(await v_fs.read(typePath + '/' + id + ".json"));
-  }
-};
+const path = require('path');
+const read = require('./view.core');
+const { config } = require('../config/');
 
 module.exports = async (type, filter = undefined) => {
-  const typePath = path.join(process.v.data_dir, type);
+  const typePath = path.join(config.data_dir, type);
 
-  //? List type dir if no filter provided
+  //? List type
   if (filter === undefined) {
     var res = await read.list(typePath);
     var res_list = [];
@@ -22,17 +15,17 @@ module.exports = async (type, filter = undefined) => {
     });
     return res_list;
   }
-  //!- - - - - 
+  //!eof
 
-  //? Find by ID if filter is string
+  //? Find by id
   if (typeof filter === 'string') {
     return await read.byId(typePath, filter);
   }
-  //!- - - - - 
+  //!eof
 
-  //? Filter by id if id is defined in an object
+  //? Filter by id
   if (filter.id !== undefined) {
     return await read.byId(typePath, filter.id);
   }
-  //!- - - - - 
+  //!eof
 };
