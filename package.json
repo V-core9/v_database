@@ -1,7 +1,7 @@
 {
   "name": "v_database",
   "description": "v_database is a small/basic database solution that utilizes filesystem to manipulate database",
-  "version": "0.0.28",
+  "version": "0.0.29",
   "author": "V-core9",
   "bugs": "https://github.com/V-core9/v_database/issues",
   "dependencies": {
@@ -30,7 +30,7 @@
   "scripts": {
     "test": "jest",
     "prepack": "npm run test",
-    "readme_gen": "node $_HELP_$/readme.generate.js"
+    "docs": "node $_HELP_$/readme.generate.js"
   },
   "devDependencies": {
     "jest": "^27.3.1",
