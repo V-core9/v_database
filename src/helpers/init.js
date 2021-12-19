@@ -2,7 +2,7 @@ const os = require('os');
 const v_fs = require("v_file_system");
 const path = require("path");
 
-const { cfg_dpath, cfg_fpath } = require(path.join(__dirname, '../../config/base'));
+const { cfg_dpath, cfg_fpath } = require(path.join(__dirname, '../config/base'));
 
 
 const init = async () => {
