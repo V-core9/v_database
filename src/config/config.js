@@ -1,14 +1,14 @@
 const { cfg_dpath, cfg_fpath } = require('./base');
 
-var module_config = {};
+var config = {};
 try {
-  const config = require(cfg_fpath);
-  module_config = {
-    data_dir: cfg_dpath+'/'+config.data_dir,
-    config : config
+  const resp = require(cfg_fpath);
+  config = {
+    data_dir: cfg_dpath+'/'+resp.data_dir,
+    config : resp
   };
 } catch (e) {
   //console.log('ERROR: v_database is missing configuration. \nHINT : Use [ v_database.install() ] to start the configuration process.');
 }
 
-module.exports = module_config;
+module.exports = config;
