@@ -52,22 +52,23 @@ Look into system folder for more info about project structure.
       📁 $_HELP_$ / 
       📁 $_HELP_$ / readme / 
 
-      📁 v_database / 
-      📁 v_database / config / 
-      📁 v_database / config / version / 
-      📁 v_database / helpers / 
-      📁 v_database / info / 
-      📁 v_database / item / 
-      📁 v_database / modules / 
-      📁 v_database / type / 
-      
-      📁 v_lidator / 
-      📁 v_lidator / src /     
-      📁 v_lidator / src / helpers /
-      📁 v_lidator / src / templates /
-      📁 v_lidator / src / user /         
+      📁 src / 
+      📁 src / config / 
+      📁 src / config / version / 
+      📁 src / helpers / 
+      📁 src / helpers / install /
+      📁 src / info / 
+      📁 src / item / 
+      📁 src / type /    
 
 ---
+
+
+## ✅ Test Results and Coverage with Jest
+
+![Test and Coverage with Jest](coverage.png)
+
+
 >### 🔻 **WARRNING: GENERATED FILE NOTICE**  🔻 
 > ⛔ Any Edits Done To Generated Files Will Be Overwritten Next Time These Files Get Re-Generated!  
 >  

@@ -44,8 +44,7 @@ testData._types.forEach((type) => {
 });
 
 test("🧱 VALIDATE TYPES : [ Comparing Types found with types from testData._types ]", async () => {
-  const resTest = await v_database.type.view();
-  expect(testData._types).toEqual(expect.arrayContaining(resTest));
+  expect(await v_database.type.view()).toEqual(expect.arrayContaining(testData._types));
 });
 
 
