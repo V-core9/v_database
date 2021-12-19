@@ -3,7 +3,6 @@ const config = require('./config');
 const helpers = require('./helpers');
 
 const v_database = {
-  init: helpers.init,
   info,
   config,
   data_size: helpers.data_size,

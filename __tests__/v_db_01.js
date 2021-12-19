@@ -1,14 +1,12 @@
 const v_database = require("../index");
-process.v.data_dir = ".v_database/$_TEST_01";
+
+const {config} = require("../src/config");
 
 
 const v_fs = require("v_file_system");
 const testData = require("../_tData_");
 
 
-v_fs.removeDirSy('.v_database', { recursive: true });
-
-v_database.init();
 
 test("🔘 Check config dir", async () => {
   expect(await v_database.check_config_dir()).toEqual(true);
@@ -23,9 +21,9 @@ test("🔘 Check config file", async () => {
 
 
 preTest = async () => {
-  var checkRes = await v_fs.isDir(process.v.data_dir);
+  var checkRes = await v_fs.isDir(config.data_dir);
   //console.log(`Test Dir Status : ${checkRes}`);
-  if (!checkRes) checkRes = await v_fs.mkdir(process.v.data_dir);
+  if (!checkRes) checkRes = await v_fs.mkdir(config.data_dir);
   const res = [];
 
   const typesCount = testData._types.length;
@@ -37,7 +35,7 @@ preTest = async () => {
 };
 
 
-if (!v_fs.isDirSy(process.v.data_dir)) v_fs.mkdirSy(process.v.data_dir);
+if (!v_fs.isDirSy(config.data_dir)) v_fs.mkdirSy(config.data_dir);
 
 
 testData._types.forEach((type) => {
@@ -99,7 +97,7 @@ for (let i = 0; i < testData.items_count; i++) {
 test("🙋‍♂️ CHECKING UP THOSE ITEMS", async () => {
   const resTest = await v_database.item.view("users");
   const usersList = await v_fs.listDir(
-    process.v.data_dir + "/" + "users"
+    config.data_dir + "/" + "users"
   );
   expect(resTest.length).toEqual(usersList.length);
 });
@@ -167,7 +165,7 @@ test("🔥 System Data Purge", async () => {
 
 test("🔘 Data size After Format", async () => {
   expect(await v_database.data_size()).toEqual(0);
-  v_fs.removeDirSy(process.v.data_dir, { recursive: true });
+  v_fs.removeDirSy(config.data_dir, { recursive: true });
 });
 
 test("🔘 Check config dir", async () => {
