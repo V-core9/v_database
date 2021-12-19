@@ -1,9 +1,9 @@
-const os = require('os');
+const path = require('path');
 
 const d_dir = '.v_database';
 const d_cfg = 'v_config';
-const cfg_dpath = os.homedir+'/'+d_dir;
-const cfg_fpath = os.homedir+'/'+d_dir+'/'+d_cfg;
+const cfg_dpath = d_dir;
+const cfg_fpath = path.join(cfg_dpath,d_cfg);
 
 module.exports = {
   d_dir,
