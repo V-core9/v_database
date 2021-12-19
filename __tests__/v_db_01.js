@@ -4,7 +4,7 @@ const v_database = require("../index");
 const v_fs = require("v_file_system");
 const testData = require("../_tData_");
 
-process.v.data_dir = process.env.home + "/.v_database/$_TEST_01";
+process.v.data_dir = ".v_database/$_TEST_01";
 
 v_fs.removeDirSy(process.v.data_dir, { recursive: true });
 
