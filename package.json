@@ -5,6 +5,8 @@
   "author": "V-core9",
   "bugs": "https://github.com/V-core9/v_database/issues",
   "dependencies": {
+    "boxen": "^5.1.2",
+    "chalk": "^5.0.0",
     "inquirer": "^8.2.0",
     "uuid": "^8.3.2",
     "v_file_system": "^1.0.3",
@@ -28,7 +30,8 @@
   "scripts": {
     "test": "jest",
     "prepack": "npm run test",
-    "readme_gen": "node $_HELP_$/readme.generate.js"
+    "docs": "node $_HELP_$/readme.generate.js",
+    "postinstall": "node install.js"
   },
   "devDependencies": {
     "jest": "^27.3.1",

@@ -2,9 +2,7 @@
 const v_fs = require('v_file_system');
 const path = require('path');
 
-
 data_size = async () => {
-  //console.log("🔀 Getting Data Size ");
 
   const helper = {
     sizes: {
@@ -45,12 +43,12 @@ data_size = async () => {
     item.size = Math.trunc(v_fs.byteSizer.byteToMega(item.size) * 100) / 100 + "MB";
   });
 
-  if (process.v.log_to_console === true || process.v.log_to_console === 'OPTIMIZED')  {
-    console.table(helper.sizes.types);
-    console.log("🔄 Total Data Disk Size : [ " + Math.trunc(v_fs.byteSizer.byteToGiga(helper.sizes.totalSize) * 100) / 100 + "GB ]");
-    console.log("⏩ Total Items Count : [ " + helper.sizes.totalCount + " ]");
-    console.log("🔂 Total Types Count : [ " + helper.typeCount + " ]");
-  }
+  //if (process.v.log_to_console === true || process.v.log_to_console === 'OPTIMIZED')  {
+  //  console.table(helper.sizes.types);
+  //  console.log("🔄 Total Data Disk Size : [ " + Math.trunc(v_fs.byteSizer.byteToGiga(helper.sizes.totalSize) * 100) / 100 + "GB ]");
+  //  console.log("⏩ Total Items Count : [ " + helper.sizes.totalCount + " ]");
+  //  console.log("🔂 Total Types Count : [ " + helper.typeCount + " ]");
+  //}
 
   return helper.sizes.totalCount;
 };

@@ -1,12 +1,26 @@
-
-const path = require("path");
 const v_database = require("../index");
+process.v.data_dir = ".v_database/$_TEST_01";
+
+
 const v_fs = require("v_file_system");
 const testData = require("../_tData_");
 
-process.v.data_dir = process.env.home + "/.v_database/$_TEST_01";
 
-v_fs.removeDirSy(process.v.data_dir, { recursive: true });
+v_fs.removeDirSy('.v_database', { recursive: true });
+
+v_database.init();
+
+test("🔘 Check config dir", async () => {
+  expect(await v_database.check_config_dir()).toEqual(true);
+});
+
+test("🔘 Check config file", async () => {
+  expect(await v_database.check_config_file()).toEqual(true);
+});
+
+
+
+
 
 preTest = async () => {
   var checkRes = await v_fs.isDir(process.v.data_dir);
@@ -44,8 +58,7 @@ testData._types.forEach((type) => {
 });
 
 test("🧱 VALIDATE TYPES : [ Comparing Types found with types from testData._types ]", async () => {
-  const resTest = await v_database.type.view();
-  expect(testData._types).toEqual(expect.arrayContaining(resTest));
+  expect(await v_database.type.view()).toEqual(expect.arrayContaining(testData._types));
 });
 
 
@@ -133,6 +146,10 @@ test("💥 Deleting every 3rd user", async () => {
 });
 
 
+
+test("🔥 Del [empty]", async () => {
+  expect(await v_database.item.del()).toEqual(false);
+});
 
 test("💥 Deleting every 3rd user [repeat for filtering] ", async () => {
   const users = await v_database.item.view("users");

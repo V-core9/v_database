@@ -1,5 +1,5 @@
 
-const config = require('./_config');
+const config = require('./config');
 
 if ( config !== {} ) {
   setEnvConfig = () => {

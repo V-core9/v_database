@@ -11,3 +11,5 @@
 !/$_data/.gitkeep
 $_test/
 v__config.js
+
+.v_database

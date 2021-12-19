@@ -1,4 +1,8 @@
 
-const db_mode = require("./set_info");
+const set_info = require("./set_info");
+const config = require("./config");
 
-module.exports = db_mode;
+module.exports = {
+  config,
+  set_info
+};

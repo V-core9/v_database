@@ -9,67 +9,79 @@
 ## **🚕 Install and Setting up**    
 
 Currently only through the github repo can be installed...
-    But soon we will have something like:
-          
-          npm install v_database --save
-          
+    Run these commands in sequence to install:
+
+          // Install the dependency
+          npm i v_database --save
+          // Start node
+          node
+          // Load it into the console
+          const v_db = require('.');
+          // Trigger the install
+          await v_db.install();
+
     Soon... 🚀    
 
 ---
 ## **⚡ How to actually use it ?**    
 
-here is an example code that is being used to export this example readme file in the fist place. 
-          
-          
+here is an example code that is being used to export this example readme file in the fist place.
+
+
           const v_database = require('v_database');
-          
+
           v_database.type.new('books'); // returns true if it created new type or false if it already exists or fails
           v_database.type.new('links');
-          
-          v_database.item.new('books', {name: 'book title text' , description : 'demo' }); 
+
+          v_database.item.new('books', {name: 'book title text' , description : 'demo' });
           v_database.item.new('links', {name: 'v-core9' , path : 'https://v-core9.com/' });
-          
+
           v_database.item.new('books', { id: 'sample_id', name: 'book title text' , description : 'demo' }); //Adding ID will try to use it as an ID
-    
-          v_database.install() // trigger installation process 
-          v_database.data_size() // returns the size of the data 
+
+          v_database.install() // trigger installation process
+          v_database.data_size() // returns the size of the data
           v_database.purge_data() // removes all data from the database
         
 
 ---
 ## **📁 Project Folders Structure Info**    
 
-Look into system folder for more info about project structure. 
-    
+Look into system folder for more info about project structure.
+
     These are some important folders that are used when generating this document:
       📁 __tests__ /
       📁 __tests__ / v_database /
       📁 __tests__ / v_lidator /
 
-      📁 _tDdata_ / 
-      📁 _tDdata_ / _test-data / 
+      📁 _tDdata_ /
+      📁 _tDdata_ / _test-data /
 
-      📁 $_HELP_$ / 
-      📁 $_HELP_$ / readme / 
+      📁 $_HELP_$ /
+      📁 $_HELP_$ / readme /
 
-      📁 v_database / 
-      📁 v_database / config / 
-      📁 v_database / config / version / 
-      📁 v_database / helpers / 
-      📁 v_database / info / 
-      📁 v_database / item / 
-      📁 v_database / modules / 
-      📁 v_database / type / 
-      
-      📁 v_lidator / 
-      📁 v_lidator / src /     
+      📁 v_database /
+      📁 v_database / config /
+      📁 v_database / config / version /
+      📁 v_database / helpers /
+      📁 v_database / info /
+      📁 v_database / item /
+      📁 v_database / modules /
+      📁 v_database / type /
+
+      📁 v_lidator /
+      📁 v_lidator / src /
       📁 v_lidator / src / helpers /
       📁 v_lidator / src / templates /
       📁 v_lidator / src / user /         
+
+---
+## **✅ Tests and Coverage with Jest**    
+
+![Test and Coverage with Jest](coverage.png)    
 
 ---
 >### 🔻 **WARRNING: GENERATED FILE NOTICE**  🔻 
 > ⛔ Any Edits Done To Generated Files Will Be Overwritten Next Time These Files Get Re-Generated!  
 >  
 > _Made 💖 using [v_scrolls]("https://github.com/V-core9/v_scrolls")_      
-> Last Updated:  2021/12/10 17:11:07 
+> Last Updated:  2021/12/19 13:40:26 
