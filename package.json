@@ -31,7 +31,7 @@
     "test": "jest",
     "prepack": "npm run test",
     "docs": "node $_HELP_$/readme.generate.js",
-    "install": "node install.js"
+    "postinstall": "node install.js"
   },
   "devDependencies": {
     "jest": "^27.3.1",
