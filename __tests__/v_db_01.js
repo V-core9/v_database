@@ -133,6 +133,10 @@ test("💥 Deleting every 3rd user", async () => {
 
 
 
+test("🔥 Del [empty]", async () => {
+  expect(await v_database.item.del()).toEqual(false);
+});
+
 test("💥 Deleting every 3rd user [repeat for filtering] ", async () => {
   const users = await v_database.item.view("users");
   for (let i = 0; i < users.length; i++) {
