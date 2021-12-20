@@ -158,7 +158,7 @@ test("💥 Deleting every 3rd user [repeat for filtering] ", async () => {
 });
 
 test("🔥 System Data Purge", async () => {
-  expect(await vDb.helpers.purge_database()).toEqual(true);
+  expect(await vDb.helpers.purge()).toEqual(true);
 });
 
 test("🔘 Data size After Format", async () => {

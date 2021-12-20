@@ -1,6 +1,13 @@
+const helpers = require('./helpers');
+
+
 const v_database = {
   config: require('./config'),
-  helpers: require('./helpers'),
+  install: helpers.install,
+  data_size: require('./data_size'),
+  install: require('./install'),
+  purge: require('./purge_database'),
+  helpers,
   type: require('./type'),
   item: require('./item')
 };
