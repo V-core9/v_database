@@ -1,6 +1,19 @@
 const os = require('os');
 const v_fs = require("v_file_system");
-const { cfg_dpath, cfg_fpath } = require('../../config');
+const { cfg_dpath, cfg_fpath } = require('../config');
+
+saveConfig = async (data) => {
+
+    //? Create the data folder
+    v_fs.mkdirSy(cfg_dpath);
+    //? Create the config file
+    v_fs.writeSy(cfg_fpath + '.js', `module.exports = ${JSON.stringify(data, null, 2)};`);
+    //? Create the data folder
+    v_fs.mkdirSy(cfg_dpath + '/' + data.data_live);
+    v_fs.mkdirSy(cfg_dpath + '/' + data.data_dev);
+    v_fs.mkdirSy(cfg_dpath + '/' + data.data_test);
+
+};
 
 module.exports = async () => {
   console.log(`This will now generate configurations for the V_Database to work system-wide.`);
@@ -21,13 +34,5 @@ module.exports = async () => {
       }
     };
 
-    //? Create the data folder
-    v_fs.mkdirSy(cfg_dpath);
-    //? Create the config file
-    v_fs.writeSy(cfg_fpath + '.js', `module.exports = ${JSON.stringify(answers, null, 2)};`);
-    //? Create the data folder
-    v_fs.mkdirSy(cfg_dpath + '/' + answers.data_live);
-    v_fs.mkdirSy(cfg_dpath + '/' + answers.data_dev);
-    v_fs.mkdirSy(cfg_dpath + '/' + answers.data_test);
-
+    save_config(answers)
 };

@@ -13,12 +13,15 @@ try {
   const resp = require(cfg_fpath);
   app_mode = resp.app_mode;
 
-  data_dir = cfg_dpath + '/' + (app_mode === 'TEST') ? resp.data_test : resp.data_live;
+  if (app_mode === 'LIVE') data_dir = cfg_dpath + '/' + resp.data_live;
+  if (app_mode === 'DEV') data_dir = cfg_dpath + '/' + resp.data_dev;
+  if (app_mode === 'TEST') data_dir = cfg_dpath + '/' + resp.data_test;
+
 } catch (e) {
   //console.log('ERROR: v_database is missing configuration. \nHINT : Use [ v_database.install() ] to start the configuration process.');
 }
 
-const isDev = () => {
+isDev = async () => {
   return (app_mode === 'DEV');
 };
 
