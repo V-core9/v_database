@@ -101,7 +101,7 @@ test("🙋‍♂️ CHECKING UP THOSE ITEMS", async () => {
 });
 
 test("🔂 Data size", async () => {
-  expect(await vDb.helpers.data_size()).toEqual(testData.items_count);
+  expect((await vDb.helpers.data_size()).sizes.totalCount).toEqual(testData.items_count);
 });
 
 
@@ -162,7 +162,7 @@ test("🔥 System Data Purge", async () => {
 });
 
 test("🔘 Data size After Format", async () => {
-  expect(await vDb.helpers.data_size()).toEqual(0);
+  expect(await vDb.helpers.data_size()).toEqual({"sizes": {"totalCount": 0, "totalSize": 0, "types": []}, "typeCount": 0, "types": []});
   v_fs.removeDirSy(vDb.config.data_dir, { recursive: true });
 });
 
