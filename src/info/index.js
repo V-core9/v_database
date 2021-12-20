@@ -1,5 +1,3 @@
-
-
 module.exports = {
     name: "V_Database System",
     title: "Safe, Fast & Intuitive DatabaseSystem",

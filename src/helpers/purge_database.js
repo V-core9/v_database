@@ -1,6 +1,7 @@
-const v_fs = require('v_file_system');
+const { removeDir, mkdir } = require('v_file_system');
+const { data_dir } = require('../config');
 
 module.exports = async () => {
-    return ( await v_fs.removeDir(process.v.data_dir, { recursive: true }) && await v_fs.mkdir(process.v.data_dir));
+  return (await removeDir(data_dir, { recursive: true }) && await mkdir(data_dir));
 };
 
