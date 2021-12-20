@@ -3,20 +3,16 @@ const v_fs = require("v_file_system");
 const inquirer = require('inquirer');
 const boxen = require('boxen');
 
-const { cfg_dpath, cfg_fpath } = require('../../config/base');
+const { cfg_dpath, cfg_fpath } = require('../../config');
 
 
-const install = async () => {
-
+module.exports = async () => {
   console.log(boxen(`This will now walk you through the setup process, should be easy to finish.`, { padding: 1, title: `V_Database Setup`}));
-
   const questions = require('./questions');
-
   inquirer.prompt(questions).then((answers) => {
 
     //? Mark it
     answers.installed_ts = Date.now();
-
     //? System Architecture data
     answers.architecture = os.arch();
     answers.installed_os_platform = os.platform();
@@ -26,14 +22,10 @@ const install = async () => {
 
     //? Create the data folder
     v_fs.mkdirSy(cfg_dpath);
-
     //? Create the config file
     v_fs.writeSy(cfg_fpath + '.js', `module.exports = ${JSON.stringify(answers, null, 2)};`);
-
     //? Create the data folder
     v_fs.mkdirSy(cfg_dpath + '/' + answers.data_dir);
 
   });
 };
-
-module.exports = install;

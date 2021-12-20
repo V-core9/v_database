@@ -1,21 +1,17 @@
-
-const path = require('path');
-const read = require('./view.core');
+const vCore = require('./view_core');
 
 module.exports = async (type, filter = undefined) => {
 
-
-
   if (filter === undefined) {
-    return await read.list(type);
+    return await vCore.list(type);
   }
 
   if (typeof filter === 'string') {
-    return await read.byId(type, filter);
+    return await vCore.byId(type, filter);
   }
 
   if (filter.id !== undefined) {
-    return await read.byId(type, filter.id);
+    return await vCore.byId(type, filter.id);
   }
 
 };

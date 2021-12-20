@@ -1,10 +1,10 @@
 const v_fs = require('v_file_system');
-const { config } = require('../config/');
+const { data_dir } = require('../config/');
 
 module.exports = {
 
   list: async (type) => {
-    var res = await v_fs.listDir(config.data_dir + '/' + type);
+    var res = await v_fs.listDir(data_dir + '/' + type);
     var res_list = [];
     res.forEach(item => {
       res_list.push(item.replace(".json", ""));
@@ -13,7 +13,7 @@ module.exports = {
   },
 
   byId: async (type, id) => {
-    return JSON.parse(await v_fs.read(config.data_dir + '/' + type + '/' + id + ".json"));
+    return JSON.parse(await v_fs.read(data_dir + '/' + type + '/' + id + ".json"));
   }
 
 };

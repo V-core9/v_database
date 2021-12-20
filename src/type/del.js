@@ -1,8 +1,8 @@
 const v_fs = require('v_file_system');
-const { config } = require('../config/');
+const { data_dir } = require('../config/');
 
 module.exports = async (dataType) => {
-  return (dataType === undefined) ? false : await v_fs.removeDir(config.data_dir + '/' + dataType);
+  return (dataType === undefined) ? false : await v_fs.removeDir(data_dir + '/' + dataType);
 };
 
 

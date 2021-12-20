@@ -1,6 +1,7 @@
 
 const v_fs = require('v_file_system');
 const path = require('path');
+const {data_dir} = require('../config');
 
 data_size = async () => {
 
@@ -14,7 +15,7 @@ data_size = async () => {
     typeCount: null,
   };
 
-  helper.types = await v_fs.listDir(process.v.data_dir);
+  helper.types = await v_fs.listDir(data_dir);
   helper.typeCount = helper.types.length;
 
   for (let i = 0; i < helper.typeCount; i++) {
@@ -22,12 +23,12 @@ data_size = async () => {
       type: helper.types[i],
       items: [],
     };
-    helper.types[i].items = await v_fs.listDir(process.v.data_dir + '/' + helper.types[i].type);
+    helper.types[i].items = await v_fs.listDir(data_dir + '/' + helper.types[i].type);
     var typeSize = 0;
     var innerCount = helper.types[i].items.length;
 
     for (let j = 0; j < innerCount; j++) {
-      const itemPath = path.join(process.v.data_dir + '/' + helper.types[i].type + '/' + helper.types[i].items[j]);
+      const itemPath = path.join(data_dir + '/' + helper.types[i].type + '/' + helper.types[i].items[j]);
       const stats = await v_fs.statsFile(itemPath);
       typeSize += stats.size;
     }
