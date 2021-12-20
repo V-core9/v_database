@@ -3,7 +3,7 @@ const v_fs = require("v_file_system");
 
 const testData = require("../_tData_");
 
-
+vDb.config.data_dir = vDb.config.cfg_dpath + '/$_DATA_TEST';
 
 test("🔘 Check config dir", async () => {
   expect(await vDb.helpers.check_config_dir()).toEqual(true);
@@ -80,23 +80,24 @@ test("🩺 After Created Tables", async () => {
   expect(testData._types).toEqual(expect.arrayContaining(resTest));
 });
 
+testData.items_count = testData._types.length * testData.items_count;
+
 for (let i = 0; i < testData.items_count; i++) {
   const itemNumber = i % testData._types.length;
   const typeNum = Math.trunc(itemNumber);
   const helpType = testData._types[typeNum];
 
   test(`📑 Creating ITEMS [ ${helpType} , ${testData}} ]`, async () => {
-      const res = await vDb.item.new(helpType, testData);
-      expect(res).toEqual(true);
+    const res = await vDb.item.new(helpType, testData);
+    expect(res).toEqual(true);
   });
 }
 
 test("🙋‍♂️ CHECKING UP THOSE ITEMS", async () => {
-  const resTest = await vDb.item.view("users");
-  const usersList = await v_fs.listDir(
-    vDb.config.data_dir + "/" + "users"
-  );
-  expect(resTest.length).toEqual(usersList.length);
+  expect((await vDb.item.view("encryption_keys")).length).toEqual(Math.trunc(testData.items_count / testData._types.length));
+  expect((await vDb.item.view("users")).length).toEqual(Math.trunc(testData.items_count / testData._types.length));
+  expect((await vDb.item.view("system_log")).length).toEqual(Math.trunc(testData.items_count / testData._types.length));
+  expect((await vDb.item.view("devices")).length).toEqual(Math.trunc(testData.items_count / testData._types.length));
 });
 
 test("🔂 Data size", async () => {
@@ -104,7 +105,7 @@ test("🔂 Data size", async () => {
 });
 
 
-var demo_user_return_value = {"_content": {"testData": {"calls_made": 0, "cts": 0, "key": 1234567890, "origin": "www.google.com", "owner_id": 1234567890}}, "_types": ["encryption_keys", "system_api_keys", "system_log", "system_settings", "authors", "users", "user_api_keys", "devices", "user_devices", "pages", "posts", "posts_categories", "forum_threads", "forum_tags", "forum_categories", "forum_posts", "links", "images", "tasks", "workplaces", "notes", "snippets", "categories", "tags", "chat_groups", "chat_messages", "chat_assets", "companies", "support_questions", "support_categories", "ip_blacklist", "ip_whitelist", "reserved_words", "aes_keys"], "items_count": 5000};
+var demo_user_return_value = { "_content": { "testData": { "calls_made": 0, "cts": 0, "key": 1234567890, "origin": "www.google.com", "owner_id": 1234567890 } }, "_types": ["encryption_keys", "system_api_keys", "system_log", "system_settings", "authors", "users", "user_api_keys", "devices", "user_devices", "pages", "posts", "posts_categories", "forum_threads", "forum_tags", "forum_categories", "forum_posts", "links", "images", "tasks", "workplaces", "notes", "snippets", "categories", "tags", "chat_groups", "chat_messages", "chat_assets", "companies", "support_questions", "support_categories", "ip_blacklist", "ip_whitelist", "reserved_words", "aes_keys"], "items_count": testData.items_count };
 test("📡 Viewing every 10th user", async () => {
   const users = await vDb.item.view("users");
   for (let i = 0; i < users.length; i++) {
@@ -121,7 +122,7 @@ test("📃 Viewing every 10th user [object filter]", async () => {
   const users = await vDb.item.view("users");
   for (let i = 0; i < users.length; i++) {
     if (i % 10 === 0) {
-      var res = await vDb.item.view('users', {id : users[i]});
+      var res = await vDb.item.view('users', { id: users[i] });
       demo_user_return_value._content.testData.cts = res._content.testData.cts;
       expect(res).toEqual(demo_user_return_value);
     }
@@ -151,7 +152,7 @@ test("💥 Deleting every 3rd user [repeat for filtering] ", async () => {
   for (let i = 0; i < users.length; i++) {
     if (i % 3 === 0) {
       //console.log(users[i]);
-      expect(await vDb.item.del('users', {id : users[i]})).toEqual(true);
+      expect(await vDb.item.del('users', { id: users[i] })).toEqual(true);
     }
   }
 });
