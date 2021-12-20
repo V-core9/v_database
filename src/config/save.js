@@ -10,4 +10,5 @@ module.exports = async (data) => {
   v_fs.mkdirSy(cfg_dpath + '/' + data.data_live);
   v_fs.mkdirSy(cfg_dpath + '/' + data.data_dev);
   v_fs.mkdirSy(cfg_dpath + '/' + data.data_test);
+  console.log(`V_Database: Saved Config. Location: ${cfg_dpath} `);
 };
