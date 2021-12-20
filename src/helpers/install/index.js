@@ -6,9 +6,20 @@ const { cfg_dpath, cfg_fpath } = require('../../config');
 
 module.exports = async () => {
   console.log(boxen(`This will now walk you through the setup process, should be easy to finish.`, { padding: 1, title: `V_Database Setup` }));
-  const questions = require('./questions');
+
+  const questions = [{
+    type: 'list',
+    name: 'app_mode',
+    message: '  - Run Mode?',
+    choices: ["TEST", "DEV", "LIVE"],
+    default: "LIVE",
+  }];
+
   inquirer.prompt(questions).then((answers) => {
 
+    answers.data_live = '$_DATA';
+    answers.data_dev =  '$_DEV';
+    answers.data_test = '$_TEST';
     //? Installed System Information
     answers.installed = {
       timestamp: Date.now(),

@@ -10,7 +10,6 @@ const appMode = {
 
 module.exports = [
   appMode,
-  saveLog,
 
   //? Data Directory Path
   {

@@ -19,7 +19,7 @@ test("🔘 Check config file", async () => {
 
 preTest = async () => {
   var checkRes = await v_fs.isDir(vDb.config.data_dir);
-  //console.log(`Test Dir Status : ${checkRes}`);
+
   if (!checkRes) checkRes = await v_fs.mkdir(vDb.config.data_dir);
   const res = [];
 
