@@ -4,9 +4,8 @@ const helpers = require('./helpers');
 const v_database = {
   config: require('./config'),
   install: helpers.install,
-  data_size: require('./data_size'),
-  install: require('./install'),
-  purge: require('./purge_database'),
+  data_size: helpers.data_size,
+  purge: helpers.purge,
   helpers,
   type: require('./type'),
   item: require('./item')
