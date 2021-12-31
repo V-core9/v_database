@@ -1,16 +1,14 @@
 const os = require('os');
-const {root_dir} = require('../config'); 
-
-const saveConfig = require('../config/save');
+const {saveConfig} = require('../config'); 
 
 module.exports = async () => {
   console.log(`V_Database: Generating init config.`);
 
     answers = {
       app_mode: 'LIVE',
-      data_live: root_dir+'/$_DATA',
-      data_dev: root_dir+'/$_DEV',
-      data_test: root_dir+'/$_TEST',
+      data_live: '$_DATA',
+      data_dev: '$_DEV',
+      data_test: '$_TEST',
       //? Installed System Information
       installed: {
         timestamp: Date.now(),

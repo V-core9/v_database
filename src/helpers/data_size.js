@@ -1,7 +1,6 @@
 const v_fs = require("v_file_system");
 const path = require("path");
-const { data_dir } = require("../config");
-const isDev = require("../config/is_dev");
+const { data_dir, isDev } = require("../config");
 
 data_size = async () => {
   const helper = {
