@@ -1,14 +1,10 @@
 const v_fs = require("v_file_system");
-const { cfg_dpath, cfg_fpath } = require('.');
+const { cfg_fpath } = require('.');
 
 module.exports = async (data) => {
-  //? Create the data folder
-  v_fs.mkdirSy(cfg_dpath);
-  //? Create the config file
-  v_fs.writeSy(cfg_fpath + '.js', `module.exports = ${JSON.stringify(data, null, 2)};`);
-  //? Create the data folder
-  v_fs.mkdirSy(cfg_dpath + '/' + data.data_live);
-  v_fs.mkdirSy(cfg_dpath + '/' + data.data_dev);
-  v_fs.mkdirSy(cfg_dpath + '/' + data.data_test);
-  console.log(`V_Database: Saved Config. Location: ${cfg_dpath} `);
+  console.log('cfg_fpath DIR : '+ v_fs.writeSy('cfg.js', `module.exports = ${JSON.stringify(data, null, 2)};`));
+  console.log('data.data_live DIR : '+ v_fs.mkdirSy(data.data_live));
+  console.log('data.data_dev DIR : '+ v_fs.mkdirSy(data.data_dev));
+  console.log('data.data_test DIR : '+ v_fs.mkdirSy(data.data_test));
+  console.log(`V_Database: Saved Config. Location: ${process.env.PWD} `);
 };
