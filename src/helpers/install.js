@@ -1,4 +1,5 @@
 const os = require('os');
+const {root_dir} = require('../config'); 
 
 const saveConfig = require('../config/save');
 
@@ -7,9 +8,9 @@ module.exports = async () => {
 
     answers = {
       app_mode: 'LIVE',
-      data_live: '$_DATA',
-      data_dev: '$_DEV',
-      data_test: '$_TEST',
+      data_live: root_dir+'/$_DATA',
+      data_dev: root_dir+'/$_DEV',
+      data_test: root_dir+'/$_TEST',
       //? Installed System Information
       installed: {
         timestamp: Date.now(),

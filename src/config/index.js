@@ -1,6 +1,6 @@
 var root_dir = '.v_database';
 var data_dir = root_dir+'/$_DATA';
-var cfg_fpath = data_dir+'/cfg';
+var cfg_fpath = root_dir+'/cfg';
 var app_mode = 'LIVE';
 
 try {
