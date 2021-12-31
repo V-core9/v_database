@@ -3,11 +3,7 @@ const v_fs = require("v_file_system");
 
 const testData = require("../_tData_");
 
-vDb.config.data_dir = vDb.config.cfg_dpath + '/$_DATA_TEST';
-
-test("🔘 Check config dir", async () => {
-  expect(await vDb.helpers.check_config_dir()).toEqual(true);
-});
+vDb.config.data_dir = '$_DATA_TEST';
 
 test("🔘 Check config file", async () => {
   expect(await vDb.helpers.check_config_file()).toEqual(true);
@@ -27,7 +23,8 @@ preTest = async () => {
 
   for (let i = 0; i <= typesCount; i++) {
     res.push(await vDb.type.new(testData._types[i]));
-  }
+  };
+
   return checkRes;
 };
 
@@ -164,10 +161,6 @@ test("🔥 System Data Purge", async () => {
 test("🔘 Data size After Format", async () => {
   expect(await vDb.helpers.data_size()).toEqual({"sizes": {"totalCount": 0, "totalSize": 0, "types": []}, "typeCount": 0, "types": []});
   v_fs.removeDirSy(vDb.config.data_dir, { recursive: true });
-});
-
-test("🔘 Check config dir", async () => {
-  expect(await vDb.helpers.check_config_dir()).toEqual(true);
 });
 
 test("🔘 Check config file", async () => {

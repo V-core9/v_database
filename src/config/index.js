@@ -1,6 +1,7 @@
-var data_dir = '$_DATA';
+var root_dir = '.v_database';
+var data_dir = root_dir+'/$_DATA';
+var cfg_fpath = data_dir+'/cfg';
 var app_mode = 'LIVE';
-var cfg_fpath = 'cfg';
 
 try {
   const resp = require(process.env.PWD+'/'+cfg_fpath);
@@ -18,5 +19,5 @@ module.exports = {
   app_mode,
   data_dir,
   cfg_fpath,
-  isDev : require('./is_dev')
+  root_dir
 };
