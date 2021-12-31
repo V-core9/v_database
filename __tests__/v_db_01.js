@@ -5,7 +5,7 @@ const testData = require("../_tData_");
 
 
 test("🔘 Check config file", async () => {
-  expect(await vDb.check_config_file()).toEqual(true);
+  expect(await vDb.config.check_config_file()).toEqual(true);
 });
 
 preTest = async () => {
@@ -159,5 +159,5 @@ test("🔘 Data size After Format", async () => {
 });
 
 test("🔘 Check config file", async () => {
-  expect(await vDb.check_config_file()).toEqual(true);
+  expect(await vDb.config.check_config_file()).toEqual(true);
 });
