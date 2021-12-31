@@ -26,11 +26,16 @@ saveConfig = async (data) => {
   console.log(`V_Database: Saved Config. Location: ${root_dir} `);
 }
 
+check_config_file = async () => {
+  return (await v_fs.read(root_dir+'/'+cfg_fpath+'.js') !== false) ? true : false;
+};
+
 module.exports = {
   app_mode,
   data_dir,
   cfg_fpath,
   root_dir,
   saveConfig,
-  isDev
+  isDev,
+  check_config_file
 };
