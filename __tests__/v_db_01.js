@@ -28,7 +28,7 @@ if (!v_fs.isDirSy(vDb.config.data_dir)) v_fs.mkdirSy(vDb.config.data_dir);
 
 
 testData._types.forEach((type) => {
-  test(`⚡ Adding Types :`, async () => {
+  test(`⚡ Adding Types : ${type}`, async () => {
     expect(await vDb.type.new(type)).toBe(true);
   });
 });
