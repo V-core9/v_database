@@ -1,7 +1,7 @@
 const v_fs = require('v_file_system');
 
 var root_dir = '.v_database';
-var data_dir = '$_DATA';
+var data_dir = root_dir+'/$_DATA';
 var cfg_fpath = 'cfg';
 var app_mode = 'LIVE';
 
