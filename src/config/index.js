@@ -1,36 +1,41 @@
+const v_fs = require('v_file_system');
 
-const os = require('os');
-
-const cfg_d = '.v_database';
-const cfg_f = 'config';
-const cfg_dpath = os.homedir + '/' + cfg_d;
-const cfg_fpath = cfg_dpath + '/' + cfg_f;
-
-var data_dir = cfg_dpath;
+var root_dir = '.v_database';
+var data_dir = root_dir+'/$_DATA';
+var cfg_fpath = 'cfg';
 var app_mode = 'LIVE';
 
 try {
-  const resp = require(cfg_fpath);
+  const resp = require(root_dir+'/'+cfg_fpath);
   app_mode = resp.app_mode;
-
-  if (app_mode === 'LIVE') data_dir = cfg_dpath + '/' + resp.data_live;
-  if (app_mode === 'DEV') data_dir = cfg_dpath + '/' + resp.data_dev;
-  if (app_mode === 'TEST') data_dir = cfg_dpath + '/' + resp.data_test;
-
+  data_dir = resp.data_live;
 } catch (e) {
   //console.log('ERROR: v_database is missing configuration. \nHINT : Use [ v_database.install() ] to start the configuration process.');
 }
 
 isDev = async () => {
-  return (app_mode === 'DEV');
+  return app_mode === "DEV";
+};
+
+saveConfig = async (data) => {
+  console.log('data.data_live DIR : '+ v_fs.mkdirSy(root_dir));
+  console.log('cfg_fpath DIR : '+ v_fs.writeSy(root_dir+'/'+cfg_fpath+'.js', `module.exports = ${JSON.stringify(data, null, 2)};`));
+  console.log('data.data_live DIR : '+ v_fs.mkdirSy(root_dir+'/'+data.data_live));
+  console.log('data.data_dev DIR : '+ v_fs.mkdirSy(root_dir+'/'+data.data_dev));
+  console.log('data.data_test DIR : '+ v_fs.mkdirSy(root_dir+'/'+data.data_test));
+  console.log(`V_Database: Saved Config. Location: ${root_dir} `);
+}
+
+check_config_file = async () => {
+  return (await v_fs.read(root_dir+'/'+cfg_fpath+'.js') !== false) ? true : false;
 };
 
 module.exports = {
   app_mode,
   data_dir,
-  cfg_d,
-  cfg_f,
-  cfg_dpath,
   cfg_fpath,
-  isDev
+  root_dir,
+  saveConfig,
+  isDev,
+  check_config_file
 };

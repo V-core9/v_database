@@ -3,19 +3,10 @@ const v_fs = require("v_file_system");
 
 const testData = require("../_tData_");
 
-vDb.config.data_dir = vDb.config.cfg_dpath + '/$_DATA_TEST';
-
-test("🔘 Check config dir", async () => {
-  expect(await vDb.helpers.check_config_dir()).toEqual(true);
-});
 
 test("🔘 Check config file", async () => {
-  expect(await vDb.helpers.check_config_file()).toEqual(true);
+  expect(await vDb.config.check_config_file()).toEqual(true);
 });
-
-
-
-
 
 preTest = async () => {
   var checkRes = await v_fs.isDir(vDb.config.data_dir);
@@ -27,7 +18,8 @@ preTest = async () => {
 
   for (let i = 0; i <= typesCount; i++) {
     res.push(await vDb.type.new(testData._types[i]));
-  }
+  };
+
   return checkRes;
 };
 
@@ -101,7 +93,7 @@ test("🙋‍♂️ CHECKING UP THOSE ITEMS", async () => {
 });
 
 test("🔂 Data size", async () => {
-  expect((await vDb.helpers.data_size()).sizes.totalCount).toEqual(testData.items_count);
+  expect((await vDb.data_size()).sizes.totalCount).toEqual(testData.items_count);
 });
 
 
@@ -158,18 +150,14 @@ test("💥 Deleting every 3rd user [repeat for filtering] ", async () => {
 });
 
 test("🔥 System Data Purge", async () => {
-  expect(await vDb.helpers.purge()).toEqual(true);
+  expect(await vDb.purge()).toEqual(true);
 });
 
 test("🔘 Data size After Format", async () => {
-  expect(await vDb.helpers.data_size()).toEqual({"sizes": {"totalCount": 0, "totalSize": 0, "types": []}, "typeCount": 0, "types": []});
+  expect(await vDb.data_size()).toEqual({"sizes": {"totalCount": 0, "totalSize": 0, "types": []}, "typeCount": 0, "types": []});
   v_fs.removeDirSy(vDb.config.data_dir, { recursive: true });
 });
 
-test("🔘 Check config dir", async () => {
-  expect(await vDb.helpers.check_config_dir()).toEqual(true);
-});
-
 test("🔘 Check config file", async () => {
-  expect(await vDb.helpers.check_config_file()).toEqual(true);
+  expect(await vDb.config.check_config_file()).toEqual(true);
 });

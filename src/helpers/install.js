@@ -1,6 +1,5 @@
 const os = require('os');
-
-const saveConfig = require('../config/save');
+const {saveConfig} = require('../config'); 
 
 module.exports = async () => {
   console.log(`V_Database: Generating init config.`);
