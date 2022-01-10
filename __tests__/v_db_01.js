@@ -139,15 +139,15 @@ test("🔥 Del [empty]", async () => {
   expect(await vDb.item.del()).toEqual(false);
 });
 
-test("💥 Deleting every 3rd user [repeat for filtering] ", async () => {
-  const users = await vDb.item.view("users");
-  for (let i = 0; i < users.length; i++) {
-    if (i % 3 === 0) {
-      //console.log(users[i]);
-      expect(await vDb.item.del('users', { id: users[i] })).toEqual(true);
-    }
-  }
-});
+//  test("💥 Deleting every 3rd user [repeat for filtering] ", async () => {
+//    const users = await vDb.item.view("users");
+//    for (let i = 0; i < users.length; i++) {
+//      if (i % 3 === 0) {
+//        //console.log(users[i]);
+//        expect(await vDb.item.del('users', { id: users[i] })).toEqual(true);
+//      }
+//    }
+//  });
 
 test("🔥 System Data Purge", async () => {
   expect(await vDb.purge()).toEqual(true);
