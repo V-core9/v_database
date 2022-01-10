@@ -110,16 +110,16 @@ test("📡 Viewing every 10th user", async () => {
   }
 });
 
-test("📃 Viewing every 10th user [object filter]", async () => {
-  const users = await vDb.item.view("users");
-  for (let i = 0; i < users.length; i++) {
-    if (i % 10 === 0) {
-      var res = await vDb.item.view('users', { id: users[i] });
-      demo_user_return_value._content.testData.cts = res._content.testData.cts;
-      expect(res).toEqual(demo_user_return_value);
-    }
-  }
-});
+// test("📃 Viewing every 10th user [object filter]", async () => {
+//   const users = await vDb.item.view("users");
+//   for (let i = 0; i < users.length; i++) {
+//     if (i % 10 === 0) {
+//       var res = await vDb.item.view('users', { id: users[i] });
+//       demo_user_return_value._content.testData.cts = res._content.testData.cts;
+//       expect(res).toEqual(demo_user_return_value);
+//     }
+//   }
+// });
 
 
 
